@@ -56,7 +56,7 @@ var MarketSelect = cc.Layer.extend({
 
         function onOk(){
             var bg = self.getChildByTag(100);
-            var arr = []
+            var arr = [];
             for(var i = 0; i < 9 ; i++){
                 var good = bg.getChildByTag(50 + i);
                 var black = good.getChildByTag(100);
