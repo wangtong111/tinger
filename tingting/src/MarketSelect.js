@@ -14,7 +14,7 @@ var MarketSelect = cc.Layer.extend({
             swallowTouches: true,
             onTouchBegan: this.onTouchBegan,
             onTouchMoved: this.onTouchMoved,
-            onTouchEnded: this.onTouchEnded,
+            onTouchEnded: this.onTouchEnded
 
         },this)
     },
@@ -50,7 +50,7 @@ var MarketSelect = cc.Layer.extend({
             node.addChild(sp,3,50 + i);
        }
 
-        var menu = new cc.Menu()
+        var menu = new cc.Menu();
         menu.setPosition(0,0);
         node.addChild(menu,10);
 

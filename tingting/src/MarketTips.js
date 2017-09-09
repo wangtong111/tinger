@@ -8,7 +8,7 @@ var MarketInfo = cc.Layer.extend({
             swallowTouches: true,
             onTouchBegan: this.onTouchBegan,
             onTouchMoved: this.onTouchMoved,
-            onTouchEnded: this.onTouchEnded,
+            onTouchEnded: this.onTouchEnded
 
         },this)
     },

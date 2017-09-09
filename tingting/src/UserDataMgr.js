@@ -5,7 +5,7 @@ UserDataMgr.setSelctGoods = function(data){
     UserDataMgr._goods = data;
 };
 
-UserDataMgr.getSelctGoods = function(data){
+UserDataMgr.getSelctGoods = function(){
     return UserDataMgr._goods;
 };
 
