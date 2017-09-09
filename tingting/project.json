@@ -2,17 +2,20 @@
     "project_type": "javascript",
 
     "debugMode" : 1,
-    "showFPS" : true,
+    "showFPS" : false,
     "frameRate" : 60,
-    "noCache" : false,
+    "noCache" : true,
     "id" : "gameCanvas",
     "renderMode" : 0,
     "engineDir":"frameworks/cocos2d-html5",
 
-    "modules" : ["cocos2d"],
+    "modules" : ["cocos2d","extensions"],
 
     "jsList" : [
         "src/resource.js",
-        "src/app.js"
+        "src/MarketTips.js",
+        "src/GameConfig.js",
+        "src/InfoTips.js",
+        "src/LobbyScene.js"
     ]
 }
