@@ -30,6 +30,11 @@ var LobbyLayer = cc.Layer.extend({/**/
                     self.addChild(layer,50);
                     return;
                 }
+
+                var layer = new MarketSelect();
+                layer.setTypes(tag);
+                self.addChild(layer,50);
+
             }else{
 
 

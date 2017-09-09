@@ -13,7 +13,9 @@
 
     "jsList" : [
         "src/resource.js",
+        "src/UserDataMgr.js",
         "src/MarketTips.js",
+        "src/MarketSelect.js",
         "src/GameConfig.js",
         "src/InfoTips.js",
         "src/LobbyScene.js"
