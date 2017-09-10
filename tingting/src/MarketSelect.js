@@ -22,7 +22,7 @@ var MarketSelect = cc.Layer.extend({
     onEnter : function () {
         var self = this;
         self._super();
-        self.addListener()
+        self.addListener();
 
         var node = new cc.Node();
         node.x = cc.visibleRect.center.x;

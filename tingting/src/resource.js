@@ -14,7 +14,19 @@ var res = {
     market_select_bg_png : "market_select_bg.png",
     market_brain_png : "market_brain.png",
     market_knife_png : "market_knife.png",
-    market_box_png   : "market_box.png"
+    market_box_png   : "market_box.png",
+    market_apple_png : "market_apple.png",
+    market_orange_png : "market_orange.png",
+    market_numbercard_png : "market_numbercard.png",
+    market_lettercard_png : "market_lettercard.png",
+    market_fourpoints_png : "market_fourpoints.png",
+    market_eightpoints_png : "market_eightpoints.png",
+    market_cigar_png : "market_cigar.png",
+    market_ashtray_png : "market_ashtray.png",
+    house1_bg_jpg : "house1_bg.jpg",
+    btn_back_png : "btn_back.png"
+
+
 
 
 };

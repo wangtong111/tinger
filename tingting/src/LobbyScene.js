@@ -7,7 +7,6 @@ var LobbyLayer = cc.Layer.extend({/**/
         var centerPos = cc.visibleRect.center
 
         var unLock = 1;
-
         var bg = new cc.Sprite(res.lobby_bg_jpg);
         bg.setPosition(centerPos);
         self.addChild(bg);
@@ -34,6 +33,10 @@ var LobbyLayer = cc.Layer.extend({/**/
                 var layer = new MarketSelect();
                 layer.setTypes(tag);
                 self.addChild(layer,50);
+
+                //var layer = new Exp1Entrance();
+                //layer.setTypes(tag);
+                //self.addChild(layer,50);
 
             }else{
 
