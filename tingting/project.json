@@ -19,7 +19,7 @@
         "src/GameConfig.js",
         "src/InfoTips.js",
         "src/LobbyScene.js",
-        "src/Exp1Entrance.js"
+        "src/RoomScene.js"
 
     ]
 }

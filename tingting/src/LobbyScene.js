@@ -4,7 +4,7 @@ var LobbyLayer = cc.Layer.extend({/**/
         var self = this;
         self._super();
 
-        var centerPos = cc.visibleRect.center
+        var centerPos = cc.visibleRect.center;
 
         var unLock = 1;
         var bg = new cc.Sprite(res.lobby_bg_jpg);
@@ -30,9 +30,12 @@ var LobbyLayer = cc.Layer.extend({/**/
                     return;
                 }
 
-                var layer = new MarketSelect();
-                layer.setTypes(tag);
-                self.addChild(layer,50);
+                // var layer = new MarketSelect();
+                // layer.setTypes(tag);
+                // self.addChild(layer,50);
+
+                var scene = new RoomScene(tag,3);
+                cc.director.pushScene(scene);
 
                 //var layer = new Exp1Entrance();
                 //layer.setTypes(tag);
@@ -76,7 +79,7 @@ var LobbyLayer = cc.Layer.extend({/**/
 var LobbyScene = cc.Scene.extend({
 
     ctor:function(){
-        this._super()
+        this._super();
         var layer = new LobbyLayer();
         this.addChild(layer);
     }

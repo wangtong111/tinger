@@ -1,6 +1,6 @@
 var MarketSelect = cc.Layer.extend({
     types : 0,
-    startPos : cc.p(-1000.-1000),
+    startPos : cc.p(-1000,-1000),
     _selectGoods : -1,
 
     setTypes : function(types){
