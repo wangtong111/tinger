@@ -132,11 +132,11 @@ var RoomLayer = cc.Layer.extend({
                 flag.setScale(1.25);
                 self.startPos = pos;
                 self._selectLevs = i;
-                return true
+                return true;
             }
         }
 
-        self.startPos = cc.p(-1000,-1000)
+        self.startPos = cc.p(-1000,-1000);
         return true;
 
     },
@@ -148,7 +148,7 @@ var RoomLayer = cc.Layer.extend({
     onTouchEnded : function(touch,event){
         var self = event.getCurrentTarget();
         if(self.startPos.x == -1000){
-            return
+            return;
         }
 
         var bg = self.getChildByTag(100);
@@ -162,7 +162,10 @@ var RoomLayer = cc.Layer.extend({
             return;
         }
 
-        cc.log(self._selectLevs);
+        // cc.log(self._selectLevs);
+
+        var scene = new PlayScene(self.types,self.lev);
+        cc.director.pushScene(scene);
 
     },
 

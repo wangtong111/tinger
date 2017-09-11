@@ -19,7 +19,8 @@
         "src/GameConfig.js",
         "src/InfoTips.js",
         "src/LobbyScene.js",
-        "src/RoomScene.js"
+        "src/RoomScene.js",
+        "src/PlayScene.js"
 
     ]
 }

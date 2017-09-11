@@ -30,7 +30,15 @@ var res = {
     btn_back_png : "btn_back.png",
     room_flag_png : "room_flag.png",
     foot_left_png : "foot_left.png",
-    foot_right_png : "foot_right.png"
+    foot_right_png : "foot_right.png",
+
+    play_1_bg_jpg : "play_1_bg.jpg",
+
+
+    doc_1_1_jpg : "doc_1_1.jpg",
+    doc_1_2_jpg : "doc_1_2.jpg",
+    play_slide_png : "play_slide.png",
+    play_slide_btn_png : "play_slide_btn.png"
 
 
 };

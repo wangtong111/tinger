@@ -14,3 +14,12 @@ ROOM_CONFIG[1] = res.house1_bg_jpg;
 var FLAG_CONFIG = FLAG_CONFIG || {};
 
 FLAG_CONFIG[1] = [cc.p(-255,-135),cc.p(-115,-70),cc.p(15,100),cc.p(105,-10),cc.p(185,142),cc.p(300,55),cc.p(385,-25)];
+
+var PLAY_CONFIG = PLAY_CONFIG || {};
+
+PLAY_CONFIG[1] = res.play_1_bg_jpg ;
+
+var DOC_CONFIG = DOC_CONFIG || {};
+
+DOC_CONFIG[1] = [res.doc_1_1_jpg,res.doc_1_2_jpg];
+
