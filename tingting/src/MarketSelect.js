@@ -73,11 +73,11 @@ var MarketSelect = cc.Layer.extend({
 
             UserDataMgr.setSelectGoods(arr);
 
+            self.removeFromParent();
+
             var layer = new PlayBrainLayer() ;
             var scene = cc.director.getRunningScene();
             scene.addChild(layer,10);
-
-            self.removeFromParent();
         }
 
         var spNormal = new cc.Sprite(res.btn_ok_png);

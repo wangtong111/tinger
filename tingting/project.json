@@ -23,7 +23,8 @@
         "src/PlayScene.js",
         "src/PlayLayerBase.js",
         "src/PlayBrainLayer.js",
-        "src/LogoTipsLayer.js"
+        "src/LogoTipsLayer.js",
+        "src/CompleteTips.js"
 
     ]
 }

@@ -157,7 +157,7 @@ var PlayScene = cc.Scene.extend({
         UserDataMgr.setSelectRoom(types);
         UserDataMgr.setSelectLev(lev);
         var layer = new DocLayer();
-        this.addChild(layer,lev);
+        this.addChild(layer,1);
 
         var bgName = PLAY_CONFIG[types];
         var bg = new cc.Sprite(bgName);

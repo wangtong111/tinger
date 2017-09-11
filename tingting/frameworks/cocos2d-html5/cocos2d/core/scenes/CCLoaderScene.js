@@ -250,20 +250,20 @@ cc.LoaderScene = cc.Scene.extend({
     },
 
     onOk : function(){
-        this.cb();
-        // var self = this;
-        // if(self._box1Str == "201622060049" && self._box2Str == "zuoting" ){
-        //
-        //     if (self.cb){
-        //
-        //         self.cb(self.target);
-        //     }
-        // }
-        // else{
-        //
-        //
-        //     alert("账号或密码错误。");
-        // }
+       
+        var self = this;
+        if(self._box1Str == "201622060049" && self._box2Str == "zuoting" ){
+
+            if (self.cb){
+
+                self.cb(self.target);
+            }
+        }
+        else{
+
+
+            alert("账号或密码错误。");
+        }
     },
 
     editBoxEditingDidBegin: function (editBox) {

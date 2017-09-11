@@ -29,7 +29,6 @@ var PlayLayerBase = cc.Layer.extend({
         var selectGoods = UserDataMgr.getSelectGoods();
         var config = GOODS_CONFIG[self.types][self.lev];
         for(var i = 0 ; i< selectGoods.length ; i++){
-
             var sp = new cc.Sprite(config[selectGoods[i]]);
             sp.setPosition(130*i + 80,52);
             sp.setScale(0.55);
