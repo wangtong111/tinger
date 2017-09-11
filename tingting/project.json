@@ -20,7 +20,10 @@
         "src/InfoTips.js",
         "src/LobbyScene.js",
         "src/RoomScene.js",
-        "src/PlayScene.js"
+        "src/PlayScene.js",
+        "src/PlayLayerBase.js",
+        "src/PlayBrainLayer.js",
+        "src/LogoTipsLayer.js"
 
     ]
 }

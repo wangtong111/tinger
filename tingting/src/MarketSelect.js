@@ -1,11 +1,13 @@
 var MarketSelect = cc.Layer.extend({
     types : 0,
+    lev : 0,
     startPos : cc.p(-1000,-1000),
     _selectGoods : -1,
 
-    setTypes : function(types){
+    setData : function(){
 
-       this.types = types;
+       this.types = UserDataMgr.getSelectRoom();
+       this.lev = UserDataMgr.getselectLev();
     },
 
     addListener:function(){
@@ -23,6 +25,7 @@ var MarketSelect = cc.Layer.extend({
         var self = this;
         self._super();
         self.addListener();
+        self.setData();
 
         var node = new cc.Node();
         node.x = cc.visibleRect.center.x;
@@ -34,7 +37,7 @@ var MarketSelect = cc.Layer.extend({
         bg.y = 0;
         node.addChild(bg,1);
 
-        var config = GOODS_CONFIG[self.types];
+        var config = GOODS_CONFIG[self.types][self.lev];
 
         for(var i = 0; i < 9; i++) {
             var row = Math.floor(i/3);
@@ -67,7 +70,13 @@ var MarketSelect = cc.Layer.extend({
 
             }
             cc.log(arr.toString());
-            UserDataMgr.setSelctGoods(arr);
+
+            UserDataMgr.setSelectGoods(arr);
+
+            var layer = new PlayBrainLayer() ;
+            var scene = cc.director.getRunningScene();
+            scene.addChild(layer,10);
+
             self.removeFromParent();
         }
 
@@ -81,7 +90,10 @@ var MarketSelect = cc.Layer.extend({
         buyItem.setAnchorPoint(0.5,0.5);
         buyItem.setCallback(onOk,this);
         menu.addChild(buyItem,1);
-   },
+
+        var layer = new LogoTipsLayer();
+        self.addChild(layer,10)
+    },
 
     onTouchBegan : function (touch,event) {
         var self = event.getCurrentTarget();

@@ -34,7 +34,7 @@ var LobbyLayer = cc.Layer.extend({/**/
                 // layer.setTypes(tag);
                 // self.addChild(layer,50);
 
-                var scene = new RoomScene(tag,3);
+                var scene = new RoomScene(tag,8);
                 cc.director.pushScene(scene);
 
                 //var layer = new Exp1Entrance();

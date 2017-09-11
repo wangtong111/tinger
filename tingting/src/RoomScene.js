@@ -162,9 +162,9 @@ var RoomLayer = cc.Layer.extend({
             return;
         }
 
-        // cc.log(self._selectLevs);
+        cc.log(self._selectLevs);
 
-        var scene = new PlayScene(self.types,self.lev);
+        var scene = new PlayScene(self.types,self._selectLevs + 1);
         cc.director.pushScene(scene);
 
     },

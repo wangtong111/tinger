@@ -36,9 +36,10 @@ var res = {
 
 
     doc_1_1_jpg : "doc_1_1.jpg",
-    doc_1_2_jpg : "doc_1_2.jpg",
     play_slide_png : "play_slide.png",
-    play_slide_btn_png : "play_slide_btn.png"
+    play_slide_btn_png : "play_slide_btn.png",
+    play_bar_png : "play_bar.png",
+    play_logo_png : "play_logo.png"
 
 
 };

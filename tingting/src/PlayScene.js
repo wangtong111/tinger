@@ -5,15 +5,16 @@ var DocLayer = cc.Layer.extend({
     _mTable : true,
     _mSlider : true,
 
-    setTypes : function(types,lev){
-        this.types = types;
-        this.lev = lev;
+    setData : function(){
+        this.types = UserDataMgr.getSelectRoom();
+        this.lev = UserDataMgr.getselectLev();
     },
 
 
     onEnter : function () {
         var self = this;
         self._super();
+        self.setData();
 
         var node = new cc.Node();
         node.x = cc.visibleRect.center.x;
@@ -44,7 +45,7 @@ var DocLayer = cc.Layer.extend({
         tableView.reloadData();
 
 
-        var len = DOC_CONFIG[this.types].length;
+        var len = DOC_CONFIG[this.types][this.lev].length;
         // Add the slider
         var slider = new cc.ControlSlider(res.play_slide_png, res.play_slide_png, res.play_slide_btn_png);
         slider.anchorX = 0.5;
@@ -68,7 +69,6 @@ var DocLayer = cc.Layer.extend({
         function onOk(){
             cc.log("--------- > i am on OK.");
             var layer = new MarketSelect();
-            layer.setTypes(self.types);
             var scene = cc.director.getRunningScene();
             scene.addChild(layer,5);
             self.removeFromParent();
@@ -125,7 +125,7 @@ var DocLayer = cc.Layer.extend({
         if (!cell) {
             cell = new cc.TableViewCell();
             cc.log(idx);
-            var doc = new cc.Sprite(DOC_CONFIG[this.types][idx]);
+            var doc = new cc.Sprite(DOC_CONFIG[this.types][this.lev][idx]);
             doc.setAnchorPoint(0,0);
             doc.setPosition(0,0);
             cell.addChild(doc);
@@ -137,7 +137,11 @@ var DocLayer = cc.Layer.extend({
     },
     //设置cell个数
     numberOfCellsInTableView: function (table) {
-        return DOC_CONFIG[this.types].length;
+        // cc.log("================");
+        // cc.log(this.types);
+        // cc.log(this.lev);
+        // cc.log("===================");
+        return DOC_CONFIG[this.types][this.lev].length;
     }
 
 
@@ -150,9 +154,10 @@ var PlayScene = cc.Scene.extend({
 
     ctor:function(types,lev){
         this._super();
+        UserDataMgr.setSelectRoom(types);
+        UserDataMgr.setSelectLev(lev);
         var layer = new DocLayer();
-        layer.setTypes(types,lev);
-        this.addChild(layer,1);
+        this.addChild(layer,lev);
 
         var bgName = PLAY_CONFIG[types];
         var bg = new cc.Sprite(bgName);
