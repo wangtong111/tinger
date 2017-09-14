@@ -75,9 +75,16 @@ var MarketSelect = cc.Layer.extend({
 
             self.removeFromParent();
 
-            var layer = new PLAY_CHOICE[self.types][self.lev]();
-            var scene = cc.director.getRunningScene();
-            scene.addChild(layer,10);
+            var layer = null;
+            if (self.types === 1 && self.lev === 1)
+                layer = new PlayBrainLayer();
+            else if(self.types === 1 && self.lev === 2)
+                layer = new PlayPointsLayer();
+            if(layer){
+                var scene = cc.director.getRunningScene();
+                scene.addChild(layer,10);
+            }
+
         }
 
         var spNormal = new cc.Sprite(res.btn_ok_png);

@@ -45,7 +45,7 @@ var res = {
     play_bar_png : "play_bar.png",
     play_logo_png : "play_logo.png",
 
-    equip : "equipment"
+    equip_png : "equipment.png"
 
 
 

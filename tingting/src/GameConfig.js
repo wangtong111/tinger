@@ -17,7 +17,7 @@ FLAG_CONFIG[1] = [cc.p(-255,-135),cc.p(-115,-70),cc.p(15,100),cc.p(105,-10),cc.p
 var GOODS_CONFIG =  {};
 
 GOODS_CONFIG[1] ={};
-GOODS_CONFIG[1][1] = [res.market_fourpoints_png,res.market_knife_png,res.market_orange_png,res.market_numbercard_png,res.market_cigar_png,res.market_lettercard_png,res.market_fourpoints_png,res.market_ashtray_png,res.market_brain_png,res.market_knife_png,res.market_brain_png];
+GOODS_CONFIG[1][1] = [res.market_fourpoints_png,res.market_knife_png,res.market_orange_png,res.market_numbercard_png,res.market_cigar_png,res.market_lettercard_png,res.market_fourpoints_png,res.market_ashtray_png,res.market_brain_png];
 GOODS_CONFIG[1][2] = GOODS_CONFIG[1][1];
 
 //DOC_CONFIG代表阅读文档
@@ -32,9 +32,5 @@ DOC_CONFIG[1][2] = [res.doc_2_1_jpg,res.doc_2_2_jpg];
 var MARKET_LABEL = {};
 MARKET_LABEL[1] = {};
 MARKET_LABEL[1][1] = "接下来，我们需要切除\n被试脑中胼胝体，在这里\n购买需要用到的材料吧!";
-
-PLAY_CHOICE = {};
-PLAY_CHOICE[1] = {};
-PLAY_CHOICE[1][1] = PlayBrainLayer;
 
 
