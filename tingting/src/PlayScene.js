@@ -121,10 +121,11 @@ var DocLayer = cc.Layer.extend({
     },
     //添加Cell
     tableCellAtIndex: function (table, idx) {
-        var cell = table.dequeueCell();
+        //alert(idx.toString());
+        var cell = table.cellAtIndex(idx);
         if (!cell) {
             cell = new cc.TableViewCell();
-            cc.log(idx);
+
             var doc = new cc.Sprite(DOC_CONFIG[this.types][this.lev][idx]);
             doc.setAnchorPoint(0,0);
             doc.setPosition(0,0);

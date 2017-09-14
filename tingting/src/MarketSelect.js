@@ -75,7 +75,7 @@ var MarketSelect = cc.Layer.extend({
 
             self.removeFromParent();
 
-            var layer = new PlayBrainLayer() ;
+            var layer = new PLAY_CHOICE[self.types][self.lev]();
             var scene = cc.director.getRunningScene();
             scene.addChild(layer,10);
         }
