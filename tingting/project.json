@@ -13,6 +13,7 @@
 
     "jsList" : [
         "src/resource.js",
+        "src/HttpRequest.js",
         "src/UserDataMgr.js",
         "src/MarketTips.js",
         "src/MarketSelect.js",

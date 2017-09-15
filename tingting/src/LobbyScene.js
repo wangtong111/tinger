@@ -18,6 +18,8 @@ var LobbyLayer = cc.Layer.extend({/**/
         var posArr = [840,485,920,335,495,350,1060,485,1370,325];
 
         function onPlay(tag,sender){
+            sendRequest();
+
             sender._enabled = false;
             sender.runAction(cc.sequence(cc.delayTime(0.8),cc.callFunc(function () {
                 sender._enabled = true;
