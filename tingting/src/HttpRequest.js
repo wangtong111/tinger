@@ -1,7 +1,7 @@
 function sendRequest(data,cb){
 
     var xhr = cc.loader.getXMLHttpRequest();
-    xhr.open("POST", "http://127.0.0.1:8000/",true);
+    xhr.open("POST", "http://192.168.1.102:8000/",true);
     // xhr.open("GET","http://192.168.1.123:8000/",true);
     // xhr.open("POST", "http://httpbin.org/post",true);
     // set Content-type "text/plain;charset=UTF-8" to post plain text
@@ -15,13 +15,17 @@ function sendRequest(data,cb){
             cc.log("title:" + httpStatus + ", response:\n" + response);
             if(response != null && response != "{}") {
                 cc.log("有数据");
-                var data = JSON.parse(response);
+
+                var cbdata = JSON.parse(response);
+                cb(cbdata);
+                return;
             }
 
+            cb();
         }
     };
 
-    var data = {name: "wangtong" ,sex : "meal",id:"20117091500",password :"123456"};
+    // var data = {name: "wangtong" ,sex : "meal",id:"20117091500",password :"123456"};
     cc.log(JSON.stringify(data))
     xhr.send(JSON.stringify(data));
 }

@@ -252,9 +252,26 @@ cc.LoaderScene = cc.Scene.extend({
     onOk : function(){
 
         var self = this;
-        self.cb();
+        // self.cb();
 
 
+
+        function callback(cbData) {
+            if(cbData == null || cbData == ""){
+
+                alert("账号或密码错误，请重新输入");
+                return ;
+            }
+
+            if (self.cb){
+                self.cb(self.target);
+            }
+        }
+        var data = {};
+        data.id = self._box1Str;
+        data.password = self._box2Str;
+        cc.log(JSON.stringify(data));
+        sendRequest(data,callback);
         //var self = this;
         //if(self._box1Str == "201622060049" && self._box2Str == "zuoting" ){
         //
