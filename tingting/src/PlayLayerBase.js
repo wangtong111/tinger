@@ -76,6 +76,45 @@ var PlayLayerBase = cc.Layer.extend({
     onOk : function(){
 
         cc.log("i am PlayLayerBase onOk");
-    }
+    },
 
+    updateLevs : function () {
+        var selectRoomId = UserDataMgr.getSelectRoom();
+        var selectLevId = UserDataMgr.getselectLev();
+
+        var roomid = UserDataMgr.roomid;
+        var levid = UserDataMgr.levid;
+        if(selectRoomId < roomid || selectLevId < levid ){
+            cc.log("没有完成新的房间");
+            return;
+        }
+
+        if(levid >= FLAG_CONFIG[roomid].length){
+            if (FLAG_CONFIG.hasOwnProperty(roomid)){
+                UserDataMgr.roomid += 1;
+                UserDataMgr.levid = 1;
+            }
+        }else{
+            UserDataMgr.levid += 1;
+        }
+
+        var data = {}
+        data["levid"] = UserDataMgr.levid;
+        data["roomid"] = UserDataMgr.roomid;
+        data["id"] = UserDataMgr.id;
+
+        function callback(cbData){
+            if(cbData != null && cbData["code"] == 1){
+                return;
+            }
+
+            var cb = callback.bind(this);
+            sendRequest(data,cb);
+        };
+
+        var cb = callback.bind(this);
+
+        sendRequest(data,cb);
+
+    }
 });

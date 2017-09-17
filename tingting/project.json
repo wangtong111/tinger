@@ -13,6 +13,7 @@
 
     "jsList" : [
         "src/resource.js",
+        "src/WaittingLayer.js",
         "src/HttpRequest.js",
         "src/LogData.js",
         "src/UserDataMgr.js",

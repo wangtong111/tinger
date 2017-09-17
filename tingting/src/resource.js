@@ -1,6 +1,8 @@
 var res = {
     loading_bg_jpg : "loading_bg.jpg",
 
+    watting_png : "watting.png",
+
     popup_bg_png : "popup_bg.png",
     text_frame_png : "text_frame.png",
     text_block_png : "text_block.png",
@@ -45,7 +47,13 @@ var res = {
     play_bar_png : "play_bar.png",
     play_logo_png : "play_logo.png",
 
-    equip_png : "equipment.png"
+    play_desk_png : "play_desk.png",
+    play_person_1_png : "play_person_1.png",
+    play_person_2_png : "play_person_2.png",
+    play_person_3_png : "play_person_3.png",
+    play_speak_png : "play_speak.png"
+
+
 
 
 

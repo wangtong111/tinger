@@ -1,8 +1,13 @@
 var CompleteTips = cc.Layer.extend({
     _types: -1,
+    cb : null,
     setData :function(types) {
         this._types = types;
 
+    },
+
+    setCallback : function(cb){
+      this.cb = cb;
     },
 
 
@@ -43,6 +48,10 @@ var CompleteTips = cc.Layer.extend({
         if(self._types === 2){
             name = "失败";
             content = "大侠请重新来过。";
+        }else  if(self._types == 3){
+
+            name = "";
+            content = "请继续游戏。";
         }
 
         var title = new cc.LabelTTF(name,"Arial Black",50)
@@ -58,17 +67,32 @@ var CompleteTips = cc.Layer.extend({
 
 
         function onOk(){
-            var parent = self.getParent();
-            parent.removeAllChildren(true)
-            parent.removeFromParent(true);
+
+            if(self._types === 1){
+                var parent = self.getParent();
+                parent.removeAllChildren(true)
+                parent.removeFromParent(true);
+
+                cc.director.popScene();
+            }
             if(self._types === 2){
+                var parent = self.getParent();
+                parent.removeAllChildren(true)
+                parent.removeFromParent(true);
+
                 var layer = new DocLayer();
                 var scene = cc.director.getRunningScene();
                 scene.addChild(layer,1);
                 return
+            }else if(self._types === 3){
+                self.removeFromParent(true);
+
+                if(self.cb)
+                    self.cb()
+                return;
             }
 
-            cc.director.popScene();
+
         }
 
         var menu = new cc.Menu();

@@ -26,8 +26,15 @@ var RoomLayer = cc.Layer.extend({
     },
 
     onEnter : function () {
+        cc.log("i am RoomLayer onEnter");
         var self = this;
         self._super();
+        this.types = UserDataMgr.getSelectRoom();
+        this.lev = UserDataMgr.levid;
+        if (this.types < UserDataMgr.roomid){
+            this.lev = FLAG_CONFIG[this.types].length;
+        }
+
         self.addListener();
 
         var node = new cc.Node();
@@ -127,12 +134,14 @@ var RoomLayer = cc.Layer.extend({
         for(var i = 0; i< self.lev ;i ++){
 
             var flag = bg.getChildByTag(i);
-            var rect = flag.getBoundingBox();
-            if(cc.rectContainsPoint(rect,pos)) {
-                flag.setScale(1.25);
-                self.startPos = pos;
-                self._selectLevs = i;
-                return true;
+            if (flag != null) {
+                var rect = flag.getBoundingBox();
+                if (cc.rectContainsPoint(rect, pos)) {
+                    flag.setScale(1.25);
+                    self.startPos = pos;
+                    self._selectLevs = i;
+                    return true;
+                }
             }
         }
 
@@ -181,6 +190,8 @@ var RoomLayer = cc.Layer.extend({
 var RoomScene = cc.Scene.extend({
 
     ctor:function(types,lev){
+        UserDataMgr.setSelectRoom(types);
+
         this._super();
         var layer = new RoomLayer();
         layer.setTypes(types,lev);

@@ -32,5 +32,7 @@ DOC_CONFIG[1][2] = [res.doc_2_1_jpg,res.doc_2_2_jpg];
 var MARKET_LABEL = {};
 MARKET_LABEL[1] = {};
 MARKET_LABEL[1][1] = "接下来，我们需要切除\n被试脑中胼胝体，在这里\n购买需要用到的材料吧!";
+MARKET_LABEL[1][2] = "请选择带小点卡片以进\n行实验！";
+
 
 

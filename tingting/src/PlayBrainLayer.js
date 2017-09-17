@@ -98,7 +98,7 @@ var PlayBrainLayer = PlayLayerBase.extend({
                 for(var j = 0; j < 3 ; j++){
                     var node = this._content.getChildByTag(1000 + j);
                     if(node){
-                        node.removeFromParent();
+                        node.removeFromParent(true);
                     }
                 }
 
@@ -115,7 +115,7 @@ var PlayBrainLayer = PlayLayerBase.extend({
         for(var j = 0; j < 3 ; j++){
             var node = this._content.getChildByTag(1000 + j);
             if(node){
-                node.removeFromParent();
+                node.removeFromParent(true);
             }
         }
     },
@@ -138,10 +138,12 @@ var PlayBrainLayer = PlayLayerBase.extend({
             LogData.setGameEndTime(Date.parse(new Date()));
 
             var callback = function(cbData){
+                hideWaitting();
                 if(cbData != null && cbData["code"] == 1){
                     LogData.clean();
 
                     if(this.selectTypes == 0){
+                        this.updateLevs();
                         var layer = new CompleteTips();
                         layer.setData(1);
                         this.addChild(layer,100);
@@ -170,6 +172,7 @@ var PlayBrainLayer = PlayLayerBase.extend({
             sendData["id"] = UserDataMgr.id;
             sendData["data"] = LogData.getAllData();
             sendRequest(sendData,cb);
+            showWatting();
             return;
         }
 

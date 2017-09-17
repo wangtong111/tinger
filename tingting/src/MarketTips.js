@@ -64,7 +64,7 @@ var MarketInfo = cc.Layer.extend({
     onTouchEnded : function(touch,event){
         var self = event.getCurrentTarget();
         if(self.canHide){
-            self.removeFromParent();
+            self.removeFromParent(true);
         }
     },
 

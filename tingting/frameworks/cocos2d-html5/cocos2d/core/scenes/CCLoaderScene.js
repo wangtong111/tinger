@@ -257,6 +257,7 @@ cc.LoaderScene = cc.Scene.extend({
 
 
         function callback(cbData) {
+            hideWaitting();
             if(cbData == null || cbData == ""){
 
                 alert("账号或密码错误，请重新输入");
@@ -273,6 +274,7 @@ cc.LoaderScene = cc.Scene.extend({
         data.password = self._box2Str;
         cc.log(JSON.stringify(data));
         sendRequest(data,callback);
+        showWatting();
         //var self = this;
         //if(self._box1Str == "201622060049" && self._box2Str == "zuoting" ){
         //

@@ -6,7 +6,7 @@ var LobbyLayer = cc.Layer.extend({/**/
 
         var centerPos = cc.visibleRect.center;
 
-        var unLock = 1;
+        var unLock = UserDataMgr.roomid;
         var bg = new cc.Sprite(res.lobby_bg_jpg);
         bg.setPosition(centerPos);
         self.addChild(bg);
@@ -22,6 +22,11 @@ var LobbyLayer = cc.Layer.extend({/**/
             sender.runAction(cc.sequence(cc.delayTime(0.8),cc.callFunc(function () {
                 sender._enabled = true;
             })));
+
+            cc.log("-------------")
+            cc.log(unLock);
+            cc.log(tag);
+            cc.log("---------------")
             if(tag <= unLock){
 
                 if(tag == 0 ){
@@ -33,8 +38,13 @@ var LobbyLayer = cc.Layer.extend({/**/
                 // var layer = new MarketSelect();
                 // layer.setTypes(tag);
                 // self.addChild(layer,50);
+                var lev = UserDataMgr.levid;
+                if (tag < unLock){
+                    lev = FLAG_CONFIG[tag].length;
 
-                var scene = new RoomScene(tag,8);
+                }
+
+                var scene = new RoomScene(tag,lev);
                 cc.director.pushScene(scene);
 
                 //var layer = new Exp1Entrance();

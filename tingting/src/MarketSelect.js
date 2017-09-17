@@ -73,7 +73,7 @@ var MarketSelect = cc.Layer.extend({
             LogData.appendSelectGoods(arr);
             UserDataMgr.setSelectGoods(arr);
 
-            self.removeFromParent();
+            self.removeFromParent(true);
 
             var layer = null;
             if (self.types === 1 && self.lev === 1)
@@ -147,7 +147,7 @@ var MarketSelect = cc.Layer.extend({
         var good = bg.getChildByTag(50 + select);
         var black = good.getChildByTag(100);
         if(black){
-            black.removeFromParent();
+            black.removeFromParent(true);
         }else{
             var black = new cc.LayerColor(cc.color(0,0,0,165),224,216);
             black.ignoreAnchorPointForPosition(false);
