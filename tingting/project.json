@@ -14,6 +14,7 @@
     "jsList" : [
         "src/resource.js",
         "src/HttpRequest.js",
+        "src/LogData.js",
         "src/UserDataMgr.js",
         "src/MarketTips.js",
         "src/MarketSelect.js",

@@ -1,7 +1,7 @@
 function sendRequest(data,cb){
 
     var xhr = cc.loader.getXMLHttpRequest();
-    xhr.open("POST", "http://192.168.1.102:8000/",true);
+    xhr.open("POST", "http://47.95.243.203:8000",true);
     // xhr.open("GET","http://192.168.1.123:8000/",true);
     // xhr.open("POST", "http://httpbin.org/post",true);
     // set Content-type "text/plain;charset=UTF-8" to post plain text

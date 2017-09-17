@@ -264,6 +264,7 @@ cc.LoaderScene = cc.Scene.extend({
             }
 
             if (self.cb){
+                UserDataMgr.init(cbData);
                 self.cb(self.target);
             }
         }

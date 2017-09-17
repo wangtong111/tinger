@@ -69,8 +69,8 @@ var MarketSelect = cc.Layer.extend({
                 }
 
             }
-            cc.log(arr.toString());
-
+            // cc.log(arr.toString());
+            LogData.appendSelectGoods(arr);
             UserDataMgr.setSelectGoods(arr);
 
             self.removeFromParent();

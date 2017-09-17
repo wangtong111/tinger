@@ -38,6 +38,8 @@ var PlayBrainLayer = PlayLayerBase.extend({
             }
         }
 
+        LogData.setGameStartTime(Date.parse(new Date()));
+
         var brain = new cc.Sprite(res.market_brain_png);
         brain.setPosition(0,0)
         brain.setScale(3)
@@ -133,18 +135,41 @@ var PlayBrainLayer = PlayLayerBase.extend({
 
     onOk : function(){
         if (this.canTouchBtn){
+            LogData.setGameEndTime(Date.parse(new Date()));
+
+            var callback = function(cbData){
+                if(cbData != null && cbData["code"] == 1){
+                    LogData.clean();
+
+                    if(this.selectTypes == 0){
+                        var layer = new CompleteTips();
+                        layer.setData(1);
+                        this.addChild(layer,100);
+                        return;
+                    }
+
+                    var layer = new CompleteTips();
+                    layer.setData(2);
+                    this.addChild(layer,100);
+                    return;
+                }
+
+                alert("上传数据出错，请重新点击ok按钮。");
+            };
+
+            var cb = callback.bind(this);
+
             if(this.selectTypes == 0){
-                var layer = new CompleteTips();
-                layer.setData(1);
-                this.addChild(layer,100);
-                // alert("right");
-                return;
+                LogData.setGamePass(1);
+            }
+            else{
+                LogData.setGamePass(0);
             }
 
-            var layer = new CompleteTips();
-            layer.setData(2);
-            this.addChild(layer,100);
-            // alert("error");
+            var sendData = {}
+            sendData["id"] = UserDataMgr.id;
+            sendData["data"] = LogData.getAllData();
+            sendRequest(sendData,cb);
             return;
         }
 

@@ -12,6 +12,7 @@ var DocLayer = cc.Layer.extend({
 
 
     onEnter : function () {
+        LogData.setStartReadTime(Date.parse(new Date()));
         var self = this;
         self._super();
         self.setData();
@@ -68,6 +69,15 @@ var DocLayer = cc.Layer.extend({
 
         function onOk(){
             cc.log("--------- > i am on OK.");
+            var startTime = LogData.getStartReadTime();
+            var nowTime = Date.parse(new Date());
+            cc.log(startTime);
+            cc.log(nowTime);
+            if((nowTime - startTime)/1000 <= 6){
+
+                alert("请至少阅读一分钟再进行游戏。");
+                return;
+            }
             var layer = new MarketSelect();
             var scene = cc.director.getRunningScene();
             scene.addChild(layer,5);
@@ -143,10 +153,12 @@ var DocLayer = cc.Layer.extend({
         // cc.log(this.lev);
         // cc.log("===================");
         return DOC_CONFIG[this.types][this.lev].length;
+    },
+
+    onExit : function(){
+
+        LogData.setEndReadTime(Date.parse(new Date()));
     }
-
-
-
 });
 
 
@@ -157,6 +169,8 @@ var PlayScene = cc.Scene.extend({
         this._super();
         UserDataMgr.setSelectRoom(types);
         UserDataMgr.setSelectLev(lev);
+        LogData.setRoomAndLev(types,lev);
+
         var layer = new DocLayer();
         this.addChild(layer,1);
 
