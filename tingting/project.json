@@ -28,7 +28,9 @@
         "src/PlayBrainLayer.js",
         "src/LogoTipsLayer.js",
         "src/CompleteTips.js",
-        "src/PlayPointsLayer.js"
+        "src/PlayPointsLayer.js",
+        "src/PlayFruitLayer.js",
+        "src/PlayGoodsLayer.js"
 
     ]
 }

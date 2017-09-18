@@ -68,7 +68,6 @@ var DocLayer = cc.Layer.extend({
         node.addChild(menu,10);
 
         function onOk(){
-            cc.log("--------- > i am on OK.");
             var startTime = LogData.getStartReadTime();
             var nowTime = Date.parse(new Date());
             cc.log(startTime);

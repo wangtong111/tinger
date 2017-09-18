@@ -76,10 +76,19 @@ var MarketSelect = cc.Layer.extend({
             self.removeFromParent(true);
 
             var layer = null;
-            if (self.types === 1 && self.lev === 1)
-                layer = new PlayBrainLayer();
-            else if(self.types === 1 && self.lev === 2)
-                layer = new PlayPointsLayer();
+            if(self.types === 1){
+                if (self.lev === 1)
+                    layer = new PlayBrainLayer();
+                else if( self.lev === 2)
+                    layer = new PlayPointsLayer();
+                else if( self.lev === 3)
+                    layer = new PlayFruitLayer();
+                else if( self.lev === 4)
+                    layer = new PlayGoodsLayer();
+
+            }
+
+
             if(layer){
                 var scene = cc.director.getRunningScene();
                 scene.addChild(layer,10);

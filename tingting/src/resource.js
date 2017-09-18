@@ -27,6 +27,9 @@ var res = {
     market_eightpoints_png : "market_eightpoints.png",
     market_cigar_png : "market_cigar.png",
     market_ashtray_png : "market_ashtray.png",
+    market_apple_png : "market_apple.png",
+    market_ashtray_card_png : "market_ashtray_card.png",
+    market_cigar_card_png : "market_cigar_card.png",
 
     house1_bg_jpg : "house1_bg.jpg",
     btn_back_png : "btn_back.png",
@@ -42,6 +45,11 @@ var res = {
     doc_2_1_jpg : "doc_2_1.jpg",
     doc_2_2_jpg : "doc_2_2.jpg",
 
+    doc_3_1_jpg : "doc_3_1.jpg",
+
+    doc_4_1_jpg : "doc_4_1.jpg",
+    doc_4_2_jpg : "doc_4_2.jpg",
+
     play_slide_png : "play_slide.png",
     play_slide_btn_png : "play_slide_btn.png",
     play_bar_png : "play_bar.png",
@@ -51,6 +59,9 @@ var res = {
     play_person_1_png : "play_person_1.png",
     play_person_2_png : "play_person_2.png",
     play_person_3_png : "play_person_3.png",
+    play_person_4_png : "play_person_4.png",
+    play_person_5_png : "play_person_5.png",
+    play_person_6_png : "play_person_6.png",
     play_speak_png : "play_speak.png"
 
 
