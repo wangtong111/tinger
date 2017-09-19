@@ -30,7 +30,9 @@
         "src/CompleteTips.js",
         "src/PlayPointsLayer.js",
         "src/PlayFruitLayer.js",
-        "src/PlayGoodsLayer.js"
+        "src/PlayGoodsLayer.js",
+        "src/PlaySmokeLayer.js",
+        "src/PlayNewSmoke.js"
 
     ]
 }

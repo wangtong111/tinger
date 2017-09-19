@@ -1,0 +1,403 @@
+var PlayNewSmoke = PlayLayerBase.extend({
+    responseRect:null,
+    selectTypes : [-1,-1,-1,-1,-1],
+    // selectTypes2 : -1,
+    nowStep : 0,
+    canTouchBtn : false,
+
+    personTalk : [  "*#%&^$...*%#",
+                    "我看到了烟灰缸。",
+                    "我看到了烟灰缸。",
+                    "我看到了烟灰缸。",
+                    "我看到了烟灰缸。"],
+    animalTalk : [  "裂脑人被试的反应会是什么？",
+                    "不对，明明是雪茄.\n请选择合适的物品放在屏幕上。",
+                    "请选择相应的单词卡放在屏幕上。",
+                    "不对，明明是雪茄.\n请选择相应的单词卡放在屏幕上。",
+                    "请把合适的物品拖到相应的手上。"],
+    nowTime : 0,
+
+    addListeners : function(points){
+
+        cc.eventManager.addListener({
+            event : cc.EventListener.TOUCH_ONE_BY_ONE,
+            swallowTouches: true,
+            onTouchBegan: this.onTouchBegan.bind(this),
+            onTouchMoved: this.onTouchMoved.bind(this),
+            onTouchEnded: this.onTouchEnded.bind(this)
+
+        },points);
+
+    },
+
+    onEnter:function () {
+        var self = this;
+        self._super();
+
+        var selectGoods = UserDataMgr.getSelectGoods();
+
+        if(selectGoods.length != 5){
+            self._content.runAction(cc.sequence(cc.delayTime(0.2),cc.callFunc(function () {
+                alert("选择物品数目不对，请返回超市重新选择。");
+            })));
+            return;
+        }
+
+        for(var i = 0 ; i< selectGoods.length ; i++){
+            if(selectGoods[i] == 1 || selectGoods[i] == 2 || selectGoods[i] == 6 || selectGoods[i] == 8){
+                self._content.runAction(cc.sequence(cc.delayTime(0.2),cc.callFunc(function () {
+                    alert("选择物品有误，请返回超市重新选择。");
+                })));
+                return;
+            }
+        }
+
+
+        var desk = new cc.Sprite(res.play_desk_png);
+        desk.setPosition(0,-5);
+        self._content.addChild(desk,2);
+
+        var person = new cc.Sprite(res.play_person_1_png);
+        person.setPosition(0,-120);
+        self._content.addChild(person,3,6000);
+
+        self.addSpeak(self.nowStep);
+        var posTable = [cc.p(-472,240),cc.p(-472,150),cc.p(472,240),cc.p(472,150),cc.p(472,70)];
+        var name = [res.market_cigar_png,res.market_ashtray_png,res.market_cigar_card_png,res.market_ashtray_card_png,res.market_nothing_png];
+        for(var i =  0; i < selectGoods.length ; i++) {
+            this.selectTypes[i] = -1;
+            var points1 = new cc.Sprite(name[i]);
+            points1.setPosition(posTable[i]);
+            points1.setScale(0.5);
+            self._content.addChild(points1,11,2000 + i * 100);
+            self.addListeners(points1);
+        }
+
+        self.responseRect = [cc.rect(-330,-40,300,50),cc.rect(30,-40,300,50)];
+
+        var ashtray = new cc.Sprite(res.market_ashtray_png);
+        ashtray.setPosition(-90,160);
+        ashtray.setScale(0.8);
+        ashtray.setOpacity(180);
+        self._content.addChild(ashtray,2,4000);
+        // var bgLayer = new cc.LayerColor(cc.color(255, 0, 0, 180),300,50);
+        // bgLayer.setPosition(-330,-40);
+        // self._content.addChild(bgLayer,20);
+        //
+        // bgLayer = new cc.LayerColor(cc.color(0, 255, 0, 180),300,50);
+        // bgLayer.setPosition(30,-40);
+        // self._content.addChild(bgLayer,20);
+        //
+        // bgLayer = new cc.LayerColor(cc.color(255, 0, 0, 180),50,200);
+        // bgLayer.setPosition(95,-80);
+        // self._content.addChild(bgLayer,20);
+    },
+
+    addSpeak : function(levs){
+        this.nowTime = Date.parse(new Date());
+        var self = this;
+        var speak1 = new cc.Sprite(res.play_speak_png);
+        speak1.setPosition(-350,0);
+        self._content.addChild(speak1,12,5000 + 100);
+        speak1.setScale(0);
+        speak1.runAction(cc.scaleTo(0.2,1,1));
+
+        var content = new cc.LabelTTF(this.animalTalk[levs],"Arial",20);
+        content.setColor(cc.color(0,0,0,255));
+        content.opacity = 0;
+        content.x = 160 + 120;
+        content.y = 90 + 130;
+        speak1.addChild(content,10);
+        content.runAction(cc.sequence(cc.delayTime(0.2),cc.fadeIn(0.2)));
+
+        var speak2 = new cc.Sprite(res.play_speak_png);
+        speak2.setPosition(300,147);
+        self._content.addChild(speak2,12,5000 + 200);
+        speak2.setScale(0);
+        speak2.runAction(cc.scaleTo(0.2,1,1));
+
+        var content = new cc.LabelTTF(this.personTalk[levs],"Arial",20);
+        content.setColor(cc.color(0,0,0,255));
+        content.opacity = 0;
+        content.x = 160 + 120;
+        content.y = 90 + 130;
+        speak2.addChild(content,10);
+        content.runAction(cc.sequence(cc.delayTime(0.2),cc.fadeIn(0.2)));
+
+    },
+
+    onTouchBegan : function (touch,event) {
+        if(this.nowTime == 0){
+            // alert("至少阅读10秒，请仔细看下线索哦。");
+            return ;
+        }
+
+        var startTime = this.nowTime;
+        var nowTime = Date.parse(new Date());
+        if((nowTime - startTime)/1000 <= 1){
+            alert("至少阅读10秒，请仔细看下线索哦。");
+            return ;
+
+        }
+
+        var speak = this._content.getChildByTag(5100);
+        if(speak){
+            speak.removeFromParent(true);
+        }
+
+        var speak = this._content.getChildByTag(5200);
+        if(speak){
+            speak.removeFromParent(true);
+        }
+
+        var target = event.getCurrentTarget();
+        var location = target.convertToNodeSpace(touch.getLocation());
+        var size = target.getContentSize();
+        var rect = cc.rect(0,0,size.width,size.height);
+        if(cc.rectContainsPoint(rect,location)){
+            // if(this.nowStep >= 4) {
+            //     var person = this._content.getChildByTag(6000);
+            //     person.setSpriteFrame(new cc.SpriteFrame(res.play_person_4_png,cc.rect(0,0,485,423)));
+            // }
+
+            return true;
+        }
+
+        return false;
+    },
+
+    onTouchMoved : function (touch,event) {
+        var target = event.getCurrentTarget();
+        var delta = touch.getDelta();
+        var tag = target.getTag();
+        cc.log("ontouch moved " + tag.toString());
+        target.x += delta.x;
+        target.y += delta.y;
+        var count = this.responseRect.length;
+        for(var i = 0; i < count; i++ ){
+            var rects = this.responseRect[i];
+            if(cc.rectContainsPoint(rects,target)){
+
+                // var node = this._content.getChildByTag(1000 + i);
+                // if(node){
+                //     return true;
+                // }
+                //
+                // for(var j = 0; j <  count; j++){
+                //     var node = this._content.getChildByTag(1000 + j);
+                //     if(node){
+                //         node.removeFromParent(true);
+                //     }
+                // }
+                this.selectTypes[Math.ceil((tag -2000 )/100)] = i;
+
+                var name = res.play_person_5_png;
+                if (i == 1)
+                    name = res.play_person_6_png;
+                var person = this._content.getChildByTag(6000);
+                person.setName(name);
+                person.setSpriteFrame(new cc.SpriteFrame(name,cc.rect(0,0,485,423)));
+                return;
+                // if (tag == 2000)
+                //     this.selectTypes1 = i;
+                // else
+                //     this.selectTypes2 = i;
+                // var node = new cc.LayerColor(cc.color(255, 0, 0, 180),rects.width,rects.height);
+                // node.setPosition(rects.x,rects.y);
+                // this._content.addChild(node,10,1000 + i);
+                // return;
+            }
+        }
+        this.selectTypes[Math.ceil((tag -2000 )/100)] = -1;
+        // if (tag == 2000)
+        //     this.selectTypes1 = -1;
+        // else
+        //     this.selectTypes2 = -1;
+
+        // for(var j = 0; j < count ; j++){
+        //     var node = this._content.getChildByTag(1000 + j);
+        //     if(node){
+        //         node.removeFromParent(true);
+        //     }
+        // }
+    },
+
+
+    onTouchEnded : function(touch,event){
+
+        // var count = this.responseRect.length;
+        // for(var j = 0; j < count ; j++){
+        //     var node = this._content.getChildByTag(1000 + j);
+        //     if(node){
+        //         node.removeFromParent(true);
+        //     }
+        // }
+        var counts = 0;
+        var posTable = [cc.p(-472,240),cc.p(-472,150),cc.p(472,240),cc.p(472,150),cc.p(472,70)];
+        for(var i =  0; i < 5 ; i++) {
+            if(this.selectTypes[i] < 0){
+                counts += 1;
+                var points = this._content.getChildByTag(2000 + i * 100);
+                points.setPosition(posTable[i]);
+            }
+
+        }
+
+        if(counts >= 5){
+            var person = this._content.getChildByTag(6000);
+            person.setName(res.play_person_1_png);
+            person.setSpriteFrame(new cc.SpriteFrame(res.play_person_1_png,cc.rect(0,0,485,423)));
+        }
+
+        this.canTouchBtn = true;
+    },
+
+    judgeRes : function(){
+
+        if(this.nowStep == 0 ){
+
+            cc.log("---------");
+            var person = this._content.getChildByTag(6000);
+            var name = person.getName();
+            if(this.selectTypes[1] == 0 && name == res.play_person_5_png)
+                return true;
+
+            return false;
+        }
+        else if(this.nowStep == 1){
+            var person = this._content.getChildByTag(6000);
+            var name = person.getName();
+            if(this.selectTypes[1] == 1 && name == res.play_person_6_png)
+                return true;
+
+            return false;
+        }else if(this.nowStep == 2){
+            var counts = this.selectTypes[1] + this.selectTypes[2] + this.selectTypes[0]
+            if(this.selectTypes[3] == 1 && counts == -3)
+                return true;
+
+            return false;
+
+        }else  if(this.nowStep == 3){
+            var counts = this.selectTypes[0] + this.selectTypes[3] + this.selectTypes[1]
+            if(this.selectTypes[2] == 0 && counts == -3)
+                return true;
+
+            return false;
+        }else if(this.nowStep == 4) {
+            cc.log("-------------------");
+            for(var i = 0; i < 4 ; i++)
+                cc.log(this.selectTypes[i].toString());
+            cc.log("-------------------");
+
+            var counts = this.selectTypes[3] + this.selectTypes[2] + this.selectTypes[0]
+            if (this.selectTypes[1] == 1 && counts == -3)
+                return true;
+
+            return false;
+        }else if(this.nowStep == 5) {
+            var counts = this.selectTypes[3] + this.selectTypes[2] + this.selectTypes[1]
+            if (this.selectTypes[0] == 0 && counts == -3)
+                return true;
+
+            return false;
+        }
+
+
+        return false;
+    },
+
+
+    onOk : function(){
+        // if (this.canTouchBtn){
+        if (this.judgeRes() == true){
+            var self = this;
+
+            function continueGame(){
+                var posTable = [cc.p(-472,240),cc.p(-472,150),cc.p(472,240),cc.p(472,150),cc.p(472,70)];
+                for(var i =  0; i < 5 ; i++) {
+                    this.selectTypes[i] = -1
+                    var points = this._content.getChildByTag(2000 + i * 100);
+                    points.setPosition(posTable[i]);
+                }
+
+                var person = this._content.getChildByTag(6000);
+                person.setName(res.play_person_1_png);
+                person.setSpriteFrame(new cc.SpriteFrame(res.play_person_1_png,cc.rect(0,0,485,423)));
+
+                var ash = this._content.getChildByTag(4000);
+                if(ash){
+                    ash.setPosition(170,160);
+                }
+                self.nowStep += 1;
+                if(this.nowStep >= 4) {
+                    self.responseRect = [cc.rect(-235,-65,100,100),cc.rect(125,-65,100,100)];
+
+                    var person = this._content.getChildByTag(6000);
+                    person.setSpriteFrame(new cc.SpriteFrame(res.play_person_1_png,cc.rect(0,0,485,423)));
+                }
+
+                self.addSpeak(self.nowStep);
+            }
+
+            if(self.nowStep < 5){
+                var cb = continueGame.bind(this);
+                var layer = new CompleteTips();
+                layer.setData(3);
+                layer.setCallback(cb);
+                this.addChild(layer,100);
+                return;
+            }
+
+            self.updateData(true);
+            return;
+        }
+
+        this.updateData(false);
+    },
+
+    updateData : function(result){
+        var callback = function(cbData){
+            hideWaitting();
+            if(cbData != null && cbData["code"] == 1){
+                LogData.clean();
+
+                if(result == true){
+                    this.updateLevs();
+                    var layer = new CompleteTips();
+                    layer.setData(1);
+                    this.addChild(layer,100);
+                    return;
+                }
+
+                var layer = new CompleteTips();
+                layer.setData(2);
+                this.addChild(layer,100);
+                return;
+            }
+
+            alert("上传数据出错，请重新点击ok按钮。");
+        };
+
+        var cb = callback.bind(this);
+
+        if(result == true){
+            LogData.setGamePass(1);
+        }
+        else{
+            LogData.setGamePass(0);
+        }
+
+        var sendData = {};
+        sendData["id"] = UserDataMgr.id;
+        sendData["data"] = LogData.getAllData();
+        sendRequest(sendData,cb);
+        showWatting();
+    },
+
+    onExit:function(){
+
+        cc.eventManager.removeListener(this);
+        this._super();
+    }
+});
