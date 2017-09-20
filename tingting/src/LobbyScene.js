@@ -6,7 +6,7 @@ var LobbyLayer = cc.Layer.extend({/**/
 
         var centerPos = cc.visibleRect.center;
 
-        var unLock = UserDataMgr.roomid;
+        var unLock = 1 //UserDataMgr.roomid;
         var bg = new cc.Sprite(res.lobby_bg_jpg);
         bg.setPosition(centerPos);
         self.addChild(bg);
