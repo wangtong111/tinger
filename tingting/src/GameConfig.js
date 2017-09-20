@@ -1,7 +1,7 @@
 var GAME_TIPS = {};
-GAME_TIPS[2] = "双胞胎实验室将于%d月%d日开放.";
-GAME_TIPS[3] = "老鼠游乐园将于%d月%d日开放.";
-GAME_TIPS[4] = "视涯实验室将于%d月%d日开放.";
+GAME_TIPS[2] = "双胞胎实验室将于10月24日开放.";
+GAME_TIPS[3] = "老鼠游乐园将于11月07日开放.";
+GAME_TIPS[4] = "视涯实验室将于11月21日开放.";
 
 var ROOM_CONFIG =  {};
 ROOM_CONFIG[1] = res.house1_bg_jpg;

@@ -47,7 +47,7 @@ var InfoTips = cc.Layer.extend({
        title.y = 165;
        node.addChild(title,10);
 
-       var content = new cc.LabelTTF(cc.formatStr(GAME_TIPS[self._tag],self._month,self._days),"Arial",35);
+       var content = new cc.LabelTTF(cc.formatStr(GAME_TIPS[self._tag]),"Arial",35);
        content.setColor(cc.color(0,0,0,255));
        content.setPosition(0,0);
        node.addChild(content,1);
