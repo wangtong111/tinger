@@ -79,6 +79,12 @@ var LobbyLayer = cc.Layer.extend({/**/
            item.setCallback(func,this);
            menu.addChild(item,3);
         }
+    },
+
+    onExit : function(){
+
+        this.removeFromParent(true);
+        this._super();
     }
 });
 
@@ -90,6 +96,11 @@ var LobbyScene = cc.Scene.extend({
 
     ctor:function(){
         this._super();
+    },
+
+    onEnter : function () {
+        this._super();
+
         var layer = new LobbyLayer();
         this.addChild(layer);
     }

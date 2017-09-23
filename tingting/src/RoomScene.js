@@ -51,10 +51,11 @@ var RoomLayer = cc.Layer.extend({
         var delay = 0.4;
         var flagConfig = FLAG_CONFIG[self.types];
         self.lev = self.lev >  flagConfig.length ? flagConfig.length : self.lev;
-        for(var i = 0 ; i < self.lev ; i ++){
+        for(var i = 0 ; i < self.lev ; i++){
             var flag = new cc.Sprite(res.room_flag_png);
             flag.setPosition(flagConfig[i]);
-            node.addChild(flag,4,i);
+            cc.log("===================" + (i + 1000));
+            node.addChild(flag,4,i + 1000);
             if(i !== 0){
                 delay = self.addFoot(node,flagConfig[i-1],flagConfig[i],delay);
                 flag.opacity = 0;
@@ -130,12 +131,14 @@ var RoomLayer = cc.Layer.extend({
         var bg = self.getChildByTag(100);
         var location = touch.getLocation();
         var pos = bg.convertToNodeSpace(location);
-
+        cc.log("-------->" + self.lev);
         for(var i = 0; i< self.lev ;i ++){
 
-            var flag = bg.getChildByTag(i);
-            if (flag != null) {
+            var flag = bg.getChildByTag(1000  + i);
+            cc.log("-------------->" +flag);
+            if (flag !== null) {
                 var rect = flag.getBoundingBox();
+
                 if (cc.rectContainsPoint(rect, pos)) {
                     flag.setScale(1.25);
                     self.startPos = pos;
@@ -161,7 +164,7 @@ var RoomLayer = cc.Layer.extend({
         }
 
         var bg = self.getChildByTag(100);
-        var flag = bg.getChildByTag(self._selectLevs);
+        var flag = bg.getChildByTag(1000 + self._selectLevs);
         flag.setScale(1);
 
         var location = touch.getLocation();
@@ -181,6 +184,7 @@ var RoomLayer = cc.Layer.extend({
     onExit:function(){
 
         cc.eventManager.removeListener(this);
+        this.removeFromParent(true);
         this._super();
     }
 
@@ -193,9 +197,13 @@ var RoomScene = cc.Scene.extend({
         UserDataMgr.setSelectRoom(types);
 
         this._super();
+    },
+
+    onEnter : function() {
+        this._super();
         var layer = new RoomLayer();
-        layer.setTypes(types,lev);
         this.addChild(layer);
+
     }
 
 });
