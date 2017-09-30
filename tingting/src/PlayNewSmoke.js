@@ -6,15 +6,13 @@ var PlayNewSmoke = PlayLayerBase.extend({
     canTouchBtn : false,
 
     personTalk : [  "*#%&^$...*%#",
-                    "我看到了烟灰缸。",
-                    "我看到了烟灰缸。",
-                    "我看到了烟灰缸。",
-                    "我看到了烟灰缸。"],
+                    "*#%&^$...*%#",
+                    "",
+                    ""],
     animalTalk : [  "裂脑人被试的反应会是什么？",
-                    "不对，明明是雪茄.\n请选择合适的物品放在屏幕上。",
-                    "请选择相应的单词卡放在屏幕上。",
-                    "不对，明明是雪茄.\n请选择相应的单词卡放在屏幕上。",
-                    "请把合适的物品拖到相应的手上。"],
+                    "裂脑人被试的反应会是什么？",
+                    "裂脑人被试的反应会是什么？",
+                    "裂脑人被试的反应会是什么？"],
     nowTime : 0,
 
     addListeners : function(points){
@@ -62,7 +60,7 @@ var PlayNewSmoke = PlayLayerBase.extend({
         self._content.addChild(person,3,6000);
 
         self.addSpeak(self.nowStep);
-        var posTable = [cc.p(-472,240),cc.p(-472,150),cc.p(472,240),cc.p(472,150),cc.p(472,70)];
+        var posTable = [cc.p(-472,240),cc.p(-472,150),cc.p(472,70),cc.p(472,0),cc.p(472,-70)];
         var name = [res.market_cigar_png,res.market_ashtray_png,res.market_cigar_card_png,res.market_ashtray_card_png,res.market_nothing_png];
         for(var i =  0; i < selectGoods.length ; i++) {
             this.selectTypes[i] = -1;
@@ -80,8 +78,8 @@ var PlayNewSmoke = PlayLayerBase.extend({
         ashtray.setScale(0.8);
         ashtray.setOpacity(180);
         self._content.addChild(ashtray,2,4000);
-        // var bgLayer = new cc.LayerColor(cc.color(255, 0, 0, 180),300,50);
-        // bgLayer.setPosition(-330,-40);
+        // var bgLayer = new cc.LayerColor(cc.color(255, 0, 0, 180),250,130);
+        // bgLayer.setPosition(200,120);
         // self._content.addChild(bgLayer,20);
         //
         // bgLayer = new cc.LayerColor(cc.color(0, 255, 0, 180),300,50);
@@ -134,6 +132,7 @@ var PlayNewSmoke = PlayLayerBase.extend({
 
         var startTime = this.nowTime;
         var nowTime = Date.parse(new Date());
+
         if((nowTime - startTime)/1000 <= 1){
             alert("至少阅读10秒，请仔细看下线索哦。");
             return ;
@@ -144,10 +143,11 @@ var PlayNewSmoke = PlayLayerBase.extend({
         if(speak){
             speak.removeFromParent(true);
         }
-
-        var speak = this._content.getChildByTag(5200);
-        if(speak){
-            speak.removeFromParent(true);
+        if(this.nowStep < 2) {
+            var speak = this._content.getChildByTag(5200);
+            if (speak) {
+                speak.removeFromParent(true);
+            }
         }
 
         var target = event.getCurrentTarget();
@@ -178,34 +178,34 @@ var PlayNewSmoke = PlayLayerBase.extend({
             var rects = this.responseRect[i];
             if(cc.rectContainsPoint(rects,target)){
 
-                // var node = this._content.getChildByTag(1000 + i);
-                // if(node){
-                //     return true;
-                // }
-                //
-                // for(var j = 0; j <  count; j++){
-                //     var node = this._content.getChildByTag(1000 + j);
-                //     if(node){
-                //         node.removeFromParent(true);
-                //     }
-                // }
-                this.selectTypes[Math.ceil((tag -2000 )/100)] = i;
+                var node = this._content.getChildByTag(1000 + i);
+                if(node){
+                    return true;
+                }
 
-                var name = res.play_person_5_png;
-                if (i == 1)
-                    name = res.play_person_6_png;
-                var person = this._content.getChildByTag(6000);
-                person.setName(name);
-                person.setSpriteFrame(new cc.SpriteFrame(name,cc.rect(0,0,485,423)));
+                for(var j = 0; j <  count; j++){
+                    var node = this._content.getChildByTag(1000 + j);
+                    if(node){
+                        node.removeFromParent(true);
+                    }
+                }
+
+                this.selectTypes[Math.ceil((tag -2000 )/100)] = i;
+                if(this.nowStep < 2) {
+                    var name = res.play_person_5_png;
+                    if (i == 1)
+                        name = res.play_person_6_png;
+                    var person = this._content.getChildByTag(6000);
+                    person.setName(name);
+                    person.setSpriteFrame(new cc.SpriteFrame(name, cc.rect(0, 0, 485, 423)));
+                }else{
+                    var node = new cc.LayerColor(cc.color(0, 255, 0, 255),rects.width,rects.height);
+                    cc.log(rects.width + "   " + rects.height + " " + rects.x + "  " + rects.y);
+                    node.setPosition(rects.x,rects.y);
+                    this._content.addChild(node,12,1000 + i);
+
+                }
                 return;
-                // if (tag == 2000)
-                //     this.selectTypes1 = i;
-                // else
-                //     this.selectTypes2 = i;
-                // var node = new cc.LayerColor(cc.color(255, 0, 0, 180),rects.width,rects.height);
-                // node.setPosition(rects.x,rects.y);
-                // this._content.addChild(node,10,1000 + i);
-                // return;
             }
         }
         this.selectTypes[Math.ceil((tag -2000 )/100)] = -1;
@@ -214,26 +214,26 @@ var PlayNewSmoke = PlayLayerBase.extend({
         // else
         //     this.selectTypes2 = -1;
 
-        // for(var j = 0; j < count ; j++){
-        //     var node = this._content.getChildByTag(1000 + j);
-        //     if(node){
-        //         node.removeFromParent(true);
-        //     }
-        // }
+        for(var j = 0; j < count ; j++){
+            var node = this._content.getChildByTag(1000 + j);
+            if(node){
+                node.removeFromParent(true);
+            }
+        }
     },
 
 
     onTouchEnded : function(touch,event){
 
-        // var count = this.responseRect.length;
-        // for(var j = 0; j < count ; j++){
-        //     var node = this._content.getChildByTag(1000 + j);
-        //     if(node){
-        //         node.removeFromParent(true);
-        //     }
-        // }
+        var count = this.responseRect.length;
+        for(var j = 0; j < count ; j++){
+            var node = this._content.getChildByTag(1000 + j);
+            if(node){
+                node.removeFromParent(true);
+            }
+        }
         var counts = 0;
-        var posTable = [cc.p(-472,240),cc.p(-472,150),cc.p(472,240),cc.p(472,150),cc.p(472,70)];
+        var posTable = [cc.p(-472,240),cc.p(-472,150),cc.p(472,70),cc.p(472,0),cc.p(472,-70)];
         for(var i =  0; i < 5 ; i++) {
             if(this.selectTypes[i] < 0){
                 counts += 1;
@@ -272,32 +272,16 @@ var PlayNewSmoke = PlayLayerBase.extend({
 
             return false;
         }else if(this.nowStep == 2){
-            var counts = this.selectTypes[1] + this.selectTypes[2] + this.selectTypes[0]
-            if(this.selectTypes[3] == 1 && counts == -3)
+            cc.log(this.selectTypes.toString());
+            var counts = this.selectTypes[3] +  this.selectTypes[1] + this.selectTypes[2] + this.selectTypes[0]
+            if(this.selectTypes[4] == 0 && counts == -4)
                 return true;
 
             return false;
 
         }else  if(this.nowStep == 3){
-            var counts = this.selectTypes[0] + this.selectTypes[3] + this.selectTypes[1]
-            if(this.selectTypes[2] == 0 && counts == -3)
-                return true;
-
-            return false;
-        }else if(this.nowStep == 4) {
-            cc.log("-------------------");
-            for(var i = 0; i < 4 ; i++)
-                cc.log(this.selectTypes[i].toString());
-            cc.log("-------------------");
-
-            var counts = this.selectTypes[3] + this.selectTypes[2] + this.selectTypes[0]
-            if (this.selectTypes[1] == 1 && counts == -3)
-                return true;
-
-            return false;
-        }else if(this.nowStep == 5) {
-            var counts = this.selectTypes[3] + this.selectTypes[2] + this.selectTypes[1]
-            if (this.selectTypes[0] == 0 && counts == -3)
+            var counts = this.selectTypes[4] + this.selectTypes[0] + this.selectTypes[2] + this.selectTypes[1]
+            if(this.selectTypes[3] == 0 && counts == -4)
                 return true;
 
             return false;
@@ -314,10 +298,12 @@ var PlayNewSmoke = PlayLayerBase.extend({
             var self = this;
 
             function continueGame(){
-                var posTable = [cc.p(-472,240),cc.p(-472,150),cc.p(472,240),cc.p(472,150),cc.p(472,70)];
+                var posTable = [cc.p(-472,240),cc.p(-472,150),cc.p(472,70),cc.p(472,0),cc.p(472,-70)];
                 for(var i =  0; i < 5 ; i++) {
                     this.selectTypes[i] = -1
                     var points = this._content.getChildByTag(2000 + i * 100);
+                    if(self.nowStep >= 1)
+                        points.setLocalZOrder(20);
                     points.setPosition(posTable[i]);
                 }
 
@@ -327,20 +313,20 @@ var PlayNewSmoke = PlayLayerBase.extend({
 
                 var ash = this._content.getChildByTag(4000);
                 if(ash){
-                    ash.setPosition(170,160);
+                    if (self.nowStep %2 == 0)
+                        ash.setPosition(170,160);
+                    else
+                        ash.setPosition(-90,160);
                 }
                 self.nowStep += 1;
-                if(this.nowStep >= 4) {
-                    self.responseRect = [cc.rect(-235,-65,100,100),cc.rect(125,-65,100,100)];
-
-                    var person = this._content.getChildByTag(6000);
-                    person.setSpriteFrame(new cc.SpriteFrame(res.play_person_1_png,cc.rect(0,0,485,423)));
+                if(this.nowStep >= 2) {
+                    self.responseRect = [cc.rect(200,120,250,130)];
                 }
 
                 self.addSpeak(self.nowStep);
             }
 
-            if(self.nowStep < 5){
+            if(self.nowStep < 3){
                 var cb = continueGame.bind(this);
                 var layer = new CompleteTips();
                 layer.setData(3);
