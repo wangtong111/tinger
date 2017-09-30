@@ -229,6 +229,8 @@ cc.LoaderScene = cc.Scene.extend({
         this._box2.setDelegate(this);
         node.addChild(this._box2,2);
 
+
+
         function onOk(){
            self.onOk()
         }
@@ -245,6 +247,8 @@ cc.LoaderScene = cc.Scene.extend({
         buyItem.setAnchorPoint(0.5,0.5);
         buyItem.setCallback(onOk,this);
         menu.addChild(buyItem,1);
+
+
 
 
     },

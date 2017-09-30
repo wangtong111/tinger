@@ -1,6 +1,7 @@
 var CompleteTips = cc.Layer.extend({
     _types: -1,
     cb : null,
+    content : "",
     setData :function(types) {
         this._types = types;
 
@@ -8,6 +9,11 @@ var CompleteTips = cc.Layer.extend({
 
     setCallback : function(cb){
       this.cb = cb;
+    },
+
+    setContent : function(content){
+
+        this.content = content;
     },
 
 
@@ -43,22 +49,24 @@ var CompleteTips = cc.Layer.extend({
         popup.setPosition(0,0);
         node.addChild(popup);
 
-        var name = "恭喜过关";
-        var content = "请继续闯关。";
-        if(self._types === 2){
-            name = "失败";
-            content = "大侠请重新来过。";
-        }else  if(self._types == 3){
+        //var name ;
+        var content = this.content;
+       // var name = "恭喜过关";
+       // var content = "请继续闯关。";
+       // if(self._types === 2){
+       //     name = "失败";
+       //     content = "大侠请重新来过。";
+       // }else  if(self._types == 3){
 
-            name = "";
-            content = "请继续游戏。";
-        }
+        //    name = "";
+          //  content = "请继续游戏。";
+        //}
 
-        var title = new cc.LabelTTF(name,"Arial Black",50)
-        title.setColor(cc.color(0,0,0,255));
-        title.x = 0;
-        title.y = 165;
-        node.addChild(title,10);
+        //var title = new cc.LabelTTF(name,"Arial Black",50)
+        //title.setColor(cc.color(0,0,0,255));
+        //title.x = 0;
+        //title.y = 165;
+        //node.addChild(title,10);
 
         var content = new cc.LabelTTF(content,"Arial",35);
         content.setColor(cc.color(0,0,0,255));

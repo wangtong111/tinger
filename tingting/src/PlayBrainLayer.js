@@ -103,7 +103,7 @@ var PlayBrainLayer = PlayLayerBase.extend({
                 }
 
                 this.selectTypes = i;
-                var node = new cc.LayerColor(cc.color(255, 0, 0, 180),50,200);
+                var node = new cc.LayerColor(cc.color(0, 255, 0, 180),50,200);
                 node.setPosition(rects.x,rects.y);
                 this._content.addChild(node,12,1000 + i);
                 return;
@@ -145,12 +145,15 @@ var PlayBrainLayer = PlayLayerBase.extend({
                     if(this.selectTypes == 0){
                         this.updateLevs();
                         var layer = new CompleteTips();
+                        layer.content = "   恭喜你有了一名裂脑人被试！";
                         layer.setData(1);
                         this.addChild(layer,100);
                         return;
                     }
 
                     var layer = new CompleteTips();
+                    layer.setContent("哎呀，手术失败了!\n再看看文献里是怎么写的？");
+                    //layer.content = "bbbbb";
                     layer.setData(2);
                     this.addChild(layer,100);
                     return;

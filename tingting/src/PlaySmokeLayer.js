@@ -186,7 +186,7 @@ var PlaySmokeLayer = PlayLayerBase.extend({
                 //     this.selectTypes1 = i;
                 // else
                 //     this.selectTypes2 = i;
-                var node = new cc.LayerColor(cc.color(255, 0, 0, 180),rects.width,rects.height);
+                var node = new cc.LayerColor(cc.color(0, 255, 0, 180),rects.width,rects.height);
                 node.setPosition(rects.x,rects.y);
                 this._content.addChild(node,10,1000 + i);
                 return;

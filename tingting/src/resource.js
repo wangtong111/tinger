@@ -8,6 +8,7 @@ var res = {
     text_block_png : "text_block.png",
     btn_ok_png : "btn_ok.png",
 
+
     market_bg_jpg : "market_bg.jpg",
     market_person_png : "market_person.png",
     market_talk_png : "market_talk.png",
