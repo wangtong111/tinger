@@ -5,8 +5,8 @@ var PlaySmokeLayer = PlayLayerBase.extend({
     nowStep : 0,
     canTouchBtn : false,
 
-    personTalk : [  "*#%&^$...*%#"],
-    animalTalk : [  "裂脑人被试做了反应,\n刚才放了什么在哪只手上？"],
+    personTalk : [  ""],
+    animalTalk : [  "刚才研究者把一样东西\n放在了裂脑人被试的手上，\n他接着用手指向了钉子。\n但这次研究者放在裂脑人先生\n手上的东西并不是钉子\n。你知道研究者放了什么东西在\n裂脑人先生的哪只手上吗？"],
     nowTime : 0,
 
     addListeners : function(points){
@@ -94,11 +94,11 @@ var PlaySmokeLayer = PlayLayerBase.extend({
         speak1.setScale(0);
         speak1.runAction(cc.scaleTo(0.2,1,1));
 
-        var content = new cc.LabelTTF(this.animalTalk[levs],"Arial",20);
+        var content = new cc.LabelTTF(this.animalTalk[levs],"Arial",16);
         content.setColor(cc.color(0,0,0,255));
         content.opacity = 0;
         content.x = 160 + 120;
-        content.y = 90 + 130;
+        content.y = 90 + 125;
         speak1.addChild(content,10);
         content.runAction(cc.sequence(cc.delayTime(0.2),cc.fadeIn(0.2)));
 
@@ -126,8 +126,8 @@ var PlaySmokeLayer = PlayLayerBase.extend({
 
         var startTime = this.nowTime;
         var nowTime = Date.parse(new Date());
-        if((nowTime - startTime)/1000 <= 1){
-            alert("至少阅读10秒，请仔细看下线索哦。");
+        if((nowTime - startTime)/1000 <= 20){
+            alert("至少阅读20秒，请仔细看下线索哦。");
             return ;
 
         }
@@ -271,12 +271,14 @@ var PlaySmokeLayer = PlayLayerBase.extend({
                     this.updateLevs();
                     var layer = new CompleteTips();
                     layer.setData(1);
+                    layer.setContent("恭喜你，成功完成本关卡！\n你已成功解锁下一关！\n快去看看吧！")
                     this.addChild(layer,100);
                     return;
                 }
 
                 var layer = new CompleteTips();
                 layer.setData(2);
+                layer.setContent("太遗憾了，你的操作是错误的！\n回到文献中再看看吧！")
                 this.addChild(layer,100);
                 return;
             }

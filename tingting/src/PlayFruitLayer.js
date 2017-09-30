@@ -5,12 +5,12 @@ var PlayFruitLayer = PlayLayerBase.extend({
     nowStep : 0,
     canTouchBtn : false,
 
-    personTalk : [  "我看到了苹果。",
-                    "*#%&^$...*%#",
-                    "*#%&^$...*%#"],
-    animalTalk : [  "刚才放了什么东西在\n哪只手上？",
-                    "    裂脑被试用手做了反应.\n   刚才放了什么在哪只手上?\n现在你能把那个东西拖回那只手上吗？",
-                    "    裂脑被试用手做了反应.\n   刚才放了什么在哪只手上?\n现在你能把那个东西拖回那只手上吗？"],
+    personTalk : [  "我摸到了苹果。",
+                    "",
+                    ""],
+    animalTalk : [  "研究者把某样水果\n放到了裂脑人先生的一只手上，\n裂脑人先生说他摸到了苹果。\n你知道研究者把什么放在了他的哪只手上吗？\n如果你知道，请把水果拖放到相应的手上。",
+                    "研究者把某样水果\n放到了裂脑人先生的一只手上，\n裂脑人先生没有说话，\n但用手做出了指的动作。你知道研究者刚才\n把什么放在了他的哪只手上吗？\n如果你知道，请把水果拖放到相应的手上。",
+                    "研究者把某样水果\n放到了裂脑人先生的一只手上，\n裂脑人先生没有说话，\n但用手做出了指的动作。你知道研究者刚才\n把什么放在了他的哪只手上吗？\n如果你知道，请把水果拖放到相应的手上。"],
     nowTime : 0,
 
     addListeners : function(points){
@@ -96,10 +96,10 @@ var PlayFruitLayer = PlayLayerBase.extend({
         speak1.setScale(0);
         speak1.runAction(cc.scaleTo(0.2,1,1));
 
-        var content = new cc.LabelTTF(this.animalTalk[levs],"Arial",20);
+        var content = new cc.LabelTTF(this.animalTalk[levs],"Arial",16);
         content.setColor(cc.color(0,0,0,255));
         content.opacity = 0;
-        content.x = 160 + 120;
+        content.x = 160 + 125;
         content.y = 90 + 130;
         speak1.addChild(content,10);
         content.runAction(cc.sequence(cc.delayTime(0.2),cc.fadeIn(0.2)));
@@ -128,8 +128,8 @@ var PlayFruitLayer = PlayLayerBase.extend({
 
         var startTime = this.nowTime;
         var nowTime = Date.parse(new Date());
-        if((nowTime - startTime)/1000 <= 1){
-            alert("至少阅读10秒，请仔细看下线索哦。");
+        if((nowTime - startTime)/1000 <= 20){
+            alert("至少阅读20秒，请仔细看下线索哦。");
             return ;
 
         }
@@ -297,6 +297,7 @@ var PlayFruitLayer = PlayLayerBase.extend({
                 var cb = continueGame.bind(this);
                 var layer = new CompleteTips();
                 layer.setData(3);
+                layer.setContent("恭喜你，操作正确！\n请接着完成后面的实验！")
                 layer.setCallback(cb);
                 this.addChild(layer,100);
                 return;
@@ -319,12 +320,14 @@ var PlayFruitLayer = PlayLayerBase.extend({
                     this.updateLevs();
                     var layer = new CompleteTips();
                     layer.setData(1);
+                    layer.setContent("恭喜你，成功完成本关卡！\n你已成功解锁下一关！\n快去看看吧！")
                     this.addChild(layer,100);
                     return;
                 }
 
                 var layer = new CompleteTips();
                 layer.setData(2);
+                layer.setContent("太遗憾了，你的操作是错误的！\n回到文献中再看看吧！")
                 this.addChild(layer,100);
                 return;
             }

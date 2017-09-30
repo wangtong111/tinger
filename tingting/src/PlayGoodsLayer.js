@@ -5,18 +5,18 @@ var PlayGoodsLayer = PlayLayerBase.extend({
     nowStep : 0,
     canTouchBtn : false,
 
-    personTalk : [  "我看到了烟灰缸。",
-                    "我看到了烟灰缸。",
-                    "我看到了烟灰缸。",
-                    "我看到了烟灰缸。",
-                    "我看到了烟灰缸。",
-                    "我看到了烟灰缸。"],
-    animalTalk : [  "请选择合适的物品放在屏幕上。",
-                    "不对，明明是雪茄.\n请选择合适的物品放在屏幕上。",
-                    "请选择相应的单词卡放在屏幕上。",
-                    "不对，明明是雪茄.\n请选择相应的单词卡放在屏幕上。",
-                    "请把合适的物品拖到相应的手上。",
-                    "不对，明明是雪茄，\n请把合适的物品拖到相应的手上。"],
+    personTalk : [  "我看到了钉子。",
+                    "我看到了钉子。",
+                    "我看到了钉子。",
+                    "我看到了钉子。",
+                    "我摸到了钉子。",
+                    "我摸到了钉子。"],
+    animalTalk : [  "刚才屏幕上闪过了一样东西的图片，\n裂脑人先生说他看到了钉子。\n你知道屏幕上呈现了什么吗？\n请把合适的图片拖到屏幕上。",
+                    "刚才屏幕上闪过了一样东西的图片，\n裂脑人先生说他看到了钉子.\n，但我看到的明明是锤子。\n你知道屏幕上呈现了什么吗？\n请把合适的图片拖到屏幕上。",
+                    "刚才屏幕上闪过了单词卡。\n裂脑人先生说他看到了钉子。\n你知道屏幕上呈现了什么吗？\n请把合适的卡片拖到屏幕上。",
+                    "刚才屏幕上闪过了单词卡。\n，裂脑人先生说他看到了钉子，\n但我看到的明明是锤子。\n你知道屏幕上呈现了什么吗？\n请把合适的卡片拖到屏幕上。",
+                    "刚才研究者在裂脑人先生的\n手上放了一样东西，\n裂脑人先生说他摸到了钉子。\n你知道裂脑人先生摸到了什么吗？\n请把合适的东西拖到合适的手上。",
+                    "刚才研究者在裂脑人先生的\n手上放了一样东西\n，裂脑人先生说他摸到了钉子，\n但我明明看到他摸了锤子。\n你知道裂脑人先生摸到了什么吗？\n请把合适的东西拖到合适的手上。"],
     nowTime : 0,
 
     addListeners : function(points){
@@ -98,7 +98,7 @@ var PlayGoodsLayer = PlayLayerBase.extend({
         speak1.setScale(0);
         speak1.runAction(cc.scaleTo(0.2,1,1));
 
-        var content = new cc.LabelTTF(this.animalTalk[levs],"Arial",20);
+        var content = new cc.LabelTTF(this.animalTalk[levs],"Arial",16);
         content.setColor(cc.color(0,0,0,255));
         content.opacity = 0;
         content.x = 160 + 120;
@@ -130,8 +130,8 @@ var PlayGoodsLayer = PlayLayerBase.extend({
 
         var startTime = this.nowTime;
         var nowTime = Date.parse(new Date());
-        if((nowTime - startTime)/1000 <= 1){
-            alert("至少阅读10秒，请仔细看下线索哦。");
+        if((nowTime - startTime)/1000 <= 20){
+            alert("至少阅读20秒，请仔细看下线索哦。");
             return ;
 
         }
@@ -334,6 +334,7 @@ var PlayGoodsLayer = PlayLayerBase.extend({
                 var cb = continueGame.bind(this);
                 var layer = new CompleteTips();
                 layer.setData(3);
+                layer.setContent("恭喜你，操作正确！\n请接着完成后面的实验！")
                 layer.setCallback(cb);
                 this.addChild(layer,100);
                 return;
@@ -356,12 +357,14 @@ var PlayGoodsLayer = PlayLayerBase.extend({
                     this.updateLevs();
                     var layer = new CompleteTips();
                     layer.setData(1);
+                    layer.setContent("恭喜你，成功完成本关卡！\n你已成功解锁下一关！\n快去看看吧！")
                     this.addChild(layer,100);
                     return;
                 }
 
                 var layer = new CompleteTips();
                 layer.setData(2);
+                layer.setContent("太遗憾了，你的操作是错误的！\n回到文献中再看看吧！")
                 this.addChild(layer,100);
                 return;
             }

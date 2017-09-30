@@ -9,10 +9,10 @@ var PlayPointsLayer = PlayLayerBase.extend({
                     "什么都没看见。",
                     "",
                     ""],
-    animalTalk : [  "我明明看到了八个小点!\n刚才屏幕上呈现了什么？",
-                    "我看见了四个小点!\n刚才屏幕上呈现了什么?",
-                    "这次我看到了四个点!\n刚才屏幕上呈现了什么？",
-                    "这次我看到了四个点!\n刚才屏幕上呈现了什么？"],
+    animalTalk : [  "我明明看到了八个小点!\n你知道这一次他看的是什么吗？\n拖动实验材料，把这一次被试看的\n实验材料呈现在屏幕上，\n要注意位置哦。",
+                    "刚才屏幕上又有小点点闪过；\n虽然裂脑人先生说他什么都没看见，\n但是我明明看见了四个小点点！\n你知道刚才屏幕上呈现了什么吗？",
+                    "屏幕上又有小点闪过；裂脑人\n没有再说话啦，他用手做出了指的动作。\n给你一个小小的提示，\n这次我看到了四个小点，\n你能猜出刚才屏幕上呈现了什么吗？",
+                    "屏幕上又有小点闪过；裂脑人\n先生仍然用手做了动作，不过这次换了一只手。\n给你一个小小的提示，\n这次我看到的仍然是四个小点，\n你能猜出刚才屏幕上呈现了什么吗？"],
     nowTime : 0,
 
     addListeners : function(points){
@@ -96,10 +96,10 @@ var PlayPointsLayer = PlayLayerBase.extend({
         speak1.setScale(0);
         speak1.runAction(cc.scaleTo(0.2,1,1));
 
-        var content = new cc.LabelTTF(this.animalTalk[levs],"Arial",20);
+        var content = new cc.LabelTTF(this.animalTalk[levs],"Arial",16);
         content.setColor(cc.color(0,0,0,255));
         content.opacity = 0;
-        content.x = 160 + 120;
+        content.x = 160 + 140;
         content.y = 90 + 130;
         speak1.addChild(content,10);
         content.runAction(cc.sequence(cc.delayTime(0.2),cc.fadeIn(0.2)));
@@ -128,8 +128,8 @@ var PlayPointsLayer = PlayLayerBase.extend({
 
         var startTime = this.nowTime;
         var nowTime = Date.parse(new Date());
-        if((nowTime - startTime)/1000 <= 1){
-            alert("至少阅读10秒，请仔细看下线索哦。");
+        if((nowTime - startTime)/1000 <= 20){
+            alert("至少阅读20秒，请仔细看下线索哦。");
             return ;
 
         }
@@ -287,6 +287,7 @@ var PlayPointsLayer = PlayLayerBase.extend({
                 var cb = continueGame.bind(this);
                 var layer = new CompleteTips();
                 layer.setData(3);
+                layer.setContent("太棒了！操作正确！\n请接着做后面的实验吧！")
                 layer.setCallback(cb);
                 this.addChild(layer,100);
                 return;
@@ -309,12 +310,14 @@ var PlayPointsLayer = PlayLayerBase.extend({
                     this.updateLevs();
                     var layer = new CompleteTips();
                     layer.setData(1);
+                    layer.setContent("恭喜你！完成了第一个实验，\n现在你已解锁第三个关卡，快去看看吧！")
                     this.addChild(layer,100);
                     return;
                 }
 
                 var layer = new CompleteTips();
                 layer.setData(2);
+                layer.setContent("太遗憾了，你的操作是错误的！\n回到文献中再看看吧！")
                 this.addChild(layer,100);
                 return;
             }

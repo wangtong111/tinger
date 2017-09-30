@@ -5,14 +5,14 @@ var PlayNewSmoke = PlayLayerBase.extend({
     nowStep : 0,
     canTouchBtn : false,
 
-    personTalk : [  "*#%&^$...*%#",
-                    "*#%&^$...*%#",
+    personTalk : [  "",
+                    "",
                     "",
                     ""],
-    animalTalk : [  "裂脑人被试的反应会是什么？",
-                    "裂脑人被试的反应会是什么？",
-                    "裂脑人被试的反应会是什么？",
-                    "裂脑人被试的反应会是什么？"],
+    animalTalk : [  "\n屏幕上闪过了一个钉子的图片。\n接下来，裂脑人先生需要用\n手指出屏幕上呈现了什么东西。\n你能从屏幕左侧的物品中把正确\n的东西拖放到他手指的方向吗？",
+                    "\n屏幕上闪过了一个钉子的图片。\n接下来，裂脑人先生需要用\n手指出屏幕上呈现了什么东西。\n你能从屏幕左侧的物品中把正确\n的东西拖放到他手指的方向吗？",
+                    "\n屏幕上闪过了一个钉子的图片。\n接下来，裂脑人先生需要说出\n他看到了什么东西，\n你能从卡片中选择正确的回答，\n拖进对话气泡里吗？",
+                    "\n屏幕上闪过了一个钉子的图片。\n接下来，裂脑人先生需要说出\n他看到了什么东西，\n你能从卡片中选择正确的回答，\n拖进对话气泡里吗？"],
     nowTime : 0,
 
     addListeners : function(points){
@@ -104,7 +104,7 @@ var PlayNewSmoke = PlayLayerBase.extend({
         content.setColor(cc.color(0,0,0,255));
         content.opacity = 0;
         content.x = 160 + 120;
-        content.y = 90 + 130;
+        content.y = 90 + 135;
         speak1.addChild(content,10);
         content.runAction(cc.sequence(cc.delayTime(0.2),cc.fadeIn(0.2)));
 
@@ -133,8 +133,8 @@ var PlayNewSmoke = PlayLayerBase.extend({
         var startTime = this.nowTime;
         var nowTime = Date.parse(new Date());
 
-        if((nowTime - startTime)/1000 <= 1){
-            alert("至少阅读10秒，请仔细看下线索哦。");
+        if((nowTime - startTime)/1000 <= 20){
+            alert("至少阅读20秒，请仔细看下线索哦。");
             return ;
 
         }
@@ -330,6 +330,7 @@ var PlayNewSmoke = PlayLayerBase.extend({
                 var cb = continueGame.bind(this);
                 var layer = new CompleteTips();
                 layer.setData(3);
+                layer.setContent("恭喜你，操作正确！\n请接着完成后面的实验！")
                 layer.setCallback(cb);
                 this.addChild(layer,100);
                 return;
@@ -352,12 +353,14 @@ var PlayNewSmoke = PlayLayerBase.extend({
                     this.updateLevs();
                     var layer = new CompleteTips();
                     layer.setData(1);
+                    layer.setContent("恭喜你，成功完成第一篇文献的全部关卡！\n")
                     this.addChild(layer,100);
                     return;
                 }
 
                 var layer = new CompleteTips();
                 layer.setData(2);
+                layer.setContent("太遗憾了，你的操作是错误的！\n回到文献中再看看吧！")
                 this.addChild(layer,100);
                 return;
             }
