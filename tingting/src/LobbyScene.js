@@ -6,7 +6,7 @@ var LobbyLayer = cc.Layer.extend({/**/
 
         var centerPos = cc.visibleRect.center;
 
-        var unLock = 1 //UserDataMgr.roomid;
+        var unLock = UserDataMgr.roomid;
         var bg = new cc.Sprite(res.lobby_bg_jpg);
         bg.setPosition(centerPos);
         self.addChild(bg);
@@ -15,7 +15,7 @@ var LobbyLayer = cc.Layer.extend({/**/
         menu.setPosition(0,0);
         self.addChild(menu,1);
 
-        var posArr = [840,485,920,335,495,350,1060,485,1370,325];
+        var posArr = [840,485,920,335,495,350,1060,485,1370,325,260,335];
 
         function onPlay(tag,sender){
             sender._enabled = false;
@@ -34,6 +34,19 @@ var LobbyLayer = cc.Layer.extend({/**/
                     self.addChild(layer,50);
                     return;
                 }
+
+                if(unLock != tag){
+
+                    var layer = new CompleteTips();
+                    layer.setData(3);
+                    layer.setContent("你已经完成本实验室全部关卡！");
+                    this.addChild(layer,100);
+                    return;
+                }
+
+
+                if(unLock > 1)
+                    return;
 
                 // var layer = new MarketSelect();
                 // layer.setTypes(tag);
@@ -62,9 +75,11 @@ var LobbyLayer = cc.Layer.extend({/**/
 
         }
 
-        for(var i = 0 ; i< 5 ;i++){
+        for(var i = 0 ; i< posArr.length/2 ;i++){
             var name = res.play_btn_png;
-            if(i > unLock){
+            if(unLock != 1 && i > 0 ){
+                name = res.lock_btn_png;
+            }else if(i > unLock){
                 name = res.lock_btn_png;
 
             }

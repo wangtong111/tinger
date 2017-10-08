@@ -8,11 +8,15 @@ var PlayNewSmoke = PlayLayerBase.extend({
     personTalk : [  "",
                     "",
                     "",
-                    ""],
+                    "",
+                    "哦，哈哈哈。。这是一个裸女！ååå",
+                    "我什么也没看到。。嘻嘻嘻。。\n哦,可能是搞笑的机器装置"],
     animalTalk : [  "\n屏幕上闪过了一个钉子的图片。\n接下来，裂脑人先生需要用\n手指出屏幕上呈现了什么东西。\n你能从屏幕左侧的物品中把正确\n的东西拖放到他手指的方向吗？",
                     "\n屏幕上闪过了一个钉子的图片。\n接下来，裂脑人先生需要用\n手指出屏幕上呈现了什么东西。\n你能从屏幕左侧的物品中把正确\n的东西拖放到他手指的方向吗？",
                     "\n屏幕上闪过了一个钉子的图片。\n接下来，裂脑人先生需要说出\n他看到了什么东西，\n你能从卡片中选择正确的回答，\n拖进对话气泡里吗？",
-                    "\n屏幕上闪过了一个钉子的图片。\n接下来，裂脑人先生需要说出\n他看到了什么东西，\n你能从卡片中选择正确的回答，\n拖进对话气泡里吗？"],
+                    "\n屏幕上闪过了一个钉子的图片。\n接下来，裂脑人先生需要说出\n他看到了什么东西，\n你能从卡片中选择正确的回答，\n拖进对话气泡里吗？",
+                    "\n这是裸女的图片。你知道\n刚刚研究者放了什么东西在\n哪边的屏幕上吗？请你把合\n适的图片拖动到屏幕上合适的位置。",
+                    "\n这是搞笑的机器的图片。\n你知道刚刚研究者放了什么\n东西在哪边的屏幕上吗？请\n你把合适的图片拖动到屏幕上合适的位置。"],
     nowTime : 0,
 
     addListeners : function(points){
@@ -108,20 +112,22 @@ var PlayNewSmoke = PlayLayerBase.extend({
         speak1.addChild(content,10);
         content.runAction(cc.sequence(cc.delayTime(0.2),cc.fadeIn(0.2)));
 
-        var speak2 = new cc.Sprite(res.play_speak_png);
-        speak2.setPosition(300,147);
-        self._content.addChild(speak2,12,5000 + 200);
-        speak2.setScale(0);
-        speak2.runAction(cc.scaleTo(0.2,1,1));
+        var bg = self._content.getChildByTag(5200);
+        if(bg === null){
+            var speak2 = new cc.Sprite(res.play_speak_png);
+            speak2.setPosition(300,147);
+            self._content.addChild(speak2,12,5000 + 200);
+            speak2.setScale(0);
+            speak2.runAction(cc.scaleTo(0.2,1,1));
 
-        var content = new cc.LabelTTF(this.personTalk[levs],"Arial",20);
-        content.setColor(cc.color(0,0,0,255));
-        content.opacity = 0;
-        content.x = 160 + 120;
-        content.y = 90 + 130;
-        speak2.addChild(content,10);
-        content.runAction(cc.sequence(cc.delayTime(0.2),cc.fadeIn(0.2)));
-
+            var content = new cc.LabelTTF(this.personTalk[levs],"Arial",20);
+            content.setColor(cc.color(0,0,0,255));
+            content.opacity = 0;
+            content.x = 160 + 120;
+            content.y = 90 + 130;
+            speak2.addChild(content,10);
+            content.runAction(cc.sequence(cc.delayTime(0.2),cc.fadeIn(0.2)));
+        }
     },
 
     onTouchBegan : function (touch,event) {
@@ -143,7 +149,7 @@ var PlayNewSmoke = PlayLayerBase.extend({
         if(speak){
             speak.removeFromParent(true);
         }
-        if(this.nowStep < 2) {
+        if(this.nowStep < 2 || this.nowStep > 3) {
             var speak = this._content.getChildByTag(5200);
             if (speak) {
                 speak.removeFromParent(true);
@@ -238,7 +244,9 @@ var PlayNewSmoke = PlayLayerBase.extend({
             if(this.selectTypes[i] < 0){
                 counts += 1;
                 var points = this._content.getChildByTag(2000 + i * 100);
-                points.setPosition(posTable[i]);
+                if(points)
+                    points.setPosition(posTable[i]);
+
             }
 
         }
@@ -273,18 +281,29 @@ var PlayNewSmoke = PlayLayerBase.extend({
             return false;
         }else if(this.nowStep == 2){
             cc.log(this.selectTypes.toString());
-            var counts = this.selectTypes[3] +  this.selectTypes[1] + this.selectTypes[2] + this.selectTypes[0]
+            var counts = this.selectTypes[3] +  this.selectTypes[1] + this.selectTypes[2] + this.selectTypes[0];
             if(this.selectTypes[4] == 0 && counts == -4)
                 return true;
 
             return false;
 
         }else  if(this.nowStep == 3){
-            var counts = this.selectTypes[4] + this.selectTypes[0] + this.selectTypes[2] + this.selectTypes[1]
+            var counts = this.selectTypes[4] + this.selectTypes[0] + this.selectTypes[2] + this.selectTypes[1];
             if(this.selectTypes[3] == 0 && counts == -4)
                 return true;
 
             return false;
+        }else  if(this.nowStep == 4){
+            if(this.selectTypes[0] === 0 && this.selectTypes[1] === -1)
+                return true;
+
+            return false;
+        }else  if(this.nowStep == 5){
+            if(this.selectTypes[0] === 0 && this.selectTypes[1] === -1)
+                return true;
+
+            return false;
+
         }
 
 
@@ -300,7 +319,7 @@ var PlayNewSmoke = PlayLayerBase.extend({
             function continueGame(){
                 var posTable = [cc.p(-472,240),cc.p(-472,150),cc.p(472,70),cc.p(472,0),cc.p(472,-70)];
                 for(var i =  0; i < 5 ; i++) {
-                    this.selectTypes[i] = -1
+                    this.selectTypes[i] = -1;
                     var points = this._content.getChildByTag(2000 + i * 100);
                     if(self.nowStep >= 1)
                         points.setLocalZOrder(20);
@@ -326,6 +345,50 @@ var PlayNewSmoke = PlayLayerBase.extend({
                 self.addSpeak(self.nowStep);
             }
 
+            function continueGame1(){
+                var speak = this._content.getChildByTag(5200);
+                if (speak) {
+                    speak.removeFromParent(true);
+                }
+
+                for(var i =  0; i < 5 ; i++) {
+                    this.selectTypes[i] = -1;
+                    var points = this._content.getChildByTag(2000 + i * 100);
+                    if(points)
+                        points.removeFromParent(true);
+                }
+
+                var posTable = [cc.p(-472,240),cc.p(-472,150)];
+                var name = [res.play_nude_png,res.play_machine_png];
+                for(var i =  0; i < 2 ; i++) {
+                    this.selectTypes[i] = -1;
+                    var points1 = new cc.Sprite(name[i]);
+                    points1.setPosition(posTable[i]);
+                    points1.setScale(0.5);
+                    self._content.addChild(points1,22,2000 + i * 100);
+                    self.addListeners(points1);
+                }
+
+                var person = this._content.getChildByTag(6000);
+                person.setName(res.play_person_1_png);
+                person.setSpriteFrame(new cc.SpriteFrame(res.play_person_1_png,cc.rect(0,0,485,423)));
+
+                var ash = this._content.getChildByTag(4000);
+                if(ash)
+                    ash.removeFromParent();
+
+                self.nowStep += 1;
+                if(self.nowStep === 4){
+
+                    self.responseRect = [cc.rect(25,45,230,240)];
+
+                }else if(self.nowStep === 5){
+                    self.responseRect = [cc.rect(-208,45,230,240)];
+                }
+
+                self.addSpeak(self.nowStep);
+            }
+
             if(self.nowStep < 3){
                 var cb = continueGame.bind(this);
                 var layer = new CompleteTips();
@@ -334,6 +397,15 @@ var PlayNewSmoke = PlayLayerBase.extend({
                 layer.setCallback(cb);
                 this.addChild(layer,100);
                 return;
+            }else if(self.nowStep < 5){
+                var cb = continueGame1.bind(this);
+                var layer = new CompleteTips();
+                layer.setData(3);
+                layer.setContent("恭喜你，操作正确！\n请接着完成后面的实验！")
+                layer.setCallback(cb);
+                this.addChild(layer,100);
+                return;
+
             }
 
             self.updateData(true);
@@ -352,7 +424,7 @@ var PlayNewSmoke = PlayLayerBase.extend({
                 if(result == true){
                     this.updateLevs();
                     var layer = new CompleteTips();
-                    layer.setData(1);
+                    layer.setData(4);
                     layer.setContent("恭喜你，成功完成第一篇文献的全部关卡！\n")
                     this.addChild(layer,100);
                     return;

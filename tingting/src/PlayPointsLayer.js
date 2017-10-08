@@ -5,14 +5,14 @@ var PlayPointsLayer = PlayLayerBase.extend({
     nowStep : 0,
     canTouchBtn : false,
 
-    personTalk : [  "我看到了四个小点。",
+    personTalk : [  "我看到了四个黄色亮点。",
                     "什么都没看见。",
                     "",
                     ""],
-    animalTalk : [  "我明明看到了八个小点!\n你知道这一次他看的是什么吗？\n拖动实验材料，把这一次被试看的\n实验材料呈现在屏幕上，\n要注意位置哦。",
-                    "刚才屏幕上又有小点点闪过；\n虽然裂脑人先生说他什么都没看见，\n但是我明明看见了四个小点点！\n你知道刚才屏幕上呈现了什么吗？",
-                    "屏幕上又有小点闪过；裂脑人\n没有再说话啦，他用手做出了指的动作。\n给你一个小小的提示，\n这次我看到了四个小点，\n你能猜出刚才屏幕上呈现了什么吗？",
-                    "屏幕上又有小点闪过；裂脑人\n先生仍然用手做了动作，不过这次换了一只手。\n给你一个小小的提示，\n这次我看到的仍然是四个小点，\n你能猜出刚才屏幕上呈现了什么吗？"],
+    animalTalk : [  "我明明看到了八个黄色亮点!\n你知道这一次他看的是什么吗？\n拖动实验材料，把这一次被试看的\n实验材料呈现在屏幕上，\n要注意位置哦。",
+                    "刚才屏幕上又有黄色亮点闪过；\n虽然裂脑人先生说他什么都没看见，\n但是我明明看见了四个黄色亮点！\n你知道刚才屏幕上呈现了什么吗？",
+                    "屏幕上又有黄色亮点闪过；裂脑人\n没有再说话啦，他用手做出了指的动作。\n给你一个小小的提示，\n这次我看到了四个黄色亮点，\n你能猜出刚才屏幕上呈现了什么吗？",
+                    "屏幕上又有黄色亮点闪过；裂脑人\n先生仍然用手做了动作，不过这次换了一只手。\n给你一个小小的提示，\n这次我看到的仍然是四个黄色亮点，\n你能猜出刚才屏幕上呈现了什么吗？"],
     nowTime : 0,
 
     addListeners : function(points){
@@ -104,19 +104,19 @@ var PlayPointsLayer = PlayLayerBase.extend({
         speak1.addChild(content,10);
         content.runAction(cc.sequence(cc.delayTime(0.2),cc.fadeIn(0.2)));
 
-        var speak2 = new cc.Sprite(res.play_speak_png);
-        speak2.setPosition(300,147);
-        self._content.addChild(speak2,12,5000 + 200);
-        speak2.setScale(0);
-        speak2.runAction(cc.scaleTo(0.2,1,1));
+        //var speak2 = new cc.Sprite(res.play_speak_png);
+        //speak2.setPosition(300,147);
+        //self._content.addChild(speak2,12,5000 + 200);
+        //speak2.setScale(0);
+        //speak2.runAction(cc.scaleTo(0.2,1,1));
 
-        var content = new cc.LabelTTF(this.personTalk[levs],"Arial",20);
-        content.setColor(cc.color(0,0,0,255));
-        content.opacity = 0;
-        content.x = 160 + 120;
-        content.y = 90 + 130;
-        speak2.addChild(content,10);
-        content.runAction(cc.sequence(cc.delayTime(0.2),cc.fadeIn(0.2)));
+        //var content = new cc.LabelTTF(this.personTalk[levs],"Arial",20);
+        //content.setColor(cc.color(0,0,0,255));
+        //content.opacity = 0;
+        //content.x = 160 + 120;
+        //content.y = 90 + 130;
+        //speak2.addChild(content,10);
+        //content.runAction(cc.sequence(cc.delayTime(0.2),cc.fadeIn(0.2)));
 
     },
 
@@ -133,6 +133,7 @@ var PlayPointsLayer = PlayLayerBase.extend({
             return ;
 
         }
+
 
         var speak = this._content.getChildByTag(5100);
         if(speak){
@@ -271,9 +272,9 @@ var PlayPointsLayer = PlayLayerBase.extend({
                     var person = this._content.getChildByTag(6000);
                     var pos = person.getPosition();
                     person.removeFromParent(true);
-                    var name = res.play_person_2_png;
+                    var name = res.play_person_5_png;
                     if(self.nowStep == 3){
-                        name = res.play_person_3_png;
+                        name = res.play_person_6_png;
                     }
                     var person = new cc.Sprite(name);
                     person.setPosition(pos);

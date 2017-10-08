@@ -72,7 +72,11 @@ var res = {
     play_person_4_png : "play_person_4.png",
     play_person_5_png : "play_person_5.png",
     play_person_6_png : "play_person_6.png",
-    play_speak_png : "play_speak.png"
+    play_speak_png : "play_speak.png",
+
+    play_ruler_png : "play_ruler.png",
+    play_machine_png : "play_machine.png",
+    play_nude_png : "play_nude.png"
 
 
 

@@ -72,6 +72,12 @@ var PlaySmokeLayer = PlayLayerBase.extend({
         goods.setScale(0.5);
         self._content.addChild(goods,2);
 
+        var goods2 =  new cc.Sprite(res.play_ruler_png);
+        goods2.x = 260;
+        goods2.y = -40;
+        goods2.setScale(0.5);
+        self._content.addChild(goods2,2);
+
         // var bgLayer = new cc.LayerColor(cc.color(255, 0, 0, 180),230,240);
         // bgLayer.setPosition(-208,45);
         // self._content.addChild(bgLayer,20);

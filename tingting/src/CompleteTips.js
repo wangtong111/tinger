@@ -98,6 +98,15 @@ var CompleteTips = cc.Layer.extend({
                 if(self.cb)
                     self.cb()
                 return;
+            }else if(self._types === 4){
+
+                var parent = self.getParent();
+                parent.removeAllChildren(true)
+                parent.removeFromParent(true);
+
+                cc.director.popScene();
+                cc.director.popScene();
+
             }
 
 
