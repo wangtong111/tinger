@@ -92,6 +92,8 @@ var MarketSelect = cc.Layer.extend({
             }else if(self.types === 2){
                 if(self.lev === 1){
                     layer = new PlayLayerCard1();
+                }else if(self.lev  === 2){
+                    layer = new PlayLayerCard2();
                 }
 
             }

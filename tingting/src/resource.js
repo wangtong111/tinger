@@ -120,10 +120,12 @@ var res = {
     play_nude_png : "play_nude.png",
 
     play_card : "play_card.png",
-    play_arrow : "play_arrow.png"
+    play_arrow : "play_arrow.png",
 
-
-
+    play_a : "play_a.jpg",
+    play_b : "play_b.jpg",
+    play_c : "play_c.jpg",
+    play_d : "play_d.jpg"
 
 
 };
