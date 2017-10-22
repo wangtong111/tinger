@@ -84,7 +84,9 @@ var LobbyLayer = cc.Layer.extend({/**/
 
         for(var i = 0 ; i< posArr.length/2 ;i++){
             var name = res.play_btn_png;
-            if(unLock != i && i > 0 ){
+            if (i == 0){
+
+            }else if(unLock != i){
                 name = res.lock_btn_png;
             }else if(unLock > 2){
                 name = res.lock_btn_png;

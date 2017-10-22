@@ -94,6 +94,9 @@ var MarketSelect = cc.Layer.extend({
                     layer = new PlayLayerCard1();
                 }else if(self.lev  === 2){
                     layer = new PlayLayerCard2();
+                }else if(self.lev == 3){
+                    console.log("--------------->" + self.lev);
+                    layer = new PlayLayerCard3();
                 }
 
             }

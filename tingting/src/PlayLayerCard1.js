@@ -227,7 +227,7 @@ var PlayLayerCard1 = PlayLayerBase.extend({
         }
 
         if(flag){
-            target.setScale(1);
+            target.setScale(0.55);
             var i = target.getTag( ) - 100;
             target.setPosition(130*i + 80 - 584,390);
             target.setScale(0.55);

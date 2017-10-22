@@ -36,6 +36,7 @@
         "src/PlaySmokeLayer.js",
         "src/PlayLayerCard1.js",
         "src/PlayLayerCard2.js",
+        "src/PlayLayerCard3.js",
         "src/PlayNewSmoke.js"
 
     ]
