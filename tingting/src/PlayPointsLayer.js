@@ -104,19 +104,19 @@ var PlayPointsLayer = PlayLayerBase.extend({
         speak1.addChild(content,10);
         content.runAction(cc.sequence(cc.delayTime(0.2),cc.fadeIn(0.2)));
 
-        //var speak2 = new cc.Sprite(res.play_speak_png);
-        //speak2.setPosition(300,147);
-        //self._content.addChild(speak2,12,5000 + 200);
-        //speak2.setScale(0);
-        //speak2.runAction(cc.scaleTo(0.2,1,1));
+        var speak2 = new cc.Sprite(res.play_speak_png);
+        speak2.setPosition(300,147);
+        self._content.addChild(speak2,12,5000 + 200);
+        speak2.setScale(0);
+        speak2.runAction(cc.scaleTo(0.2,1,1));
 
-        //var content = new cc.LabelTTF(this.personTalk[levs],"Arial",20);
-        //content.setColor(cc.color(0,0,0,255));
-        //content.opacity = 0;
-        //content.x = 160 + 120;
-        //content.y = 90 + 130;
-        //speak2.addChild(content,10);
-        //content.runAction(cc.sequence(cc.delayTime(0.2),cc.fadeIn(0.2)));
+        var content = new cc.LabelTTF(this.personTalk[levs],"Arial",20);
+        content.setColor(cc.color(0,0,0,255));
+        content.opacity = 0;
+        content.x = 160 + 120;
+        content.y = 90 + 130;
+        speak2.addChild(content,10);
+        content.runAction(cc.sequence(cc.delayTime(0.2),cc.fadeIn(0.2)));
 
     },
 

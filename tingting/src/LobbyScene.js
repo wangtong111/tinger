@@ -45,8 +45,15 @@ var LobbyLayer = cc.Layer.extend({/**/
                 }
 
 
-                if(unLock > 1)
+                if(unLock > 2){
+
+                    var layer = new InfoTips();
+                    layer.setData(tag,11,22);
+                    layer.setPosition(0,0);
+                    self.addChild(layer,50);
                     return;
+                }
+
 
                 // var layer = new MarketSelect();
                 // layer.setTypes(tag);
@@ -77,9 +84,9 @@ var LobbyLayer = cc.Layer.extend({/**/
 
         for(var i = 0 ; i< posArr.length/2 ;i++){
             var name = res.play_btn_png;
-            if(unLock != 1 && i > 0 ){
+            if(unLock != i && i > 0 ){
                 name = res.lock_btn_png;
-            }else if(i > unLock){
+            }else if(unLock > 2){
                 name = res.lock_btn_png;
 
             }

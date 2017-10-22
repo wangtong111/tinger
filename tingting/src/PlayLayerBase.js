@@ -32,7 +32,7 @@ var PlayLayerBase = cc.Layer.extend({
             var sp = new cc.Sprite(config[selectGoods[i]]);
             sp.setPosition(130*i + 80,52);
             sp.setScale(0.55);
-            bar.addChild(sp,1);
+            bar.addChild(sp,1,100000 + selectGoods[i]);
 
         }
 

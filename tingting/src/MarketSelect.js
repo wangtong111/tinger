@@ -89,6 +89,10 @@ var MarketSelect = cc.Layer.extend({
                     layer = new PlaySmokeLayer();
                 else if (self.lev === 6)
                     layer = new PlayNewSmoke();
+            }else if(self.types === 2){
+                if(self.lev === 1){
+                    layer = new PlayLayerCard1();
+                }
 
             }
 

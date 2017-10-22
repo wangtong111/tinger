@@ -23,6 +23,8 @@
         "src/InfoTips.js",
         "src/LobbyScene.js",
         "src/RoomScene.js",
+        "src/RoomLayerBrain.js",
+        "src/RoomLayerChild.js",
         "src/PlayScene.js",
         "src/PlayLayerBase.js",
         "src/PlayBrainLayer.js",
@@ -32,6 +34,7 @@
         "src/PlayFruitLayer.js",
         "src/PlayGoodsLayer.js",
         "src/PlaySmokeLayer.js",
+        "src/PlayLayerCard1.js",
         "src/PlayNewSmoke.js"
 
     ]

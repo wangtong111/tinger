@@ -9,14 +9,14 @@ var PlayNewSmoke = PlayLayerBase.extend({
                     "",
                     "",
                     "",
-                    "哦，哈哈哈。。这是一个裸女！ååå",
+                    "哦，哈哈哈。。这是一个裸女!",
                     "我什么也没看到。。嘻嘻嘻。。\n哦,可能是搞笑的机器装置"],
     animalTalk : [  "\n屏幕上闪过了一个钉子的图片。\n接下来，裂脑人先生需要用\n手指出屏幕上呈现了什么东西。\n你能从屏幕左侧的物品中把正确\n的东西拖放到他手指的方向吗？",
                     "\n屏幕上闪过了一个钉子的图片。\n接下来，裂脑人先生需要用\n手指出屏幕上呈现了什么东西。\n你能从屏幕左侧的物品中把正确\n的东西拖放到他手指的方向吗？",
                     "\n屏幕上闪过了一个钉子的图片。\n接下来，裂脑人先生需要说出\n他看到了什么东西，\n你能从卡片中选择正确的回答，\n拖进对话气泡里吗？",
                     "\n屏幕上闪过了一个钉子的图片。\n接下来，裂脑人先生需要说出\n他看到了什么东西，\n你能从卡片中选择正确的回答，\n拖进对话气泡里吗？",
-                    "\n这是裸女的图片。你知道\n刚刚研究者放了什么东西在\n哪边的屏幕上吗？请你把合\n适的图片拖动到屏幕上合适的位置。",
-                    "\n这是搞笑的机器的图片。\n你知道刚刚研究者放了什么\n东西在哪边的屏幕上吗？请\n你把合适的图片拖动到屏幕上合适的位置。"],
+                    "\n刚刚研究者在屏幕上呈现了\n一张图片，裂脑人被试说这是\n裸女的图片。你知道刚刚研究者\n放了什么东西在哪边的屏幕\n上吗？请你把合适的图片拖动到\n屏幕上合适的位置。",
+                    "\n刚刚研究者在屏幕上呈现了\n一张图片，裂脑人被试说这是\n搞笑的机器的图片。你知道刚刚\n研究者放了什么东西在哪边\n的屏幕上吗？请你把合适的图片\n拖动到屏幕上合适的位置。"],
     nowTime : 0,
 
     addListeners : function(points){
@@ -294,7 +294,8 @@ var PlayNewSmoke = PlayLayerBase.extend({
 
             return false;
         }else  if(this.nowStep == 4){
-            if(this.selectTypes[0] === 0 && this.selectTypes[1] === -1)
+           //alert(this.selectTypes[0]);
+            if(this.selectTypes[0] === 1 && this.selectTypes[1] === -1)
                 return true;
 
             return false;
@@ -378,13 +379,8 @@ var PlayNewSmoke = PlayLayerBase.extend({
                     ash.removeFromParent();
 
                 self.nowStep += 1;
-                if(self.nowStep === 4){
 
-                    self.responseRect = [cc.rect(25,45,230,240)];
-
-                }else if(self.nowStep === 5){
-                    self.responseRect = [cc.rect(-208,45,230,240)];
-                }
+                self.responseRect = [cc.rect(-208,45,230,240),cc.rect(25,45,230,240)];
 
                 self.addSpeak(self.nowStep);
             }

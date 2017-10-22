@@ -34,13 +34,43 @@ var res = {
     market_smoke_png : "market_smoke.png",
     market_nothing_png : "market_nothing.png",
 
+    market2_card1 : "market2_card1.png",
+    market2_card2 : "market2_card2.png",
+    market2_card3 : "market2_card3.png",
+    market2_card4 : "market2_card4.png",
+    market2_card5 : "market2_card5.png",
+    market2_card6 : "market2_card6.png",
+    market2_card7 : "market2_card7.png",
+    market2_card8 : "market2_card8.png",
+    market2_card9 : "market2_card9.png",
+    market2_card11 : "market2_card11.png",
+    market2_card12 : "market2_card12.png",
+    market2_card13 : "market2_card13.png",
+    market2_card14 : "market2_card14.png",
+    market2_card15 : "market2_card15.png",
+    market2_card16 : "market2_card16.png",
+    market2_card17 : "market2_card17.png",
+    market2_card18 : "market2_card18.png",
+    market2_card19 : "market2_card19.png",
+    market2_equal0 : "market2_equal0.png",
+    market2_equal1 : "market2_equal1.png",
+    market2_less : "market2_less.png",
+    market2_more : "market2_more.png",
+
+
+
     house1_bg_jpg : "house1_bg.jpg",
+    house2_bg_jpg : "house2_bg.jpg",
+
     btn_back_png : "btn_back.png",
     room_flag_png : "room_flag.png",
     foot_left_png : "foot_left.png",
     foot_right_png : "foot_right.png",
+    room_baby_png : "room_baby.png",
 
     play_1_bg_jpg : "play_1_bg.jpg",
+    play_2_bg_jpg : "play_2_bg.jpg",
+
 
 
     doc_1_1_jpg : "doc_1_1.jpg",
@@ -59,6 +89,17 @@ var res = {
     doc_6_2_jpg : "doc_6_2.jpg",
     doc_6_3_jpg : "doc_6_3.jpg",
     doc_6_4_jpg : "doc_6_4.jpg",
+
+    doc2_1_1 : "doc2_1_1.jpg",
+    doc2_1_2 : "doc2_1_2.jpg",
+    doc2_2_1 : "doc2_2_1.jpg",
+    doc2_2_2 : "doc2_2_2.jpg",
+    doc2_2_3 : "doc2_2_3.jpg",
+    doc2_3_1 : "doc2_3_1.jpg",
+    doc2_3_2 : "doc2_3_2.jpg",
+    doc2_3_3 : "doc2_3_3.jpg",
+    doc2_3_4 : "doc2_3_4.jpg",
+    doc2_3_5 : "doc2_3_5.jpg",
 
     play_slide_png : "play_slide.png",
     play_slide_btn_png : "play_slide_btn.png",
