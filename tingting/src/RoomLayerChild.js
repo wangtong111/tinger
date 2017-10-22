@@ -12,7 +12,6 @@ var RoomLayerChild = RoomLayer.extend({
         node.addChild(menu,10);
 
         function onTouch(tag,sender){
-            cc.director.popScene();
             var scene = new PlayScene(self.types,tag);
             cc.director.pushScene(scene);
         }

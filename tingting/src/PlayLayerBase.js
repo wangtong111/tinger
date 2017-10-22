@@ -27,16 +27,7 @@ var PlayLayerBase = cc.Layer.extend({
         self.types = UserDataMgr.getSelectRoom();
         self.lev = UserDataMgr.getselectLev();
 
-        var selectGoods = UserDataMgr.getSelectGoods();
-        var config = GOODS_CONFIG[self.types][self.lev];
-        for(var i = 0 ; i< selectGoods.length ; i++){
-            var sp = new cc.Sprite(config[selectGoods[i]]);
-            sp.setPosition(130*i + 80 - 584,390);
-            sp.setScale(0.55);
-            node.addChild(sp,20,100 + i);
-
-        }
-
+        self.addBarGoods(node);
 
         var menu = new cc.Menu();
         menu.setPosition(0,0);
@@ -64,6 +55,19 @@ var PlayLayerBase = cc.Layer.extend({
         buyItem.setCallback(onOk,this);
         menu.addChild(buyItem,1);
 
+    },
+
+    addBarGoods :function (node) {
+        var self = this;
+        var selectGoods = UserDataMgr.getSelectGoods();
+        var config = GOODS_CONFIG[self.types][self.lev];
+        for(var i = 0 ; i< selectGoods.length ; i++){
+            var sp = new cc.Sprite(config[selectGoods[i]]);
+            sp.setPosition(130*i + 80 - 584,390);
+            sp.setScale(0.55);
+            node.addChild(sp,20,100 + i);
+
+        }
     },
 
     onBack : function(){

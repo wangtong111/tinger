@@ -8,7 +8,9 @@ var PlayLayerCard1 = PlayLayerBase.extend({
 
     animalTalk : ["我要 gameover"],
 
-    movePos : [-1,-1,-1,-1,-1,-1],
+    movePos : [-1,103,101,-1,-1,-1],
+
+    contentRes  : [102,103,101,105,104,100],
 
     addListeners : function(card){
 
@@ -47,7 +49,7 @@ var PlayLayerCard1 = PlayLayerBase.extend({
 
         LogData.setGameStartTime(Date.parse(new Date()));
 
-
+        self.movePos = [-1,103,101,-1,-1,-1];
         var arrow = new cc.Sprite(res.play_arrow);
         arrow.setPosition(0,220);
         self._content.addChild(arrow,1);
@@ -70,8 +72,14 @@ var PlayLayerCard1 = PlayLayerBase.extend({
         self._content.addChild(name,1);
 
         for(var i = 0 ; i < 6 ;i++){
+            var name = res.play_card;
+            if(i === 1){
+                name = res.market2_card6;
+            }else if(i === 2){
+                name = res.market2_card2;
+            }
 
-            var card = new cc.Sprite(res.play_card);
+            var card = new cc.Sprite(name);
             card.setPosition(-200 + 220 * (i%3) , 80 - 220*Math.floor(i/3));
             self._content.addChild(card,1);
         }
@@ -83,6 +91,11 @@ var PlayLayerCard1 = PlayLayerBase.extend({
             self.addListeners(card);
         }
 
+        // play_logo
+        var logo = new cc.Sprite(res.play_logo_png);
+        logo.setPosition(-550,-230);
+        self._content.addChild(logo,2);
+
         self.addSpeak(0);
         self.responseRect = [   cc.rect(-250,30,100,100),cc.rect(-30,30,100,100),cc.rect(190,30,100,100),
                                 cc.rect(-250,-190,100,100),cc.rect(-30,-190,100,100),cc.rect(190,-190,100,100)];
@@ -91,15 +104,6 @@ var PlayLayerCard1 = PlayLayerBase.extend({
         //    bgLayer.setPosition(-250 + 220 * (i%3) , 30 - 220*Math.floor(i/3) );
         //    self._content.addChild(bgLayer,20);
         //}
-
-        //
-        // bgLayer = new cc.LayerColor(cc.color(255, 0, 0, 180),50,200);
-        // bgLayer.setPosition(-150,-80);
-        // self._content.addChild(bgLayer,20);
-        //
-        // bgLayer = new cc.LayerColor(cc.color(255, 0, 0, 180),50,200);
-        // bgLayer.setPosition(95,-80);
-        // self._content.addChild(bgLayer,20);
     },
 
     addSpeak : function(levs){
@@ -165,6 +169,10 @@ var PlayLayerCard1 = PlayLayerBase.extend({
                     return;
                 }
 
+                if(i === 1 || i === 2){
+                    return;
+                }
+
                 var node = this._content.getChildByTag(1000 + i);
                 if(node){
                     return true;
@@ -187,6 +195,9 @@ var PlayLayerCard1 = PlayLayerBase.extend({
         }
 
         for(var i = 0 ; i< 6 ; i++){
+            if(i === 1 || i === 2)
+                continue;
+
             if(this.movePos[i] === target.getTag()){
                 this.movePos[i] = -1;
                 var node = this._content.getChildByTag(1000 + i);
@@ -204,6 +215,8 @@ var PlayLayerCard1 = PlayLayerBase.extend({
 
         var flag = true;
         for(var i = 0 ; i< 6 ; i++){
+            if(i === 1 || i === 2)
+                continue;
             if(this.movePos[i] === target.getTag()){
                 target.setPosition(-200 + 220 * (i%3) , 80 - 220*Math.floor(i/3));
                 target.setScale(1);
@@ -241,7 +254,7 @@ var PlayLayerCard1 = PlayLayerBase.extend({
                 if(cbData != null && cbData["code"] == 1){
                     LogData.clean();
 
-                    if(this.selectTypes == 0){
+                    if(this.checkGame()){
                         this.updateLevs();
                         var layer = new CompleteTips();
                         layer.content = "   恭喜你有了一名裂脑人被试！";
@@ -283,9 +296,12 @@ var PlayLayerCard1 = PlayLayerBase.extend({
     },
 
     checkGame : function(){
-        
+        for(var i = 0 ; i< 6 ; i++){
+            if (this.movePos[i] !== this.contentRes[i])
+                return false;
+        }
 
-
+        return true;
     },
 
     onExit:function(){
