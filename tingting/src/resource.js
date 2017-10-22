@@ -117,8 +117,10 @@ var res = {
 
     play_ruler_png : "play_ruler.png",
     play_machine_png : "play_machine.png",
-    play_nude_png : "play_nude.png"
+    play_nude_png : "play_nude.png",
 
+    play_card : "play_card.png",
+    play_arrow : "play_arrow.png"
 
 
 

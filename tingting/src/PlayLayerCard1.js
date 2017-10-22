@@ -6,16 +6,20 @@ var PlayLayerCard1 = PlayLayerBase.extend({
     selectTypes : -1,
     canTouchBtn : false,
 
-    addListeners : function(knife){
+    animalTalk : ["我要 gameover"],
+
+    movePos : [-1,-1,-1,-1,-1,-1],
+
+    addListeners : function(card){
 
         cc.eventManager.addListener({
             event : cc.EventListener.TOUCH_ONE_BY_ONE,
             swallowTouches: true,
-            onTouchBegan: this.onTouchBegan,
+            onTouchBegan: this.onTouchBegan.bind(this),
             onTouchMoved: this.onTouchMoved.bind(this),
             onTouchEnded: this.onTouchEnded.bind(this)
 
-        },knife);
+        },card);
 
     },
 
@@ -25,45 +29,69 @@ var PlayLayerCard1 = PlayLayerBase.extend({
 
         var selectGoods = UserDataMgr.getSelectGoods();
 
-        //if(selectGoods.length != 6){
-        //    self._content.runAction(cc.sequence(cc.delayTime(0.2),cc.callFunc(function () {
-        //        alert("选择物品数目不对，请返回超市重新选择。");
-        //    })));
-        //    return;
-        //}
-        cc.log("==-------------> i am here");
-        cc.log("==-------------> i am here");
-        cc.log("==-------------> i am here");
-        cc.log("=======" + JSON.stringify(selectGoods));
-        //
-        //for(var i = 0 ; i< selectGoods.length ; i++){
-        //    if(selectGoods[i] === 3 || selectGoods[i] === 5 || selectGoods[i] === 7){
-        //        self._content.runAction(cc.sequence(cc.delayTime(0.2),cc.callFunc(function () {
-        //            alert("选择物品有误，请返回超市重新选择。");
-        //        })));
-        //        return;
-        //    }
-        //}
+        if(selectGoods.length != 6){
+            self._content.runAction(cc.sequence(cc.delayTime(0.2),cc.callFunc(function () {
+                alert("选择物品数目不对，请返回超市重新选择。");
+            })));
+            return;
+        }
+
+        for(var i = 0 ; i< selectGoods.length ; i++){
+            if(selectGoods[i] === 2 || selectGoods[i] === 4 || selectGoods[i] === 6){
+                self._content.runAction(cc.sequence(cc.delayTime(0.2),cc.callFunc(function () {
+                    alert("选择物品有误，请返回超市重新选择。");
+                })));
+                return;
+            }
+        }
 
         LogData.setGameStartTime(Date.parse(new Date()));
 
-        var brain = new cc.Sprite(res.market_brain_png);
-        brain.setPosition(0,0)
-        brain.setScale(3)
-        self._content.addChild(brain,10)
 
-        var knife = new cc.Sprite(res.market_knife_png);
-        knife.setScale(1);
-        knife.setPosition(300,0);
-        self._content.addChild(knife,20,2000);
+        var arrow = new cc.Sprite(res.play_arrow);
+        arrow.setPosition(0,220);
+        self._content.addChild(arrow,1);
 
-        self.addListeners(knife)
+        var name = new cc.LabelTTF("基因","Arial Bold",30);
+        name.setColor(cc.color(0,0,0,255));
+        name.setPosition(0,260);
+        self._content.addChild(name,1);
 
-        self.responseRect = [cc.rect(-35,-80,50,200),cc.rect(-150,-80,50,200),cc.rect(95,-80,50,200)];
 
-        // var bgLayer = new cc.LayerColor(cc.color(255, 0, 0, 180),50,200);
-        // bgLayer.setPosition(-35,-80);
-        // self._content.addChild(bgLayer,20);
+        var arrow = new cc.Sprite(res.play_arrow);
+        arrow.setScale(0.6,1);
+        arrow.setRotation(90);
+        arrow.setPosition(-345,0);
+        self._content.addChild(arrow,1);
+
+        var name = new cc.LabelTTF("环境","Arial Bold",30);
+        name.setColor(cc.color(0,0,0,255))
+        name.setPosition(-398,0);
+        self._content.addChild(name,1);
+
+        for(var i = 0 ; i < 6 ;i++){
+
+            var card = new cc.Sprite(res.play_card);
+            card.setPosition(-200 + 220 * (i%3) , 80 - 220*Math.floor(i/3));
+            self._content.addChild(card,1);
+        }
+
+
+        for(var i = 0 ; i < selectGoods.length;i++){
+
+            var card = self._content.getChildByTag(100 + i);
+            self.addListeners(card);
+        }
+
+        self.addSpeak(0);
+        self.responseRect = [   cc.rect(-250,30,100,100),cc.rect(-30,30,100,100),cc.rect(190,30,100,100),
+                                cc.rect(-250,-190,100,100),cc.rect(-30,-190,100,100),cc.rect(190,-190,100,100)];
+        //for(var i = 0 ; i< 6 ;i++){
+        //    var bgLayer = new cc.LayerColor(cc.color(0, 0, 0, 180),100,100);
+        //    bgLayer.setPosition(-250 + 220 * (i%3) , 30 - 220*Math.floor(i/3) );
+        //    self._content.addChild(bgLayer,20);
+        //}
+
         //
         // bgLayer = new cc.LayerColor(cc.color(255, 0, 0, 180),50,200);
         // bgLayer.setPosition(-150,-80);
@@ -74,7 +102,43 @@ var PlayLayerCard1 = PlayLayerBase.extend({
         // self._content.addChild(bgLayer,20);
     },
 
+    addSpeak : function(levs){
+        this.nowTime = Date.parse(new Date());
+        var self = this;
+        var speak1 = new cc.Sprite(res.play_speak_png);
+        speak1.setPosition(-350,0);
+        self._content.addChild(speak1,12,5000 + 100);
+        speak1.setScale(0);
+        speak1.runAction(cc.scaleTo(0.2,1,1));
+
+        var content = new cc.LabelTTF(this.animalTalk[levs],"Arial",16);
+        content.setColor(cc.color(0,0,0,255));
+        content.opacity = 0;
+        content.x = 160 + 120;
+        content.y = 90 + 125;
+        speak1.addChild(content,10);
+        content.runAction(cc.sequence(cc.delayTime(0.2),cc.fadeIn(0.2)));
+    },
+
     onTouchBegan : function (touch,event) {
+        if(this.nowTime == 0){
+            // alert("至少阅读10秒，请仔细看下线索哦。");
+            return ;
+        }
+
+        var startTime = this.nowTime;
+        var nowTime = Date.parse(new Date());
+        if((nowTime - startTime)/1000 <= 0){
+            alert("至少阅读20秒，请仔细看下线索哦。");
+            return ;
+
+        }
+
+        var speak = this._content.getChildByTag(5100);
+        if(speak){
+            speak.removeFromParent(true);
+        }
+
         var target = event.getCurrentTarget();
         var location = target.convertToNodeSpace(touch.getLocation());
         var size = target.getContentSize();
@@ -93,54 +157,82 @@ var PlayLayerCard1 = PlayLayerBase.extend({
         target.x += delta.x;
         target.y += delta.y;
 
-        for(var i = 0; i < 3; i++ ){
+        for(var i = 0; i < 6; i++ ){
+
             var rects = this.responseRect[i];
             if(cc.rectContainsPoint(rects,target)){
+                if(this.movePos[i] !== -1){
+                    return;
+                }
 
                 var node = this._content.getChildByTag(1000 + i);
                 if(node){
                     return true;
                 }
 
-                for(var j = 0; j < 3 ; j++){
+                for(var j = 0; j < 6 ; j++){
                     var node = this._content.getChildByTag(1000 + j);
                     if(node){
                         node.removeFromParent(true);
                     }
                 }
 
-                this.selectTypes = i;
-                var node = new cc.LayerColor(cc.color(0, 255, 0, 180),50,200);
+                this.movePos[i] = target.getTag();
+
+                var node = new cc.LayerColor(cc.color(0, 255, 255, 180),100,100);
                 node.setPosition(rects.x,rects.y);
-                this._content.addChild(node,12,1000 + i);
+                this._content.addChild(node,2,1000 + i);
                 return;
             }
         }
 
-        this.selectTypes = -1;
-
-        for(var j = 0; j < 3 ; j++){
-            var node = this._content.getChildByTag(1000 + j);
-            if(node){
-                node.removeFromParent(true);
+        for(var i = 0 ; i< 6 ; i++){
+            if(this.movePos[i] === target.getTag()){
+                this.movePos[i] = -1;
+                var node = this._content.getChildByTag(1000 + i);
+                if(node){
+                    node.removeFromParent();
+                }
+                return;
             }
         }
     },
 
 
     onTouchEnded : function(touch,event){
-        if(this.selectTypes < 0){
-            var knife = this._content.getChildByTag(2000);
-            knife.setPosition(300,0);
+        var target = event.getCurrentTarget();
 
-            this.canTouchBtn = false;
-            return;
+        var flag = true;
+        for(var i = 0 ; i< 6 ; i++){
+            if(this.movePos[i] === target.getTag()){
+                target.setPosition(-200 + 220 * (i%3) , 80 - 220*Math.floor(i/3));
+                target.setScale(1);
+                flag = false;
+                break;
+            }
+
         }
+
+        if(flag){
+            target.setScale(1);
+            var i = target.getTag( ) - 100;
+            target.setPosition(130*i + 80 - 584,390);
+            target.setScale(0.55);
+        }
+
+        for(var i = 0 ; i < 6 ; i++){
+            if(this.movePos[i] < 0){
+                this.canTouchBtn = false;
+                return;
+            }
+        }
+
 
         this.canTouchBtn = true;
     },
 
     onOk : function(){
+        console.log("-------->" + JSON.stringify(this.movePos));
         if (this.canTouchBtn){
             LogData.setGameEndTime(Date.parse(new Date()));
 
@@ -171,7 +263,7 @@ var PlayLayerCard1 = PlayLayerBase.extend({
 
             var cb = callback.bind(this);
 
-            if(this.selectTypes == 0){
+            if(this.checkGame()){
                 LogData.setGamePass(1);
             }
             else{
@@ -188,6 +280,12 @@ var PlayLayerCard1 = PlayLayerBase.extend({
 
         alert("请先完成实验。");
         // cc.log("i am PlayBrainLayer onOk");
+    },
+
+    checkGame : function(){
+        
+
+
     },
 
     onExit:function(){

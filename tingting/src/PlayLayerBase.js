@@ -21,6 +21,7 @@ var PlayLayerBase = cc.Layer.extend({
 
         var bar = new cc.Sprite(res.play_bar_png);
         bar.setPosition(0,390);
+        bar.setName("bar");
         node.addChild(bar,5);
 
         self.types = UserDataMgr.getSelectRoom();
@@ -30,9 +31,9 @@ var PlayLayerBase = cc.Layer.extend({
         var config = GOODS_CONFIG[self.types][self.lev];
         for(var i = 0 ; i< selectGoods.length ; i++){
             var sp = new cc.Sprite(config[selectGoods[i]]);
-            sp.setPosition(130*i + 80,52);
+            sp.setPosition(130*i + 80 - 584,390);
             sp.setScale(0.55);
-            bar.addChild(sp,1,100000 + selectGoods[i]);
+            node.addChild(sp,20,100 + i);
 
         }
 
