@@ -207,6 +207,12 @@ var PlayLayerCard3 = PlayLayerBase.extend({
 
         }
 
+        for(var i = 0 ; i< this.movePos.length ; i++){
+            var node = this._content.getChildByTag(1000 + i);
+            if(node)
+                node.removeFromParent();
+        }
+
         if(flag){
             target.setScale(0.45);
             var i = target.getTag( ) - 100;
@@ -305,7 +311,7 @@ var PlayLayerCard3 = PlayLayerBase.extend({
 
     checkGame : function(){
         var self = this;
-        if(self.nowStep === 0 && self.movePos[0] === 100 && self.movePos[1] === 103){
+        if(self.nowStep === 0 && ( self.movePos[0] === 100 || self.movePos[0] === 103) && (self.movePos[1] === 103 || self.movePos[1] === 100) ){
             return true;
         }else if(self.nowStep === 1 && self.movePos[0] === 104 ){
             return true;
