@@ -6,7 +6,7 @@ var PlayLayerCard1 = PlayLayerBase.extend({
     selectTypes : -1,
     canTouchBtn : false,
 
-    animalTalk : ["我要 gameover"],
+    animalTalk : ["在这些人群中，有些有着很相似的\n基因，有些同享着很相似的环境。\n你能按他们受到的基因和环境\n影响的相似程度，把他们排序，\n并放到下面的格子里吗？"],
 
     movePos : [-1,103,101,-1,-1,-1],
 
@@ -257,14 +257,14 @@ var PlayLayerCard1 = PlayLayerBase.extend({
                     if(this.checkGame()){
                         this.updateLevs();
                         var layer = new CompleteTips();
-                        layer.content = "   恭喜你有了一名裂脑人被试！";
+                        layer.content = "恭喜你回答正确！\n成功解锁第二关！";
                         layer.setData(1);
                         this.addChild(layer,100);
                         return;
                     }
 
                     var layer = new CompleteTips();
-                    layer.setContent("哎呀，手术失败了!\n再看看文献里是怎么写的？");
+                    layer.setContent("很遗憾，你的回答是错误的！\n再看看文献里是怎么写的？");
                     //layer.content = "bbbbb";
                     layer.setData(2);
                     this.addChild(layer,100);

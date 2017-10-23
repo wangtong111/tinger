@@ -3,7 +3,7 @@ var PlayLayerCard2 =  PlayLayerBase.extend({
     selectTypes : -1,
     canTouchBtn : false,
 
-    animalTalk : ["我要 gameover"],
+    animalTalk : ["这些布满小点的图表叫做散点图，\n你们一定在课堂上学过了吧！\n这些图表的横坐标和纵坐标都被隐去了，\n但你可以通过趋势线看到横坐标的量\n随着纵坐标变化的趋势。科学家们用相关系数\n来表示这个图中两个量相互关联的程度，\n你能找出横坐标和纵坐标的\n相关系数是0.8左右的图吗？"],
 
     movePos : -1,
 
@@ -86,7 +86,7 @@ var PlayLayerCard2 =  PlayLayerBase.extend({
         var content = new cc.LabelTTF(this.animalTalk[levs],"Arial",16);
         content.setColor(cc.color(0,0,0,255));
         content.opacity = 0;
-        content.x = 160 + 120;
+        content.x = 160 + 130;
         content.y = 90 + 125;
         speak1.addChild(content,10);
         content.runAction(cc.sequence(cc.delayTime(0.2),cc.fadeIn(0.2)));
@@ -157,14 +157,14 @@ var PlayLayerCard2 =  PlayLayerBase.extend({
                     if(this.checkGame()){
                         this.updateLevs();
                         var layer = new CompleteTips();
-                        layer.content = "   恭喜你有了一名裂脑人被试！";
+                        layer.content = "恭喜你回答正确！\n成功解锁第三关！";
                         layer.setData(1);
                         this.addChild(layer,100);
                         return;
                     }
 
                     var layer = new CompleteTips();
-                    layer.setContent("哎呀，手术失败了!\n再看看文献里是怎么写的？");
+                    layer.setContent("很遗憾，你的回答是错误的！\n再看看文献里是怎么写的？");
                     //layer.content = "bbbbb";
                     layer.setData(2);
                     this.addChild(layer,100);
