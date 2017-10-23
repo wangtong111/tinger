@@ -6,23 +6,23 @@ var PlayLayerCard3 = PlayLayerBase.extend({
     nowStep : 0,
     canTouchBtn : false,
 
-    animalTalk : [  "我要 gameover",
-                    "我要 gameover",
-                    "我要 gameover",
-                    "我要 gameover",
-                    "我要 gameover",
-                    "我要 gameover",
-                    "我要 gameover"],
+    animalTalk : [  "在这个研究中，研究者使用了一个比值\n来考察遗传因素和环境因素的作用。\n你还记得这个比值是什么吗？",
+                    "在这个研究中，这个比值得出怎样的结果\n才说明智力差异大部分由遗传因素决定的呢？\n请你把式子的结果拖到等式的右边。",
+                    "如果在另一个星球上有一群外星人，智力\n的差异几乎全都是由环境因素决定的，\n而它们的其他方面都和地球人一模一样，\n这个比值应该是怎样的呢？\n请把正确的结果拖到式子右边。",
+                    "诶~我还想知道这研究里没提到的一件事。\n我想知道同卵双生子和异卵双生子\n谁的智力相似度更高，所以做了下面这个计算。\n你能猜一猜它的结果吗？",
+                    "我们还记得遗传因素的作用是比较大的。\n但如果在另一个星球上事情是反过来的呢？\n在另一个星球上，环境因素的作用特别大，\n遗传因素的作用几乎没有，\n那么这个比值会是怎样的呢？",
+                    "啊，真好玩~我还想比一比。如果是这个呢？\n它的比值会是怎样的？对了，我得告诉你，\n这依然是发生在另一个星球上的事：\n如果环境因素的影响很大，\n遗传因素的影响很小。",
+                    "最后再来比一个！\n请你猜猜这个式子的结果会是怎样的吧！"],
 
     movePos : [-1,-1],
 
     changeSp : [[],
-                [res.market2_card13,res.market2_card14],
-                [res.market2_card13,res.market2_card14],
-                [res.market2_card13,res.market2_card14],
-                [res.market2_card13,res.market2_card14],
-                [res.market2_card13,res.market2_card14],
-                [res.market2_card13,res.market2_card14]],
+                [res.market2_card11,res.market2_card17],
+                [res.market2_card11,res.market2_card17],
+                [res.market2_card19,res.market2_card17],
+                [res.market2_card19,res.market2_card17],
+                [res.market2_card19,res.market2_card11],
+                [res.market2_card13,res.market2_card11]],
 
     addListeners : function(card){
 
