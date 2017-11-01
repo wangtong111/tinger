@@ -253,7 +253,7 @@ var PlayLayerCard3 = PlayLayerBase.extend({
                 var cb = continueGame.bind(this);
                 var layer = new CompleteTips();
                 layer.setData(3);
-                layer.setContent("太棒了！操作正确！\n请接着做后面的实验吧！")
+                layer.setContent("太棒了！操作正确！")
                 layer.setCallback(cb);
                 this.addChild(layer,100);
                 return;

@@ -58,18 +58,32 @@ var res = {
     market2_more : "market2_more.png",
 
 
+    market3_box1 : "market3_box1.png",
+    market3_box2 : "market3_box2.png",
+    market3_box3 : "market3_box3.png",
+    market3_hand : "market3_hand.png",
+    market3_mouse_fat : "market3_mouse_fat.png",
+    market3_mouse_normal : "market3_mouse_normal.png",
+    market3_mouse_short : "market3_mouse_short.png",
+    market3_mouse_tall : "market3_mouse_tall.png",
+    market3_mouse_thin : "market3_mouse_thin.png",
+
+
 
     house1_bg_jpg : "house1_bg.jpg",
     house2_bg_jpg : "house2_bg.jpg",
+    house3_bg_jpg : "house3_bg.jpg",
 
     btn_back_png : "btn_back.png",
     room_flag_png : "room_flag.png",
     foot_left_png : "foot_left.png",
     foot_right_png : "foot_right.png",
     room_baby_png : "room_baby.png",
+    room_mouse_png : "room_mouse.png",
 
     play_1_bg_jpg : "play_1_bg.jpg",
     play_2_bg_jpg : "play_2_bg.jpg",
+    play_3_bg_jpg : "play_3_bg.jpg",
 
 
 
@@ -101,6 +115,19 @@ var res = {
     doc2_3_4 : "doc2_3_4.jpg",
     doc2_3_5 : "doc2_3_5.jpg",
 
+    doc3_1_1 : "doc3_1_1.jpg",
+    doc3_1_2 : "doc3_1_2.jpg",
+    doc3_2_1 : "doc3_2_1.jpg",
+    doc3_2_2 : "doc3_2_2.jpg",
+    doc3_2_3 : "doc3_2_3.jpg",
+    doc3_3_1 : "doc3_3_1.jpg",
+    doc3_3_2 : "doc3_3_2.jpg",
+    doc3_3_3 : "doc3_3_3.jpg",
+    doc3_3_4 : "doc3_3_4.jpg",
+    doc3_3_5 : "doc3_3_5.jpg",
+
+
+
     play_slide_png : "play_slide.png",
     play_slide_btn_png : "play_slide_btn.png",
     play_bar_png : "play_bar.png",
@@ -126,7 +153,20 @@ var res = {
     play_a : "play_a.jpg",
     play_b : "play_b.jpg",
     play_c : "play_c.jpg",
-    play_d : "play_d.jpg"
+    play_d : "play_d.jpg",
+
+    play_bigcage : "play_bigcage.png",
+    play_handsframe : "play_handsframe.png",
+    play_midcage : "play_midcage.png",
+    play_mouse_fengfu : "play_mouse_fengfu.png",
+    play_mouse_pinfa : "play_mouse_pinfa.png",
+    play_mouse_shiyanshi : "play_mouse_shiyanshi.png",
+    play_smallcage : "play_smallcage.png",
+    play_table : "play_table.png",
+    play_weight : "play_weight.png",
+
+
+
 
 
 };
