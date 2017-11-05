@@ -45,7 +45,7 @@ var LobbyLayer = cc.Layer.extend({/**/
                 }
 
 
-                if(unLock > 2){
+                if(unLock > 3){
 
                     var layer = new InfoTips();
                     layer.setData(tag,11,22);
@@ -88,7 +88,7 @@ var LobbyLayer = cc.Layer.extend({/**/
 
             }else if(unLock != i){
                 name = res.lock_btn_png;
-            }else if(unLock > 2){
+            }else if(unLock > 3){
                 name = res.lock_btn_png;
 
             }

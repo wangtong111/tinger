@@ -114,6 +114,8 @@ var RoomScene = cc.Scene.extend({
             layer = new RoomLayerBrain();
         }else if(this._types == 2){
             layer = new RoomLayerChild();
+        }else if(this._types == 3){
+            layer = new RoomLayerMouse();
         }
 
         this.addChild(layer);

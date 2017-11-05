@@ -99,6 +99,14 @@ var MarketSelect = cc.Layer.extend({
                     layer = new PlayLayerCard3();
                 }
 
+            }else if(self.types === 3){
+                if(self.lev === 1){
+                    layer = new PlayLayerMouse1();
+                }else if(self.lev === 2){
+                    layer = new PlayLayerMouse2();
+                }else if(self.lev === 3){
+                    layer = new PlayLayerMouse3();
+                }
             }
 
 

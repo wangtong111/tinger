@@ -83,7 +83,7 @@ var res = {
 
     play_1_bg_jpg : "play_1_bg.jpg",
     play_2_bg_jpg : "play_2_bg.jpg",
-    play_3_bg_jpg : "play_3_bg.jpg",
+    play_3_bg_jpg : "play_3_bg.png",
 
 
 
@@ -121,11 +121,6 @@ var res = {
     doc3_2_2 : "doc3_2_2.jpg",
     doc3_2_3 : "doc3_2_3.jpg",
     doc3_3_1 : "doc3_3_1.jpg",
-    doc3_3_2 : "doc3_3_2.jpg",
-    doc3_3_3 : "doc3_3_3.jpg",
-    doc3_3_4 : "doc3_3_4.jpg",
-    doc3_3_5 : "doc3_3_5.jpg",
-
 
 
     play_slide_png : "play_slide.png",
@@ -163,12 +158,7 @@ var res = {
     play_mouse_shiyanshi : "play_mouse_shiyanshi.png",
     play_smallcage : "play_smallcage.png",
     play_table : "play_table.png",
-    play_weight : "play_weight.png",
-
-
-
-
-
+    play_weight : "play_weight.png"
 };
 
 var g_resources = [];
