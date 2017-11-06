@@ -104,7 +104,7 @@ var PlayLayerMouse2 =  PlayLayerBase.extend({
 
         var startTime = this.nowTime;
         var nowTime = Date.parse(new Date());
-        if((nowTime - startTime)/1000 <= 0){
+        if((nowTime - startTime)/1000 <= 20){
             alert("至少阅读20秒，请仔细看下线索哦。");
             return ;
 
