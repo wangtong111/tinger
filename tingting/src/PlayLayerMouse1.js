@@ -6,7 +6,7 @@ var PlayLayerMouse1 = PlayLayerBase.extend({
     selectTypes : -1,
     canTouchBtn : false,
 
-    animalTalk : ["在这些人群中，有些有着很相似的\n基因，有些同享着很相似的环境。\n你能按他们受到的基因和环境\n影响的相似程度，把他们排序，\n并放到下面的格子里吗？"],
+    animalTalk : ["非常好！研究中正是使用了\n同一窝出生的小鼠，这样就极大地降低了\n基因的影响。除了你选择的这一窝小鼠外，\n研究人员还选择了其他几窝小鼠，\n现在它们都在屏幕的左边。\n这些小鼠需要被分配到不同的实验情境里，\n正如你在文献中所读过的一样，\n它们分别是丰富条件、实验室条件和贫乏条件。\n请你代替研究人员把小鼠们拖到合适的情境中去吧！"],
 
     movePos : [-1,-1,-1,-1,-1,-1,-1,-1,-1],
 
@@ -106,7 +106,7 @@ var PlayLayerMouse1 = PlayLayerBase.extend({
         speak1.setScale(0);
         speak1.runAction(cc.scaleTo(0.2,1,1));
 
-        var content = new cc.LabelTTF(this.animalTalk[levs],"Arial",16);
+        var content = new cc.LabelTTF(this.animalTalk[levs],"Arial",6);
         content.setColor(cc.color(0,0,0,255));
         content.opacity = 0;
         content.x = 160 + 120;

@@ -9,7 +9,8 @@ var PlayLayerMouse3 = PlayLayerBase.extend({
     nowStep : 0,
     canTouchBtn : false,
 
-    animalTalk : ["111111111","222222222"],
+    animalTalk : ["每天换玩具的时候，研究者会把丰富组的小鼠\n拿出来再放回去，这样它们会受到更多的抚摸。那么，\n它们更发达的大脑到底是由丰富环境造成的，还是由\n这种抚摸造成的呢？比较小鼠的大脑皮层时，\n若想排除抚摸造成的干扰，有两种方法。你能把\n它们都表现出来吗？",
+        "现在，研究者们想研究，\n抚摸对小鼠的大脑皮层到底有没有影响。\n这样，研究者应该比较什么条件下的小鼠\n的脑皮层，应该不应该给它们抚摸呢？\n你能把它表现出来吗？"],
 
     movePos : [3,-1,-1,-1,-1,-1],
     handPos : [-1,-1,-1,-1,-1,-1],
@@ -144,10 +145,10 @@ var PlayLayerMouse3 = PlayLayerBase.extend({
         speak1.setScale(0);
         speak1.runAction(cc.scaleTo(0.2,1,1));
 
-        var content = new cc.LabelTTF(this.animalTalk[levs],"Arial",16);
+        var content = new cc.LabelTTF(this.animalTalk[levs],"Arial",14);
         content.setColor(cc.color(0,0,0,255));
         content.opacity = 0;
-        content.x = 160 + 120;
+        content.x = 160 + 125;
         content.y = 90 + 125;
         speak1.addChild(content,10);
         content.runAction(cc.sequence(cc.delayTime(0.2),cc.fadeIn(0.2)));
@@ -334,13 +335,13 @@ var PlayLayerMouse3 = PlayLayerBase.extend({
 
                 self.responseRect = [cc.rect(-1200,-200,0,0),cc.rect(-200,130,120,120),cc.rect(100,130,120,120),
                     cc.rect(-1200,-200,0,0),cc.rect(-1200,-200,0,0),cc.rect(-1200,-200,0,0)];
-                for(var i = 0 ; i< 6 ;i++){
-                    var bgLayer = new cc.LayerColor(cc.color(0, 0, 0, 180),120,120);
-                    var x = self.responseRect[i].x;
-                    var y = self.responseRect[i].y;
-                    bgLayer.setPosition(x,y);
-                    self._content.addChild(bgLayer,20);
-                }
+                //for(var i = 0 ; i< 6 ;i++){
+                //    var bgLayer = new cc.LayerColor(cc.color(0, 0, 0, 180),120,120);
+                //    var x = self.responseRect[i].x;
+                //    var y = self.responseRect[i].y;
+                //    bgLayer.setPosition(x,y);
+                //    self._content.addChild(bgLayer,20);
+                //}
 
 
 
@@ -425,7 +426,7 @@ var PlayLayerMouse3 = PlayLayerBase.extend({
                 return false;
             }
         }else{
-            if(this.movePos[1] + this.movePos !== 9){
+            if(this.movePos[1] + this.movePos[2] !== 9){
                 return false;
             }
 
