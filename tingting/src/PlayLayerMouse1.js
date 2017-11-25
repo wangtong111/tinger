@@ -6,7 +6,7 @@ var PlayLayerMouse1 = PlayLayerBase.extend({
     selectTypes : -1,
     canTouchBtn : false,
 
-    animalTalk : ["非常好！研究中正是使用了\n同一窝出生的小鼠，这样就极大地降低了\n基因的影响。除了你选择的这一窝小鼠外，\n研究人员还选择了其他几窝小鼠，\n现在它们都在屏幕的左边。\n这些小鼠需要被分配到不同的实验情境里，\n正如你在文献中所读过的一样，\n它们分别是丰富条件、实验室条件和贫乏条件。\n请你代替研究人员把小鼠们拖到合适的情境中去吧！"],
+    animalTalk : ["除了你选择的这一窝小鼠外，\n研究人员还选择了其他几窝小鼠，\n现在它们都在屏幕的左边。\n这些小鼠需要被分配到不同的实验情境里，\n正如你在文献中所读过的一样，\n它们分别是丰富条件、实验室条件和贫乏条件。\n请你代替研究人员把小鼠们拖到合适的情境中去吧！"],
 
     movePos : [-1,-1,-1,-1,-1,-1,-1,-1,-1],
 
@@ -104,9 +104,9 @@ var PlayLayerMouse1 = PlayLayerBase.extend({
         speak1.setPosition(-350,0);
         self._content.addChild(speak1,12,5000 + 100);
         speak1.setScale(0);
-        speak1.runAction(cc.scaleTo(0.2,1,1));
+        speak1.runAction(cc.scaleTo(0.2,1.4,1.4));
 
-        var content = new cc.LabelTTF(this.animalTalk[levs],"Arial",6);
+        var content = new cc.LabelTTF(this.animalTalk[levs],"Arial",12);
         content.setColor(cc.color(0,0,0,255));
         content.opacity = 0;
         content.x = 160 + 120;
@@ -123,8 +123,8 @@ var PlayLayerMouse1 = PlayLayerBase.extend({
 
         var startTime = this.nowTime;
         var nowTime = Date.parse(new Date());
-        if((nowTime - startTime)/1000 <=20){
-            alert("至少阅读20秒，请仔细看下线索哦。");
+        if((nowTime - startTime)/1000 <=10){
+            alert("至少阅读10秒，请仔细看下线索哦。");
             return ;
 
         }

@@ -143,7 +143,7 @@ var PlayLayerMouse3 = PlayLayerBase.extend({
         speak1.setPosition(-350,0);
         self._content.addChild(speak1,12,5000 + 100);
         speak1.setScale(0);
-        speak1.runAction(cc.scaleTo(0.2,1,1));
+        speak1.runAction(cc.scaleTo(0.2,1.4,1.4));
 
         var content = new cc.LabelTTF(this.animalTalk[levs],"Arial",14);
         content.setColor(cc.color(0,0,0,255));
@@ -164,8 +164,8 @@ var PlayLayerMouse3 = PlayLayerBase.extend({
 
         var startTime = this.nowTime;
         var nowTime = Date.parse(new Date());
-        if((nowTime - startTime)/1000 <= 20){
-            alert("至少阅读20秒，请仔细看下线索哦。");
+        if((nowTime - startTime)/1000 <= 10){
+            alert("至少阅读10秒，请仔细看下线索哦。");
             return ;
 
         }
@@ -310,7 +310,12 @@ var PlayLayerMouse3 = PlayLayerBase.extend({
 
                     var sp = self._content.getChildByTag(i);
                     if(sp){
-                        sp.setPosition(-500 + 110 * (i % 2), 250 - 150 * Math.floor(i / 2));
+                        if(i == 1){
+                            sp.removeFromParent();
+                        }else{
+                            sp.setPosition(-500 + 110 * (i % 2), 250 - 150 * Math.floor(i / 2));
+                        }
+
                     }
 
                     var sp = self._content.getChildByTag(10 + i);
@@ -320,11 +325,11 @@ var PlayLayerMouse3 = PlayLayerBase.extend({
 
                 }
 
-                var name = res.play_mouse_fengfu;
-                var card = new cc.Sprite(name);
-                card.setPosition(-500 + 110 * (3 % 2), 250 - 150 * Math.floor(3 / 2));
-                self._content.addChild(card, 4, i);
-                self.addListeners(card);
+                //var name = res.play_mouse_fengfu;
+                //var card = new cc.Sprite(name);
+                //card.setPosition(-500 + 110 * (3 % 2), 250 - 150 * Math.floor(3 / 2));
+                //self._content.addChild(card, 4, i);
+                //self.addListeners(card);
 
 
                 for(var i = 0 ; i < 2 ; i++){
