@@ -68,6 +68,10 @@ var res = {
     market3_mouse_tall : "market3_mouse_tall.png",
     market3_mouse_thin : "market3_mouse_thin.png",
 
+    market_4_1 : "market_4_1.png",
+    market_4_2 : "market_4_2.png",
+    market_4_3 : "market_4_3.png",
+    market_4_4 : "market_4_4.png",
     market_4_5 : "market_4_5.png",
     market_4_6 : "market_4_6.png",
     market_4_7 : "market_4_7.png",
@@ -182,7 +186,12 @@ var res = {
     play_mouse_shiyanshi : "play_mouse_shiyanshi.png",
     play_smallcage : "play_smallcage.png",
     play_table : "play_table.png",
-    play_weight : "play_weight.png"
+    play_weight : "play_weight.png",
+
+    play_4_1 : "play_4_1.png",
+    play_4_2 : "play_4_2.png",
+    play_4_3 : "play_4_3.png"
+
 };
 
 var g_resources = [];

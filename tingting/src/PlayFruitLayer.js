@@ -48,6 +48,7 @@ var PlayFruitLayer = PlayLayerBase.extend({
             }
         }
 
+        LogData.setGameStartTime(Date.parse(new Date()));
 
         var desk = new cc.Sprite(res.play_desk_png);
         desk.setPosition(0,-5);
@@ -345,6 +346,7 @@ var PlayFruitLayer = PlayLayerBase.extend({
         }
 
         var sendData = {};
+        LogData.setGameEndTime(Date.parse(new Date()));
         sendData["id"] = UserDataMgr.id;
         sendData["data"] = LogData.getAllData();
         sendRequest(sendData,cb);

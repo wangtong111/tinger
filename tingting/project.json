@@ -42,6 +42,8 @@
         "src/PlayLayerCard1.js",
         "src/PlayLayerCard2.js",
         "src/PlayLayerCard3.js",
+        "src/PlayLayer41.js",
+        "src/PlayLayer42.js",
         "src/PlayNewSmoke.js"
 
     ]

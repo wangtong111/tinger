@@ -406,6 +406,7 @@ var PlayLayerMouse3 = PlayLayerBase.extend({
         }
 
         var sendData = {};
+        LogData.setGameEndTime(Date.parse(new Date()));
         sendData["id"] = UserDataMgr.id;
         sendData["data"] = LogData.getAllData();
         sendRequest(sendData,cb);

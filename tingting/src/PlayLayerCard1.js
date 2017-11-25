@@ -247,8 +247,6 @@ var PlayLayerCard1 = PlayLayerBase.extend({
     onOk : function(){
         console.log("-------->" + JSON.stringify(this.movePos));
         if (this.canTouchBtn){
-            LogData.setGameEndTime(Date.parse(new Date()));
-
             var callback = function(cbData){
                 hideWaitting();
                 if(cbData != null && cbData["code"] == 1){
@@ -283,7 +281,8 @@ var PlayLayerCard1 = PlayLayerBase.extend({
                 LogData.setGamePass(0);
             }
 
-            var sendData = {}
+            var sendData = {};
+            LogData.setGameEndTime(Date.parse(new Date()));
             sendData["id"] = UserDataMgr.id;
             sendData["data"] = LogData.getAllData();
             sendRequest(sendData,cb);

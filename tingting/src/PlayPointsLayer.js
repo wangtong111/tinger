@@ -50,7 +50,8 @@ var PlayPointsLayer = PlayLayerBase.extend({
             }
         }
 
-
+        LogData.setGameStartTime(Date.parse(new Date()));
+        
         var desk = new cc.Sprite(res.play_desk_png);
         desk.setPosition(0,-5);
         self._content.addChild(desk,2);
@@ -336,6 +337,7 @@ var PlayPointsLayer = PlayLayerBase.extend({
         }
 
         var sendData = {};
+        LogData.setGameEndTime(Date.parse(new Date()));
         sendData["id"] = UserDataMgr.id;
         sendData["data"] = LogData.getAllData();
         sendRequest(sendData,cb);
