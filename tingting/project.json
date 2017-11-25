@@ -26,6 +26,7 @@
         "src/RoomLayerBrain.js",
         "src/RoomLayerChild.js",
         "src/RoomLayerMouse.js",
+        "src/RoomLayerShiYa.js",
         "src/PlayScene.js",
         "src/PlayLayerBase.js",
         "src/PlayBrainLayer.js",
