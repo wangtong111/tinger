@@ -1,24 +1,27 @@
 var GAME_TIPS = {};
 GAME_TIPS[2] = "请先完成前面的实验";
 GAME_TIPS[3] = "请先完成前面的实验";
-GAME_TIPS[4] = "视崖实验室将于11月21日开放.";
+GAME_TIPS[4] = "请先完成前面的实验";
 GAME_TIPS[5] = "梦境实验室将于12月05日开放.";
 
 var ROOM_CONFIG =  {};
 ROOM_CONFIG[1] = res.house1_bg_jpg;
 ROOM_CONFIG[2] = res.house2_bg_jpg;
 ROOM_CONFIG[3] = res.house3_bg_jpg;
+ROOM_CONFIG[4] = res.house4_bg_jpg;
 
 var PLAY_CONFIG = {};
-PLAY_CONFIG[1] = res.play_1_bg_jpg ;
+PLAY_CONFIG[1] = res.play_1_bg_jpg;
 PLAY_CONFIG[2] = res.play_2_bg_jpg;
 PLAY_CONFIG[3] = res.play_3_bg_jpg;
+PLAY_CONFIG[4] = res.play_4_bg_jpg;
 
 //配置小红旗位置
 var FLAG_CONFIG =  {};
 FLAG_CONFIG[1] = [cc.p(-255,-135),cc.p(-115,-70),cc.p(15,100),cc.p(105,-10),cc.p(185,142),cc.p(300,55)];//,cc.p(385,-25)];
 FLAG_CONFIG[2] = [cc.p(465 - 800,-240 + 450) , cc.p(1120 - 800 ,-245 + 450), cc.p( 525 - 800,70 - 450)];
 FLAG_CONFIG[3] = [cc.p(1260 - 800,495 - 450) , cc.p(490 - 800 ,125 - 450), cc.p( 365 - 800,490 - 450)];
+FLAG_CONFIG[4] = [cc.p(-600,0),cc.p(-200,0),cc.p(200,0),cc.p(600,0)];
 //GOODS_CONFIG代表超市图片列表，第一个数字代表房间，第二个数字代表关卡
 var GOODS_CONFIG =  {};
 
@@ -39,6 +42,9 @@ GOODS_CONFIG[3] ={};
 GOODS_CONFIG[3][1] = [res.market3_mouse_fat,res.market3_mouse_tall,res.market3_mouse_tall,res.market3_mouse_fat,res.market3_mouse_short,res.market3_mouse_normal,res.market3_mouse_normal,res.market3_mouse_normal,res.market3_mouse_thin];
 GOODS_CONFIG[3][2] = [res.market3_mouse_fat,res.market3_box1,res.market3_mouse_tall,res.market3_mouse_fat,res.market3_mouse_short,res.market3_box2,res.market3_box3,res.market3_hand,res.market3_mouse_thin];
 GOODS_CONFIG[3][3] = [res.market3_mouse_fat,res.market3_mouse_tall,res.market3_mouse_tall,res.market3_mouse_fat,res.market3_hand,res.market3_mouse_normal,res.market3_mouse_normal,res.market3_mouse_normal,res.market3_mouse_thin];
+
+GOODS_CONFIG[4] = {};
+GOODS_CONFIG[4][1] = [res.market_4_5,res.market_4_6,res.market_4_7,res.market_4_8,res.market_4_9,res.market_4_11,res.market_4_12,res.market_4_13,res.market_4_14];
 
 
 //DOC_CONFIG代表阅读文档
@@ -62,6 +68,12 @@ DOC_CONFIG[3][1] = [res.doc3_1_1,res.doc3_1_2];
 DOC_CONFIG[3][2] = [res.doc3_2_1,res.doc3_2_2,res.doc3_2_3];
 DOC_CONFIG[3][3] = [res.doc3_3_1];
 
+DOC_CONFIG[4] = {};
+DOC_CONFIG[4][1] = [res.doc4_1_1,res.doc4_1_2];
+DOC_CONFIG[4][2] = [res.doc4_2_1];
+DOC_CONFIG[4][3] = [res.doc4_3_1,res.doc4_3_2,res.doc4_3_3];
+DOC_CONFIG[4][4] = [res.doc4_4_1,res.doc4_4_2,res.doc4_4_3,res.doc4_4_4,res.doc4_4_5];
+
 
 
 //代表小海豚说的话
@@ -83,3 +95,9 @@ MARKET_LABEL[3] = {};
 MARKET_LABEL[3][1] = "欢迎你来到新的篇章！\n刚才的文章读得怎么样了呢？\n在研究中使用了很多小鼠，但不是\n所有的小鼠都符合研究人员的要求。\n你还记得研究中需要使用什么样的小鼠吗？\n想一想他们都应该具有什么样的特征？\n如果你记得，你能挑出三只符合\n研究人员要求的小鼠吗？";
 MARKET_LABEL[3][2] = "相信你已经看完了文献的内容。\n现在，科学研究人员已经把小鼠们的大脑皮层取出。\n为了不让你看到血腥的画面，\n这些皮层组织都被分别装进了三个\n一模一样的箱子里。\n请选择三只箱子，然后去实验室看看吧。";
 MARKET_LABEL[3][3] = "让我们回到研究进行的时候，\n现在要为实验中的小鼠换玩具啦。\n你还记得哪些老鼠参加了研究吗？\n请选择来自同一窝的小鼠们。\n此外，请选择一只手用来触碰小鼠。";
+
+MARKET_LABEL[4] = {};
+MARKET_LABEL[4][1] = "4 1";
+MARKET_LABEL[4][2] = "4 2";
+MARKET_LABEL[4][3] = "4 3";
+MARKET_LABEL[4][4] = "4 4";

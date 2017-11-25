@@ -68,11 +68,22 @@ var res = {
     market3_mouse_tall : "market3_mouse_tall.png",
     market3_mouse_thin : "market3_mouse_thin.png",
 
+    market_4_5 : "market_4_5.png",
+    market_4_6 : "market_4_6.png",
+    market_4_7 : "market_4_7.png",
+    market_4_8 : "market_4_8.png",
+    market_4_9 : "market_4_9.png",
+    market_4_11 : "market_4_11.png",
+    market_4_12 : "market_4_12.png",
+    market_4_13 : "market_4_13.png",
+    market_4_14 : "market_4_14.png",
+
 
 
     house1_bg_jpg : "house1_bg.jpg",
     house2_bg_jpg : "house2_bg.jpg",
     house3_bg_jpg : "house3_bg.jpg",
+    house4_bg_jpg : "house4_bg.jpg",
 
     btn_back_png : "btn_back.png",
     room_flag_png : "room_flag.png",
@@ -84,6 +95,7 @@ var res = {
     play_1_bg_jpg : "play_1_bg.jpg",
     play_2_bg_jpg : "play_2_bg.jpg",
     play_3_bg_jpg : "play_3_bg.png",
+    play_4_bg_jpg : "play_4_bg.jpg",
 
 
 
@@ -121,6 +133,18 @@ var res = {
     doc3_2_2 : "doc3_2_2.jpg",
     doc3_2_3 : "doc3_2_3.jpg",
     doc3_3_1 : "doc3_3_1.jpg",
+
+    doc4_1_1 : "doc4_1_1.jpg",
+    doc4_1_2 : "doc4_1_2.jpg",
+    doc4_2_1 : "doc4_2_1.jpg",
+    doc4_3_1 : "doc4_3_1.jpg",
+    doc4_3_2 : "doc4_3_2.jpg",
+    doc4_3_3 : "doc4_3_3.jpg",
+    doc4_4_1 : "doc4_4_1.jpg",
+    doc4_4_2 : "doc4_4_2.jpg",
+    doc4_4_3 : "doc4_4_3.jpg",
+    doc4_4_4 : "doc4_4_4.jpg",
+    doc4_4_5 : "doc4_4_5.jpg",
 
 
     play_slide_png : "play_slide.png",
