@@ -81,6 +81,14 @@ var res = {
     market_4_12 : "market_4_12.png",
     market_4_13 : "market_4_13.png",
     market_4_14 : "market_4_14.png",
+    market_4_15 : "market_4_15.png",
+    market_4_16 : "market_4_16.png",
+    market_4_17 : "market_4_17.png",
+    market_4_18 : "market_4_18.png",
+    market_4_19 : "market_4_19.png",
+    market_4_20 : "market_4_20.png",
+    market_4_21 : "market_4_21.png",
+    market_4_22 : "market_4_22.png",
 
 
 
@@ -190,8 +198,16 @@ var res = {
 
     play_4_1 : "play_4_1.png",
     play_4_2 : "play_4_2.png",
-    play_4_3 : "play_4_3.png"
-
+    play_4_3 : "play_4_3.png",
+    play_4_4 : "play_4_4.png",
+    play_4_5 : "play_4_5.png",
+    play_4_6 : "play_4_6.png",
+    play_4_7 : "play_4_7.png",
+    play_4_8 : "play_4_8.png",
+    play_4_10 : "play_4_10.png",
+    play_4_11 : "play_4_11.png",
+    play_4_12 : "play_4_12.png",
+    play_4_9 : "play_4_9.png"
 };
 
 var g_resources = [];

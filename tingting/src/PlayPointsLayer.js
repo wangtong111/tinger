@@ -51,7 +51,7 @@ var PlayPointsLayer = PlayLayerBase.extend({
         }
 
         LogData.setGameStartTime(Date.parse(new Date()));
-        
+
         var desk = new cc.Sprite(res.play_desk_png);
         desk.setPosition(0,-5);
         self._content.addChild(desk,2);

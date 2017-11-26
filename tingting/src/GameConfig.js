@@ -46,6 +46,8 @@ GOODS_CONFIG[3][3] = [res.market3_mouse_fat,res.market3_mouse_tall,res.market3_m
 GOODS_CONFIG[4] = {};
 GOODS_CONFIG[4][1] = [res.market_4_5,res.market_4_9,res.market_4_7,res.market_4_8,res.market_4_6,res.market_4_11,res.market_4_12,res.market_4_13,res.market_4_14];
 GOODS_CONFIG[4][2] = [res.market_4_5,res.market_4_13,res.market_4_4,res.market_4_12,res.market_4_7,res.market_4_1,res.market_4_6,res.market_4_11,res.market_4_14];
+GOODS_CONFIG[4][3] = [res.market_4_5,res.market_4_9,res.market_4_22,res.market_4_8,res.market_4_4,res.market_4_18,res.market_4_19,res.market_4_20,res.market_4_21];
+GOODS_CONFIG[4][4] = [res.market_4_5,res.market_4_13,res.market_4_4,res.market_4_12,res.market_4_7,res.market_4_1,res.market_4_15,res.market_4_16,res.market_4_17];
 
 
 //DOC_CONFIG代表阅读文档
