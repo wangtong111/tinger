@@ -77,34 +77,6 @@ var PlayLayer52 = PlayLayerBase.extend({
         //}
     },
 
-    addNode1 : function () {
-        var self = this;
-        var arr = [res.market1_7,res.market1_9,res.play_arrow_3,res.market1_1,res.play_arrow_1,res.play_arrow_2,res.play_arrow_4,res.market1_4];
-
-        var node = new cc.Node();
-        node.setPosition(0,0);
-        this._content.addChild(node,1,10000);
-
-        for(var i = 0; i< 8 ; i++){
-            var sp = new cc.Sprite(arr[i]);
-            sp.setPosition(-240 + 160 * (i%4) , 140 - 100* Math.floor(i/4));
-            sp.setScale(0.5);
-            node.addChild(sp,5,i);
-            self.addListeners(sp);
-        }
-
-        self.responseRect = [];
-        for(var i = 0 ;i < 6; i++){
-            var layer = new cc.LayerColor(cc.color(0, 255, 100, 255),100,75);
-            layer.ignoreAnchorPointForPosition(false);
-            layer.setPosition(-300 + 110 * i,-180);
-            node.addChild(layer,1);
-            self.responseRect[i] = cc.rect(-300 + 100 * i - 50 ,-180 - 75/2,100,75);
-        }
-
-
-    },
-
     addSpeak : function(levs){
         this.nowTime = Date.parse(new Date());
         var self = this;
@@ -234,14 +206,157 @@ var PlayLayer52 = PlayLayerBase.extend({
         if(flag){
             if(this.nowStep === 0){
                 var tag = target.getTag();
-                target.setPosition(-240 + 160 * (tag%4) , 140 - 100* Math.floor(tag/4));
-            }
+                target.setPosition(-400 + 250 * (tag%4) , 140 - 100* Math.floor(tag/4));
+            }else if (this.nowStep < 3){
+                var tag = target.getTag() - 100;
+                target.setPosition(460,100 - tag*140)
+            }else if(this.nowStep == 3){
+                var tag = target.getTag() - 100;
+                target.setPosition(460,100 - tag*170)
+            }else if(this.nowStep == 4 || this.nowStep === 5){
+                var tag = target.getTag();
+                target.setPosition(390 + (tag%2)*105 ,85 - Math.floor(tag/2)*115);
 
+            }
 
         }
 
         this.canTouchBtn = true;
     },
+
+    addNode1 : function () {
+        var self = this;
+        var arr = [res.market1_7,res.market1_9,res.play_arrow_3,res.market1_1,res.play_arrow_1,res.play_arrow_2,res.play_arrow_4,res.market1_4];
+
+        var node = new cc.Node();
+        node.setPosition(0,0);
+        this._content.addChild(node,1,10000);
+
+        for(var i = 0; i< 8 ; i++){
+            var sp = new cc.Sprite(arr[i]);
+            sp.setPosition(-400 + 250 * (i%4) , 140 - 100* Math.floor(i/4));
+            sp.setScale(0.8);
+            node.addChild(sp,5,i);
+            self.addListeners(sp);
+        }
+
+        self.responseRect = [];
+        for(var i = 0 ;i < 6; i++){
+            var layer = new cc.LayerColor(cc.color(0, 255, 100, 255),160,90);
+            layer.ignoreAnchorPointForPosition(false);
+            layer.setPosition(-450 + 180 * i,-180);
+            node.addChild(layer,1);
+            self.responseRect[i] = cc.rect(-450 + 180 * i - 80 ,-180 - 45,160,90);
+        }
+
+
+    },
+
+    addNode2 : function(){
+        var self = this;
+
+        self.contentRes = [];
+        self.movePos = [-1,-1];
+        self.responseRect = [ cc.rect(-60,-20,100,100),cc.rect(240,-20,100,100)];
+
+        var node = new cc.Node();
+        node.setPosition(0,0);
+        this._content.addChild(node,1,10000);
+
+
+        var d1 = new cc.Sprite(res.play_pad1);
+        d1.setPosition(0,-5);
+        node.addChild(d1,1);
+
+        for(var i = 0; i < 3; i++){
+            var alarm = new cc.Sprite(res.market_alarm);
+            alarm.setPosition(460,100 - 140*i);
+            node.addChild(alarm,10,100 + i);
+            self.addListeners(alarm);
+        }
+    },
+
+
+    addNode3 : function(){
+        var self = this;
+
+        var node = new cc.Node();
+        node.setPosition(0,0);
+        this._content.addChild(node,1,10000);
+
+        var person = new cc.Sprite(res.play_pad6);
+        person.setPosition(0,-5);
+        person.setName("d1");
+        node.addChild(person);
+
+        var arr = [res.market2_3,res.market2_7,res.market2_2];
+        for(var i = 0 ; i < 3; i++){
+            var talk = new cc.Sprite(arr[i]);
+            talk.setPosition(460,100 - i*170);
+            node.addChild(talk,10,100 + i);
+            self.addListeners(talk);
+        }
+
+        self.responseRect = [cc.rect(100,-255,150,150)];
+        self.movePos = [-1];
+
+
+
+    },
+
+    addNode4 : function(){
+        var self = this;
+
+        var node = new cc.Node();
+        node.setPosition(0,0);
+        this._content.addChild(node,1,10000);
+
+        var person = new cc.Sprite(res.play_pad2);
+        person.setPosition(0,-5);
+        person.setName("d1");
+        node.addChild(person);
+
+        var arr = [res.play_moon3,res.play_moon4,res.play_moon5,res.play_moon6,res.play_moon7,res.play_moon8];
+        for(var i = 0 ; i < 6; i++){
+            var talk = new cc.Sprite(arr[i]);
+            talk.setPosition(390 + (i%2)*105 ,85 - Math.floor(i/2)*115);
+            talk.setScale(0.6);
+            node.addChild(talk,10,i);
+            self.addListeners(talk);
+        }
+
+        self.responseRect = [cc.rect(110,85,80,80),cc.rect(110,-65,80,80),cc.rect(110,-220,80,80)];
+        self.movePos = [-1,-1,-1];
+
+    },
+
+    addNode5 : function(){
+        var self = this;
+
+        var node = new cc.Node();
+        node.setPosition(0,0);
+        this._content.addChild(node,1,10000);
+
+        var person = new cc.Sprite(res.play_pad3);
+        person.setPosition(0,-5);
+        person.setName("d1");
+        node.addChild(person);
+
+        var arr = [res.play_alarm7,res.play_alarm8,res.play_alarm9,res.play_alarm11,res.play_alarm12,res.play_alarm13];
+        for(var i = 0 ; i < 6; i++){
+            var talk = new cc.Sprite(arr[i]);
+            talk.setPosition(390 + (i%2)*105 ,85 - Math.floor(i/2)*115);
+            talk.setScale(0.6);
+            node.addChild(talk,10,i);
+            self.addListeners(talk);
+        }
+
+        self.responseRect = [cc.rect(110,85,80,80),cc.rect(110,-65,80,80),cc.rect(110,-220,80,80)];
+        self.movePos = [-1,-1,-1];
+
+    },
+
+
 
     onOk : function(){
         console.log("i am onOk");
@@ -251,7 +366,26 @@ var PlayLayer52 = PlayLayerBase.extend({
             function continueGame(){
                 self.nowStep += 1;
 
-                
+                var node = self._content.getChildByTag(10000);
+                if(node){
+                    node.removeFromParent();
+                }
+
+                if(self.nowStep === 1 || self.nowStep === 2){
+                    self.addNode2();
+                }
+
+                if(self.nowStep === 3){
+                    self.addNode3();
+                }
+
+                if(self.nowStep === 4){
+                    self.addNode4();
+                }
+
+                if(self.nowStep === 5){
+                    self.addNode5();
+                }
 
                 self.addSpeak(self.nowStep);
             }
@@ -291,7 +425,7 @@ var PlayLayer52 = PlayLayerBase.extend({
 
                 var layer = new CompleteTips();
                 layer.setData(2);
-                layer.setContent("太遗憾了，你的操作是错误的！\n回到文献中再看看吧！")
+                layer.setContent("太遗憾了，你的操作是错误的！\n回到文献中再看看吧！");
                 this.addChild(layer, 100);
                 return;
             }
@@ -320,7 +454,7 @@ var PlayLayer52 = PlayLayerBase.extend({
         var self = this;
         console.log(self.nowStep+ "   " + self.selectTypes + "     " + JSON.stringify(self.movePos)  );
         if(self.nowStep === 0){
-            if(this.movePos[0] === 1 && this.movePos[1] === 7 && this.movePos[2] === 5 && this.movePos[3] === 4 && this.movePos[4] === 3 && this.movePos[5] === 2 ){
+            if(this.movePos[0] === 1 && this.movePos[1] === 7 && this.movePos[2] === 5 && this.movePos[3] === 4 && this.movePos[4] === 6 && this.movePos[5] === 2 ){
                 return true;
             }
 
@@ -329,7 +463,7 @@ var PlayLayer52 = PlayLayerBase.extend({
 
         if(self.nowStep === 1){
 
-            if(self.selectTypes === 2 && (self.movePos[0] === -1 && self.movePos[1] === -1 && self.movePos[2] === 10004 )){
+            if(this.movePos[0] !== -1 && this.movePos[1] === -1){
                 return true;
             }
 
@@ -338,7 +472,7 @@ var PlayLayer52 = PlayLayerBase.extend({
         }
 
         if(self.nowStep === 2){
-            if(self.selectTypes === 1 && (self.movePos[0] === 10001 && self.movePos[1] === -1 && self.movePos[2] === -1 )){
+            if(this.movePos[0] === -1 && this.movePos[1] !== -1){
                 return true;
             }
 
@@ -347,10 +481,9 @@ var PlayLayer52 = PlayLayerBase.extend({
         }
 
         if(self.nowStep === 3){
-            for(var i = 1; i < 6 ; i++){
-                if(this.movePos[i] !== 0){
-                    return false;
-                }
+
+            if(this.movePos[0] !== 101){
+                return false;
             }
 
             return true;
@@ -358,17 +491,17 @@ var PlayLayer52 = PlayLayerBase.extend({
         }
 
         if(self.nowStep === 4){
-            var count = 0;
-            for(var i = 1; i < 6 ; i++){
-                if(this.movePos[i] < 0){
-                    return false;
-                }
-
-                count += this.movePos[i]
+            if(this.movePos[0] === 2 && this.movePos[1] === 1 && this.movePos[2] === 4 ){
+                return true
             }
 
-            if(count > 0){
-                return true;
+            return false;
+
+        }
+
+        if(self.nowStep === 5){
+            if(this.movePos[0] === 1 && this.movePos[1] === 5 && this.movePos[2] === 3 ){
+                return true
             }
 
             return false;
