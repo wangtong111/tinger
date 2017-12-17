@@ -27,6 +27,7 @@
         "src/RoomLayerChild.js",
         "src/RoomLayerMouse.js",
         "src/RoomLayerShiYa.js",
+        "src/RoomLayerDream.js",
         "src/PlayScene.js",
         "src/PlayLayerBase.js",
         "src/PlayBrainLayer.js",
@@ -46,6 +47,9 @@
         "src/PlayLayer42.js",
         "src/PlayLayer43.js",
         "src/PlayLayer44.js",
+        "src/PlayLayer51.js",
+        "src/PlayLayer52.js",
+        "src/PlayLayer53.js",
         "src/PlayNewSmoke.js"
 
     ]

@@ -117,6 +117,16 @@ var MarketSelect = cc.Layer.extend({
                 }else if(self.lev === 4){
                     layer = new PlayLayer44();
                 }
+            }else if(self.types === 5){
+                if(self.lev === 1){
+                    layer = new PlayLayer51();
+                }else if(self.lev === 2){
+                    layer = new PlayLayer52();
+                }else if(self.lev === 3){
+                    layer = new PlayLayer53();
+                }
+
+
             }
 
 

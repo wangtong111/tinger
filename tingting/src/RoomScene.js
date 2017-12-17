@@ -118,6 +118,8 @@ var RoomScene = cc.Scene.extend({
             layer = new RoomLayerMouse();
         }else if(this._types == 4){
             layer = new RoomLayerShiYa()
+        }else  if (this._types == 5){
+            layer = new RoomLayerDream();
         }
 
         this.addChild(layer);

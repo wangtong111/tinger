@@ -2,19 +2,21 @@ var GAME_TIPS = {};
 GAME_TIPS[2] = "请先完成前面的实验";
 GAME_TIPS[3] = "请先完成前面的实验";
 GAME_TIPS[4] = "请先完成前面的实验";
-GAME_TIPS[5] = "梦境实验室将于12月05日开放.";
+GAME_TIPS[5] = "请先完成前面的实验";
 
 var ROOM_CONFIG =  {};
 ROOM_CONFIG[1] = res.house1_bg_jpg;
 ROOM_CONFIG[2] = res.house2_bg_jpg;
 ROOM_CONFIG[3] = res.house3_bg_jpg;
 ROOM_CONFIG[4] = res.house4_bg_jpg;
+ROOM_CONFIG[5] = res.house5_bg;
 
 var PLAY_CONFIG = {};
 PLAY_CONFIG[1] = res.play_1_bg_jpg;
 PLAY_CONFIG[2] = res.play_2_bg_jpg;
 PLAY_CONFIG[3] = res.play_3_bg_jpg;
 PLAY_CONFIG[4] = res.play_4_bg_jpg;
+PLAY_CONFIG[5] = res.house5_bg;
 
 //配置小红旗位置
 var FLAG_CONFIG =  {};
@@ -22,6 +24,7 @@ FLAG_CONFIG[1] = [cc.p(-255,-135),cc.p(-115,-70),cc.p(15,100),cc.p(105,-10),cc.p
 FLAG_CONFIG[2] = [cc.p(465 - 800,-240 + 450) , cc.p(1120 - 800 ,-245 + 450), cc.p( 525 - 800,70 - 450)];
 FLAG_CONFIG[3] = [cc.p(1260 - 800,495 - 450) , cc.p(490 - 800 ,125 - 450), cc.p( 365 - 800,490 - 450)];
 FLAG_CONFIG[4] = [cc.p(-600,0),cc.p(-200,0),cc.p(200,0),cc.p(600,0)];
+FLAG_CONFIG[5] = [cc.p(-300,0),cc.p(100,0),cc.p(500,0)];
 //GOODS_CONFIG代表超市图片列表，第一个数字代表房间，第二个数字代表关卡
 var GOODS_CONFIG =  {};
 
@@ -49,6 +52,10 @@ GOODS_CONFIG[4][2] = [res.market_4_5,res.market_4_13,res.market_4_4,res.market_4
 GOODS_CONFIG[4][3] = [res.market_4_5,res.market_4_9,res.market_4_22,res.market_4_8,res.market_4_4,res.market_4_18,res.market_4_19,res.market_4_20,res.market_4_21];
 GOODS_CONFIG[4][4] = [res.market_4_5,res.market_4_2,res.market_4_4,res.market_4_22,res.market_4_7,res.market_4_1,res.market_4_15,res.market_4_16,res.market_4_17];
 
+GOODS_CONFIG[5] = {};
+GOODS_CONFIG[5][1] = [res.market1_1,res.market1_2,res.market1_3,res.market1_4,res.market_alarm,res.market_moon,res.market1_7,res.market1_8,res.market1_9];
+GOODS_CONFIG[5][2] = [res.market_moon,res.market2_2,res.market2_3,res.market2_4,res.market2_5,res.market_alarm,res.market2_7,res.market_sleeping,res.market2_9];
+GOODS_CONFIG[5][3] = [res.play_arrow_3,res.play_arrow_4,res.market_sleeping,res.market_rem,res.market_moon,res.market1_4,res.market_alarm,res.play_arrow_2,res.market_norem];
 
 //DOC_CONFIG代表阅读文档
 var DOC_CONFIG =  {};
@@ -77,7 +84,10 @@ DOC_CONFIG[4][2] = [res.doc4_2_1];
 DOC_CONFIG[4][3] = [res.doc4_3_1,res.doc4_3_2,res.doc4_3_3];
 DOC_CONFIG[4][4] = [res.doc4_4_1,res.doc4_4_2,res.doc4_4_3,res.doc4_4_4,res.doc4_4_5];
 
-
+DOC_CONFIG[5]  = {};
+DOC_CONFIG[5][1] = [res.doc5_1_1,res.doc5_1_2,res.doc5_1_3];
+DOC_CONFIG[5][2] = [res.doc5_2_1,res.doc5_2_2,res.doc5_2_3];
+DOC_CONFIG[5][3] = [res.doc5_3_1,res.doc5_3_2,res.doc5_3_3,res.doc5_3_4];
 
 //代表小海豚说的话
 var MARKET_LABEL = {};
@@ -104,3 +114,8 @@ MARKET_LABEL[4][1] = "大家好！欢迎来到视崖的小游戏。\n在视崖�
 MARKET_LABEL[4][2] = "除了人类的婴儿，研究者使用了其\n他的小动物。你能选中它们吗？";
 MARKET_LABEL[4][3] = "你阅读完了这部分的文章了吗？\n我们来看看研究者又对小动物做了\n哪些进一步的研究吧。请你选择\n所有的东西，包括所有的小动物\n和视崖装置的各个组件。";
 MARKET_LABEL[4][4] = "在对深度的知觉中，有很多视觉\n线索能帮助人们觉察深度，\n其中有两种线索，图案密度和运动视差。\n你还记得它们分别是什么吗？\n请你花些时间回想一下，\n然后选择不同密度的地板图案吧。";
+
+MARKET_LABEL[5] = {};
+MARKET_LABEL[5][1] = "左婷小傻逼";
+MARKET_LABEL[5][2] = "左婷小傻逼";
+MARKET_LABEL[5][3] = "左婷小傻逼";
