@@ -267,6 +267,7 @@ var res = {
     play_pad2 : "play_pad2.png",
     play_pad3 : "play_pad3.png",
     play_pad4 : "play_pad4.png",
+    play_pad5 : "play_pad5.png",
 
 };
 
