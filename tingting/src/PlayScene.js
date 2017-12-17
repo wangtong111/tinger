@@ -72,7 +72,7 @@ var DocLayer = cc.Layer.extend({
             var nowTime = Date.parse(new Date());
             cc.log(startTime);
             cc.log(nowTime);
-            if((nowTime - startTime)/1000 <= 0){
+            if((nowTime - startTime)/1000 <= 60){
 
                 alert("请至少阅读一分钟再进行游戏。");
                 return;

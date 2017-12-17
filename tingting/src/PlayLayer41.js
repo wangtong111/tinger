@@ -8,9 +8,9 @@ var PlayLayer41 = PlayLayerBase.extend({
     selectTypes : -1,
     canTouchBtn : false,
 
-    animalTalk : [  "第一步",
-                    "第二步",
-                    "第三步"],
+    animalTalk : [  "现在，你面前的是视崖装置\n被拆解后的各个部分，\n它们刚好可以拼成一个完整\n的视崖装置。有一块视崖装置的\n框架已经被放置在屏幕中央了，\n你能拖动其他组件，\n完成之后的拼装吗？",
+                    "在研究中，研究者把一位小\n宝宝放在视崖装置中间的平台上，\n让小宝宝的妈妈站在\n视崖装置的一侧呼唤小宝宝，\n可是小宝宝却哭闹起来。\n你知道这时候小宝宝的位置吗？\n请你把小宝宝拖放到正确的位置。",
+                    "在研究中，研究者把一位小\n宝宝放在视崖装置中间的平台上，\n让小宝宝的妈妈站在\n视崖装置的一侧呼唤小宝宝，\n于是小宝宝开始尝试着爬过去。\n你知道这时候小宝宝的位置吗？\n请你把小宝宝拖放到正确的位置。"],
 
     movePos : [],
 
@@ -81,8 +81,8 @@ var PlayLayer41 = PlayLayerBase.extend({
         self._content.addChild(logo,2);
 
         self.addSpeak(0);
-        self.responseRect = [ cc.rect(-210,100,100,100),cc.rect(-50,100,100,100),cc.rect(110,100,100,100)
-            ];
+        //self.responseRect = [ cc.rect(-210,100,100,180),cc.rect(-50,100,180,100),cc.rect(110,100,100,180)
+        //    ];
         //for(var i = 0 ; i< self.responseRect.length ;i++){
         //    var bgLayer = new cc.LayerColor(cc.color(0, 0, 0, 180),100,100);
         //    bgLayer.setPosition(self.responseRect[i].x,self.responseRect[i].y);
@@ -116,8 +116,8 @@ var PlayLayer41 = PlayLayerBase.extend({
 
         var startTime = this.nowTime;
         var nowTime = Date.parse(new Date());
-        if((nowTime - startTime)/1000 <= 0){
-            alert("至少阅读20秒，请仔细看下线索哦。");
+        if((nowTime - startTime)/1000 <= 10){
+            alert("至少阅读10秒，请仔细看下线索哦。");
             return ;
 
         }
@@ -164,6 +164,9 @@ var PlayLayer41 = PlayLayerBase.extend({
                 }
 
                 for(var j = 0; j < 3 ; j++){
+                    if(this.movePos[j] === target.getTag()){
+                        this.movePos[j] = -1;
+                    }
                     var node = this._content.getChildByTag(1000 + j);
                     if(node){
                         node.removeFromParent(true);
@@ -172,7 +175,7 @@ var PlayLayer41 = PlayLayerBase.extend({
 
                 this.movePos[i] = target.getTag();
 
-                var node = new cc.LayerColor(cc.color(0, 255, 255, 180),100,100);
+                var node = new cc.LayerColor(cc.color(0, 255, 255, 180),rects.width,rects.height);
                 node.setPosition(rects.x,rects.y);
                 this._content.addChild(node,2,1000 + i);
                 return;
@@ -194,7 +197,7 @@ var PlayLayer41 = PlayLayerBase.extend({
 
     onTouchEnded : function(touch,event){
         var target = event.getCurrentTarget();
-        var flag = true;
+
 
         if(this.nowStep === 0){
             var name = target.getName();
@@ -217,14 +220,22 @@ var PlayLayer41 = PlayLayerBase.extend({
             return
         }
 
+        var flag = true;
         for(var i = 0 ; i< 3 ; i++){
             if(this.movePos[i] === target.getTag()){
+                flag = false;
                 var node = this._content.getChildByTag(1000 + i);
                 if(node){
                     node.removeFromParent();
                 }
                 return;
             }
+        }
+
+        if(flag){
+            var posArr = [cc.p(-468,155),cc.p(-468,-36)];
+            var tag = target.getTag() - 10000;
+            target.setPosition(posArr[tag]);
         }
 
         this.canTouchBtn = true;
@@ -238,7 +249,7 @@ var PlayLayer41 = PlayLayerBase.extend({
             function continueGame(){
                 self.movePos = [-1,-1,-1];
                 self.nowStep += 1;
-                self.responseRect =  [cc.rect(-180,100,100,100),cc.rect(-50,100,100,100),cc.rect(80,100,100,100)];
+                self.responseRect =  [cc.rect(-200,50,100,180),cc.rect(-50,50,100,180),cc.rect(90,50,100,180)];
 
                 var p1 = self._content.getChildByTag(10000);
                 if(p1){

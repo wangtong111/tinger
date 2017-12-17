@@ -7,11 +7,11 @@ var PlayLayer43 = PlayLayerBase.extend({
     selectTypes : -1,
     canTouchBtn : false,
 
-    animalTalk : [  "第一步",
-        "第二步",
-        "第三步",
-        "第si步",
-        "第wu步"],
+    animalTalk : [  "在研究中，把一只刚出生一天的\n小羊放在视崖装置的玻璃上，\n并把地板调节到了特定高度。\n小羊很害怕，肢体都僵直了。\n你猜研究者把地板调节到什么高度？\n请你拖动正确的装置和相应\n状态的小羊到相应的位置。",
+                    "在研究中，把一只刚出生一天的\n小羊放在视崖装置的玻璃上，\n并把地板调节到了特定高度。\n小羊表现得很镇定。你猜研究\n者把地板调节到什么高度？请你拖动\n正确的装置和相应状态的小羊\n到相应的位置。",
+                    "在研究中，研究者每次把一只小\n鼠放到了视崖装置中间的平台上，\n并改变平台的高度。小鼠在平台\n边缘探索一番之后离开了平台，\n绝大多数的小鼠都去了装置的其中一侧。\n你猜此时中间的平台有多高，\n小鼠去了哪一侧？请你拖动小鼠和\n相应高度的平台到正确的位置。",
+                    "现在我们假设研究者放置了一群\n小猫在视崖装置中间的平台上。\n小猫们活泼地爬来爬去，马上，\n平台上就一只小猫也不剩了。\n你能揣测出它们都去了哪吗？\n请你把小猫们拖到它们\n可能出现的位置。",
+                    "现在我们假设研究者放置了一群\n小龟在视崖装置中间的平台上。\n小龟们活泼地爬来爬去，马上，\n平台上就一只小龟也不剩了。\n你能揣测出它们都去了哪吗？\n请你把小龟们拖到它们\n可能出现的位置。"],
 
     movePos : [],
 
@@ -91,7 +91,7 @@ var PlayLayer43 = PlayLayerBase.extend({
         // play_logo
         self.addSpeak(0);
 
-        self.responseRect = [ cc.rect(-210,100,100,100),cc.rect(-50,100,100,100),cc.rect(110,100,100,100)];
+        //self.responseRect = [ cc.rect(-210,100,100,100),cc.rect(-50,100,100,100),cc.rect(110,100,100,100)];
 
         //for(var i = 0 ; i< self.responseRect.length ;i++){
         //    var bgLayer = new cc.LayerColor(cc.color(0, 0, 0, 180),100,100);
@@ -132,8 +132,8 @@ var PlayLayer43 = PlayLayerBase.extend({
 
         var startTime = this.nowTime;
         var nowTime = Date.parse(new Date());
-        if((nowTime - startTime)/1000 <= 0){
-            alert("至少阅读20秒，请仔细看下线索哦。");
+        if((nowTime - startTime)/1000 <= 10){
+            alert("至少阅读10秒，请仔细看下线索哦。");
             return ;
 
         }
@@ -227,13 +227,21 @@ var PlayLayer43 = PlayLayerBase.extend({
 
         if(this.nowStep < 3 ){
             for(var i = 0 ; i< this.responseRect.length ; i++){
+
                 if(this.movePos[i] === target.getTag()){
+                    flag = false;
                     var node = this._content.getChildByTag(1000 + i);
                     if(node){
                         node.removeFromParent();
                     }
-                    return;
+                    break;
                 }
+            }
+
+            if(flag){
+                var tag = target.getTag() - 10000;
+                target.setPosition(460 , 200 - 100 * tag);
+
             }
         }else{
            for(var i = 0 ;i < 2; i++){
@@ -256,8 +264,7 @@ var PlayLayer43 = PlayLayerBase.extend({
         self.contentRes = [0,0];
         self.selectTypes = -1;
         self.movePos = [-1,-1,-1];
-        self.responseRect = [ cc.rect(-210,100,100,100),cc.rect(-50,100,100,100),cc.rect(110,100,100,100)];
-
+        self.responseRect =  [cc.rect(-200,50,100,180),cc.rect(-50,50,100,180),cc.rect(90,50,100,180)];
 
         var sp = self._content.getChildByName("desk");
         if(sp){
@@ -288,7 +295,7 @@ var PlayLayer43 = PlayLayerBase.extend({
         var self = this;
 
         self.movePos = [-1,-1,-1,-1,-1,-1];
-        self.responseRect = [ cc.rect(-210 - 240,0,160,150),cc.rect(110 - 240,0,160,150)];
+        self.responseRect = [ cc.rect(-210 - 210,30,160,150),cc.rect(110 - 250,20,160,150)];
 
         var sp = self._content.getChildByName("menu");
         if(sp){

@@ -8,9 +8,9 @@ var PlayLayer44 = PlayLayerBase.extend({
     selectTypes : -1,
     canTouchBtn : false,
 
-    animalTalk : [  "第一步",
-        "第二步",
-        "第三步"],
+    animalTalk : [  "在研究中，研究者改换了深侧\n地板的图案和摆放方式来控制图\n案密度和运动视差。现在，在界面的\n右边有不同密度的三种图案，\n（密度并不精确）你能使用其中一种\n图案重现研究者们消除图案\n密度作用的方法吗？请拖动图案\n到正确的位置。",
+                    "在研究中，研究者改换了深侧\n地板的图案和摆放方式来控制图\n案密度和运动视差。现在，在界面的\n右边有不同密度的三种图案， \n（密度并不精确）你能使用其中一种\n图案重现研究者们消除运动\n视差作用的方法吗？请拖动图案\n到正确的位置。",
+                    "你还记得研究者把哪些小动物\n放在控制了图案密度和运动视差\n的视崖装置的深侧了吗？它们的表现\n更可能是什么样？请你从右侧的\n方框中拖动正确的图片到正确的位置。"],
 
     movePos : [],
 
@@ -79,7 +79,7 @@ var PlayLayer44 = PlayLayerBase.extend({
         self.addAnimals();
         // play_logo
         var logo = new cc.Sprite(res.play_logo_png);
-        logo.setPosition(-550,-230);
+        logo.setPosition(-700,-230);
         self._content.addChild(logo,2);
 
         self.addSpeak(0);
@@ -95,7 +95,7 @@ var PlayLayer44 = PlayLayerBase.extend({
         this.nowTime = Date.parse(new Date());
         var self = this;
         var speak1 = new cc.Sprite(res.play_speak_png);
-        speak1.setPosition(-350,0);
+        speak1.setPosition(-500,0);
         self._content.addChild(speak1,12,5000 + 100);
         speak1.setScale(0);
         speak1.runAction(cc.scaleTo(0.2,1,1));
@@ -117,8 +117,8 @@ var PlayLayer44 = PlayLayerBase.extend({
 
         var startTime = this.nowTime;
         var nowTime = Date.parse(new Date());
-        if((nowTime - startTime)/1000 <= 0){
-            alert("至少阅读20秒，请仔细看下线索哦。");
+        if((nowTime - startTime)/1000 <= 10){
+            alert("至少阅读10秒，请仔细看下线索哦。");
             return ;
 
         }
@@ -154,7 +154,7 @@ var PlayLayer44 = PlayLayerBase.extend({
 
             var rects = this.responseRect[i];
             if(cc.rectContainsPoint(rects,target)){
-                if(this.movePos[i] !== -1){
+                if(this.movePos[i] != -1){
                     return;
                 }
 
@@ -164,6 +164,9 @@ var PlayLayer44 = PlayLayerBase.extend({
                 }
 
                 for(var j = 0; j < this.responseRect.length ; j++){
+                    if(this.movePos[j] === target.getTag()){
+                        this.movePos[j] = -1;
+                    }
                     var node = this._content.getChildByTag(1000 + j);
                     if(node){
                         node.removeFromParent(true);
@@ -172,7 +175,7 @@ var PlayLayer44 = PlayLayerBase.extend({
 
                 this.movePos[i] = target.getTag();
 
-                var node = new cc.LayerColor(cc.color(0, 255, 255, 180),100,100);
+                var node = new cc.LayerColor(cc.color(0, 255, 255, 180),rects.width,rects.height);
                 node.setPosition(rects.x,rects.y);
                 this._content.addChild(node,2,1000 + i);
                 return;
@@ -180,7 +183,7 @@ var PlayLayer44 = PlayLayerBase.extend({
         }
         //
         for(var i = 0 ; i< this.responseRect.length ; i++){
-            if(this.movePos[i] === target.getTag()){
+            if(this.movePos[i] == target.getTag()){
                 this.movePos[i] = -1;
                 var node = this._content.getChildByTag(1000 + i);
                 if(node){
@@ -218,15 +221,24 @@ var PlayLayer44 = PlayLayerBase.extend({
 
         }
         console.log("=================" + JSON.stringify(this.movePos));
-
+        var flag = true;
         for(var i = 0 ; i< this.responseRect.length ; i++){
             if(this.movePos[i] === target.getTag()){
+                flag = false;
                 var node = this._content.getChildByTag(1000 + i);
-                if(node){
+                if(node) {
                     node.removeFromParent();
                 }
-                return;
             }
+        }
+
+        if (flag == true){
+            var posy = [500,400,200,100];
+            var tag =  target.getTag() - 10000;
+            var i = Math.floor(tag/100);
+            var j = tag%100;
+
+            target.setPosition(785 - 583 + j*100, posy[i] - 330);
         }
 
 
@@ -290,7 +302,7 @@ var PlayLayer44 = PlayLayerBase.extend({
         self.responseRect = [];
         //165,140
         for(var i = 0; i < 6; i++){
-            self.responseRect.push(cc.rect(330 - 583  + 155 *(i%2) , 410  - 330 - 140 * Math.floor(i/2), 134 ,118 ) );
+            self.responseRect.push(cc.rect(330 - 583  + 155 *(i%2) , 410  - 330 - 140 * Math.floor(i/2), 140 ,125 ) );
         }
 
         self.movePos = [-1,-1,-1,-1,-1,-1];
@@ -400,11 +412,11 @@ var PlayLayer44 = PlayLayerBase.extend({
                 count += this.contentRes[i];
             }
             console.log("check game,"+count);
-            if(this.nowStep === 0 && count === 10000){
+            if(this.nowStep === 0 && count === 10000 && this.contentRes[0] === 10000){
                 return true;
             }
 
-            if(this.nowStep === 1 && count === 10001){
+            if(this.nowStep === 1 && count === 10001 && this.contentRes[1] === 10001){
                 return true;
             }
 
@@ -413,7 +425,7 @@ var PlayLayer44 = PlayLayerBase.extend({
 
 
         if(this.nowStep === 2){
-            if(this.movePos[0] >= 10000 && this.movePos[0] <= 10002  && this.movePos[1] >= 10100 && this.movePos[1] <= 10102 && this.movePos[2] >= 10200  && this.movePos[2] <= 10202 && this.movePos[3] >= 10200 && this.movePos[3] <= 10202 && this.movePos[4] >= 10300 && this.movePos[4] <= 10302 && this.movePos[5] >= 10200 && this.movePos[5] <= 10202  ){
+            if(this.movePos[0] >= 10100 && this.movePos[0] <= 10102  && this.movePos[1] >= 10000 && this.movePos[1] <= 10002 && this.movePos[2] >= 10200  && this.movePos[2] <= 10202 && this.movePos[3] >= 10200 && this.movePos[3] <= 10202 && this.movePos[4] >= 10300 && this.movePos[4] <= 10302 && this.movePos[5] >= 10200 && this.movePos[5] <= 10202  ){
                 return true;
             }
 

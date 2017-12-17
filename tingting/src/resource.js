@@ -158,6 +158,21 @@ var res = {
     doc4_4_4 : "doc4_4_4.jpg",
     doc4_4_5 : "doc4_4_5.jpg",
 
+    doc5_1_1  :          "doc5_1_1.jpg",
+    doc5_1_2  :          "doc5_1_2.jpg",
+    doc5_1_3  :          "doc5_1_3.jpg",
+    doc5_2_1  :          "doc5_2_1.jpg",
+    doc5_2_2  :          "doc5_2_2.jpg",
+    doc5_2_3  :          "doc5_2_3.jpg",
+    doc5_3_1  :          "doc5_3_1.jpg",
+    doc5_3_2  :          "doc5_3_2.jpg",
+    doc5_3_3  :          "doc5_3_3.jpg",
+    doc5_3_4  :          "doc5_3_4.jpg",
+
+
+
+
+
 
     play_slide_png : "play_slide.png",
     play_slide_btn_png : "play_slide_btn.png",
