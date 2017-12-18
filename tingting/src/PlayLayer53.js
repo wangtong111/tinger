@@ -8,8 +8,8 @@ var PlayLayer53 = PlayLayerBase.extend({
     selectTypes : -1,
     canTouchBtn : false,
 
-    animalTalk : [  "在研究中，研究者改换了深侧\n地板的图案和摆放方式来控制图\n案密度和运动视差。现在，在界面的\n右边有不同密度的三种图案，\n（密度并不精确）你能使用其中一种\n图案重现研究者们消除图案\n密度作用的方法吗？请拖动图案\n到正确的位置。",
-        "在研究中，研究者改换了深侧\n地板的图案和摆放方式来控制图\n案密度和运动视差。现在，在界面的\n右边有不同密度的三种图案， \n（密度并不精确）你能使用其中一种\n图案重现研究者们消除运动\n视差作用的方法吗？请拖动图案\n到正确的位置。"],
+    animalTalk : [  "这是做梦剥夺研究的\n实验结果表格的一部分。\n表格里两个重要的部分被隐去了。\n在屏幕右侧，你可以看到\n本研究中使用过的各种指标或者阶段，\n被隐去的部分就藏在其中。\n你能拖动其中两个图案，\n补全表格中箭头所指的\n被隐去的部分吗？",
+        "这是做梦剥夺研究的\n实验结果表格的一部分。\n表格里两个重要的部分被隐去了。\n在屏幕右侧，你可以看到\n本研究中使用过的各种指标或者阶段，\n被隐去的部分就藏在其中。\n你能拖动其中两个图案，\n补全表格中箭头所指\n的被隐去的部分吗？"],
 
     movePos : [],
 
@@ -103,9 +103,9 @@ var PlayLayer53 = PlayLayerBase.extend({
         speak1.setPosition(-500,0);
         self._content.addChild(speak1,12,5000 + 100);
         speak1.setScale(0);
-        speak1.runAction(cc.scaleTo(0.2,1,1));
+        speak1.runAction(cc.scaleTo(0.2,1.5,1.5));
 
-        var content = new cc.LabelTTF(this.animalTalk[levs],"Arial",16);
+        var content = new cc.LabelTTF(this.animalTalk[levs],"Arial",14);
         content.setColor(cc.color(0,0,0,255));
         content.opacity = 0;
         content.x = 160 + 120;
