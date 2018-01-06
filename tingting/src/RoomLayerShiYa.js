@@ -1,5 +1,5 @@
 /**
- * Created by wangtong on 2017/11/25.
+ * Created by tingting on 2017/11/25.
  */
 
 var RoomLayerShiYa = RoomLayer.extend({

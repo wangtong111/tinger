@@ -1,8 +1,8 @@
 /**
- * Created by wangtong on 2017/11/5.
+ * Created by tingting on 2017/11/5.
  */
 /**
- * Created by wangtong on 2017/11/5.
+ * Created by tingting on 2017/11/5.
  */
 var PlayLayerMouse3 = PlayLayerBase.extend({
     responseRect:null,

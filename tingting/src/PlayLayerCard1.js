@@ -1,5 +1,5 @@
 /**
- * Created by wangtong on 2017/10/22.
+ * Created by tingting on 2017/10/22.
  */
 var PlayLayerCard1 = PlayLayerBase.extend({
     responseRect:null,

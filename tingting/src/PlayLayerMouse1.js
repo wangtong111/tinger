@@ -1,5 +1,5 @@
 /**
- * Created by wangtong on 2017/11/5.
+ * Created by tingting on 2017/11/5.
  */
 var PlayLayerMouse1 = PlayLayerBase.extend({
     responseRect:null,

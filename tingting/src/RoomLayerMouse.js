@@ -1,8 +1,8 @@
 /**
- * Created by wangtong on 2017/11/4.
+ * Created by tingting on 2017/11/4.
  */
 /**
- * Created by wangtong on 2017/10/22.
+ * Created by tingting on 2017/10/22.
  */
 
 var RoomLayerMouse = RoomLayer.extend({

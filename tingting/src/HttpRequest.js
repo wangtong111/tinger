@@ -26,7 +26,7 @@ function sendRequest(data,cb){
         }
     };
 
-    // var data = {name: "wangtong" ,sex : "meal",id:"20117091500",password :"123456"};
+    // var data = {name: "tingting" ,sex : "meal",id:"20117091500",password :"123456"};
     cc.log(JSON.stringify(data))
     xhr.send(JSON.stringify(data));
 }

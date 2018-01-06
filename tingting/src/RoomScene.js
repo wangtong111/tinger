@@ -1,5 +1,5 @@
 ///**
-// * Created by wangtong on 2017/9/10.
+// * Created by tingting on 2017/9/10.
 // */
 
 var RoomLayer = cc.Layer.extend({

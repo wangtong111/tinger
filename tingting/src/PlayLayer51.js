@@ -1,9 +1,9 @@
 /**
- * Created by wangtong on 2017/11/25.
+ * Created by tingting on 2017/11/25.
  */
 
 /**
- * Created by wangtong on 2017/11/25.
+ * Created by tingting on 2017/11/25.
  */
 
 
@@ -116,7 +116,7 @@ var PlayLayer51 = PlayLayerBase.extend({
 
         var startTime = this.nowTime;
         var nowTime = Date.parse(new Date());
-        if((nowTime - startTime)/1000 <= 0){
+        if((nowTime - startTime)/1000 <= 10){
             alert("至少阅读10秒，请仔细看下线索哦。");
             return ;
 
